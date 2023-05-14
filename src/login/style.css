@@ -1,0 +1,22 @@
+#form{
+	display: flex;
+	flex-direction: column;
+	width: 200px;
+	margin: 0 auto;
+	margin-top: 300px;
+}
+.FormInput{
+	margin-bottom: 10px;
+	margin-top: 3px;
+}
+p{
+	margin-top: 3px;
+	margin-bottom: 0px;
+}
+#ICodeTeam{
+	display: none;
+}
+#BSubmit{
+	margin-top: 15px;
+	color: black;
+}
