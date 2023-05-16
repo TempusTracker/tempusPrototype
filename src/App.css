@@ -11,23 +11,3 @@
   justify-content: center;
   color: white;
 }
-#form {
-  width: 200px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-.FormInput {
-  margin-bottom: 10px;
-  margin-top: 3px;
-}
-p {
-  margin-top: 3px;
-  margin-bottom: 0px;
-}
-#ICodeTeam {
-  display: none;
-}
-#BSubmit {
-  margin-top: 15px;
-  color: black;
-}

@@ -1,7 +1,6 @@
-import { users } from "./script.js"
+import { users } from "./LogInForm.jsx"
 
 export function isNameExist(name) {
-	console.log(users)
 	for (let i = 0; i < users.length; i++) {
 		if (users[i].Name === name) {
 			return true
