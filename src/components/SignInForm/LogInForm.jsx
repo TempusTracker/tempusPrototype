@@ -12,6 +12,21 @@ function LogInForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [teamcode, setTeamcode] = useState(0);
+  const [emailDirty, setEmailDirty] = useState(false);
+  const [passwordDirty, setPasswordDirty] = useState(false);
+  const [emailError, setEmailError] = useState("почта пустая");
+  const [passwordError, setPasswordError] = useState("пароль пустой");
+
+  const blurHandler = (e) => {
+    switch (e.target.name) {
+      case "email":
+        setEmailDirty(true);
+        break;
+      case "password":
+        setPasswordDirty(true);
+        break;
+    }
+  };
 
   const openSignIn = (e) => {
     e.preventDefault();
@@ -68,20 +83,43 @@ function LogInForm() {
       <input
         onChange={(e) => {
           setEmail(e.target.value);
+          const re =
+            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+          if (!re.test(String(e.target.value).toLowerCase())) {
+            setEmailError("ошибка в поле почты");
+          } else {
+            setEmailError("");
+          }
         }}
+        name="email"
         type="email"
         placeholder="Email"
+        onBlur={(e) => blurHandler(e)}
         className={styles.LogInForm_input}
       />
+      {emailDirty && emailError && (
+        <div style={{ color: "red" }}>{emailError}</div>
+      )}
       <label>Password</label>
       <input
         onChange={(e) => {
           setPassword(e.target.value);
+          const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
+          if (!re.test(String(e.target.value))) {
+            setPasswordError("ошибка в поле пароля");
+          } else {
+            setPasswordError("");
+          }
         }}
         type="password"
+        name="password"
+        onBlur={(e) => blurHandler(e)}
         placeholder="Password"
         className={styles.LogInForm_input}
       />
+      {passwordDirty && passwordError && (
+        <div style={{ color: "red" }}>{passwordError}</div>
+      )}
       <p>
         Есть команда? <input type="checkbox" onChange={teamButtonChange} />
       </p>
