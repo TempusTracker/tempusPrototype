@@ -17,7 +17,7 @@ function SignInForm(props) {
   const [emailError, setEmailError] = useState("почта пустая");
   const [passwordError, setPasswordError] = useState("пароль пустой");
 
-  const { setIsLogged } = props;
+  const { setIsLogged, setSelectUser } = props;
 
   const blurHandler = (e) => {
     switch (e.target.name) {
@@ -43,9 +43,11 @@ function SignInForm(props) {
       alert("пользователь уже существует");
     } else {
       if (login === "" || password === "" || email === "") {
-        alert("заполните все поля");
+        alert("ошибка");
       } else {
         CreateUser(login, email, password, teamcode);
+        alert("Доборо пожаловать " + login);
+        ClearInputs();
       }
     }
   };
@@ -58,6 +60,13 @@ function SignInForm(props) {
     }
   };
 
+  function ClearInputs() {
+    document.getElementById("InputLogin").value = "";
+    document.getElementById("InputMail").value = "";
+    document.getElementById("InputPass").value = "";
+    document.getElementById("InputCodeTeam").value = "";
+  }
+
   const CreateUser = (login, email, password, teamcode = "none") => {
     const NewUser = {
       Name: login,
@@ -67,6 +76,7 @@ function SignInForm(props) {
     };
     users.push(NewUser);
     setIsLogged(true);
+    setSelectUser(NewUser);
   };
 
   return (
@@ -79,21 +89,23 @@ function SignInForm(props) {
         type="text"
         placeholder="Login"
         className={styles.SignInForm_input}
+        id="InputLogin"
       />
       <label>Email</label>
       <input
         onChange={(e) => {
-          setEmail(e.target.value);
           const re =
             /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
           if (!re.test(String(e.target.value).toLowerCase())) {
             setEmailError("ошибка в поле почты");
           } else {
             setEmailError("");
+            setEmail(e.target.value);
           }
         }}
         name="email"
         type="email"
+        id="InputMail"
         placeholder="Email"
         onBlur={(e) => blurHandler(e)}
         className={styles.SignInForm_input}
@@ -104,16 +116,17 @@ function SignInForm(props) {
       <label>Password</label>
       <input
         onChange={(e) => {
-          setPassword(e.target.value);
           const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
           if (!re.test(String(e.target.value))) {
             setPasswordError("ошибка в поле пароля");
           } else {
             setPasswordError("");
+            setPassword(e.target.value);
           }
         }}
         type="password"
         name="password"
+        id="InputPass"
         onBlur={(e) => blurHandler(e)}
         placeholder="Password"
         className={styles.SignInForm_input}
