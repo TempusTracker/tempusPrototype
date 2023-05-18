@@ -20,14 +20,14 @@ function LogInForm(props) {
   const LogIn = (e) => {
     e.preventDefault();
     for (const user of users) {
-      (user.Name === login && user.Password === password) ? {
+      if (user.Name === login && user.Password === password) {
         alert("Доборо пожаловать " + user.Name);
         selectUser = user;
         setIsLogged(true);
         console.log(user);
         break;
-      } : { alert("пароль или логин не верны");
-      break;}
+      } else alert("пароль или логин не верны");
+      break;
     }
     users.map((user) => {
       return 0;
