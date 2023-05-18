@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { isNameExist, isEmailExist } from "./utils";
 import styles from "./LogInForm.module.css";
+import { isLogged } from "./SignInForm.jsx";
 
 export const users = [
   { Name: "Nikita", Email: "nikita@mail.com", Password: "lol", TeamCode: 123 },
@@ -64,8 +65,7 @@ function LogInForm() {
       TeamCode: teamcode,
     };
     users.push(NewUser);
-    console.log(users);
-    alert("Доборо пожаловать " + login);
+    isLogged = true;
   };
 
   return (

@@ -4,6 +4,7 @@ import styles from "./SignInForm.module.css";
 import { users } from "./LogInForm.jsx";
 
 let selectUser = {};
+export let isLogged = false;
 
 function SignInForm() {
   const [login, setLogin] = useState("");
@@ -22,6 +23,8 @@ function SignInForm() {
         if (user.Password === password) {
           alert("Доборо пожаловать " + user.Name);
           selectUser = user;
+          isLogged = true;
+          console.log(isLogged);
           break;
         } else {
           alert("пароль не верен");
