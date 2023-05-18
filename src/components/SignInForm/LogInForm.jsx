@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import { isNameExist, isEmailExist } from "./utils";
 import styles from "./LogInForm.module.css";
-import { isLogged } from "./SignInForm.jsx";
 
 export const users = [
   { Name: "Nikita", Email: "nikita@mail.com", Password: "lol", TeamCode: 123 },
   { Name: "masha", Email: "masha@mail.com", Password: "lol2", TeamCode: 123 },
 ];
 
-function LogInForm() {
+function LogInForm(props) {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,6 +16,8 @@ function LogInForm() {
   const [passwordDirty, setPasswordDirty] = useState(false);
   const [emailError, setEmailError] = useState("почта пустая");
   const [passwordError, setPasswordError] = useState("пароль пустой");
+
+  const { setIsLogged } = props;
 
   const blurHandler = (e) => {
     switch (e.target.name) {
@@ -65,7 +66,7 @@ function LogInForm() {
       TeamCode: teamcode,
     };
     users.push(NewUser);
-    isLogged = true;
+    setIsLogged(true);
   };
 
   return (
