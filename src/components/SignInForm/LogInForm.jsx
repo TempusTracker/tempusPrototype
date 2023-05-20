@@ -16,12 +16,18 @@ function LogInForm(props) {
     document.getElementById("InputLoginL").value = "";
   }
 
+  function LocalStorageSave(user) {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("logged", JSON.stringify(true));
+  }
+
   const LogIn = () => {
     for (const user of users) {
       if (user.Name === login && user.Password === password) {
         alert("Доборо пожаловать " + user.Name);
         setSelectUser(user);
         setIsLogged(true);
+        LocalStorageSave(user);
         ClearInputs();
       } else {
       }

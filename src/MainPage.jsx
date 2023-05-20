@@ -10,6 +10,8 @@ function MainPage(props) {
   function logUot() {
     setIsLogged(false);
     setSelectUser({});
+    localStorage.setItem("user", JSON.stringify({}));
+    localStorage.setItem("logged", JSON.stringify(false));
     alert("пока");
   }
 

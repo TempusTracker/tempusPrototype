@@ -11,6 +11,8 @@ import MainPage from "./MainPage";
 function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [selectUser, setSelectUser] = useState({});
+  let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
+  let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 
   return (
     <BrowserRouter>
@@ -20,44 +22,72 @@ function App() {
             <Route
               path="/"
               element={
-                <LogInForm
-                  setIsLogged={setIsLogged}
-                  setSelectUser={setSelectUser}
-                />
+                isLoggedLocal ? (
+                  <MainPage
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUserLocal}
+                  />
+                ) : (
+                  <LogInForm
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUser}
+                  />
+                )
               }
             />
 
             <Route
               path="/LogInForm"
               element={
-                <LogInForm
-                  setIsLogged={setIsLogged}
-                  setSelectUser={setSelectUser}
-                />
-              }
-            />
-            <Route
-              path="/SignInForm"
-              element={
-                <SignInForm
-                  setIsLogged={setIsLogged}
-                  setSelectUser={setSelectUser}
-                />
-              }
-            />
-            <Route
-              path="/MainPage"
-              element={
-                isLogged ? (
+                isLoggedLocal ? (
                   <MainPage
                     setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
-                    selectUser={selectUser}
+                    selectUser={selectUserLocal}
                   />
                 ) : (
                   <LogInForm
                     setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
+                    selectUser={selectUser}
+                  />
+                )
+              }
+            />
+            <Route
+              path="/SignInForm"
+              element={
+                isLoggedLocal ? (
+                  <MainPage
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUserLocal}
+                  />
+                ) : (
+                  <SignInForm
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUser}
+                  />
+                )
+              }
+            />
+            <Route
+              path="/MainPage"
+              element={
+                isLoggedLocal ? (
+                  <MainPage
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUserLocal}
+                  />
+                ) : (
+                  <LogInForm
+                    setIsLogged={setIsLogged}
+                    setSelectUser={setSelectUser}
+                    selectUser={selectUser}
                   />
                 )
               }

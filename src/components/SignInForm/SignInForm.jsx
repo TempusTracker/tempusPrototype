@@ -20,6 +20,11 @@ function SignInForm(props) {
 
   const { setIsLogged, setSelectUser } = props;
 
+  function LocalStorageSave(user) {
+    localStorage.setItem("user", JSON.stringify(user));
+    localStorage.setItem("logged", JSON.stringify(true));
+  }
+
   const blurHandler = (e) => {
     switch (e.target.name) {
       case "email":
@@ -70,6 +75,7 @@ function SignInForm(props) {
     users.push(NewUser);
     setIsLogged(true);
     setSelectUser(NewUser);
+    LocalStorageSave(NewUser);
   };
 
   return (
