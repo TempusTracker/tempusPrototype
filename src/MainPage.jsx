@@ -8,7 +8,6 @@ function MainPage(props) {
   console.log(selectUser);
 
   function logUot() {
-    setIsLogged(false);
     setSelectUser({});
     localStorage.setItem("user", JSON.stringify({}));
     localStorage.setItem("logged", JSON.stringify(false));

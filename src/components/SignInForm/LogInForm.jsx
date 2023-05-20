@@ -9,7 +9,7 @@ function LogInForm(props) {
   const [login, setLogin] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { setIsLogged, setSelectUser } = props;
+  const { setSelectUser } = props;
 
   function ClearInputs() {
     document.getElementById("InputPassL").value = "";
@@ -26,7 +26,6 @@ function LogInForm(props) {
       if (user.Name === login && user.Password === password) {
         alert("Доборо пожаловать " + user.Name);
         setSelectUser(user);
-        setIsLogged(true);
         LocalStorageSave(user);
         ClearInputs();
       } else {

@@ -5,11 +5,10 @@ import "./App.css";
 import "./null.css";
 
 import { useState } from "react";
-import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainPage from "./MainPage";
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
   const [selectUser, setSelectUser] = useState({});
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
@@ -24,13 +23,11 @@ function App() {
               element={
                 isLoggedLocal ? (
                   <MainPage
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUserLocal}
                   />
                 ) : (
                   <LogInForm
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUser}
                   />
@@ -43,13 +40,11 @@ function App() {
               element={
                 isLoggedLocal ? (
                   <MainPage
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUserLocal}
                   />
                 ) : (
                   <LogInForm
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUser}
                   />
@@ -61,13 +56,11 @@ function App() {
               element={
                 isLoggedLocal ? (
                   <MainPage
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUserLocal}
                   />
                 ) : (
                   <SignInForm
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUser}
                   />
@@ -79,13 +72,11 @@ function App() {
               element={
                 isLoggedLocal ? (
                   <MainPage
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUserLocal}
                   />
                 ) : (
                   <LogInForm
-                    setIsLogged={setIsLogged}
                     setSelectUser={setSelectUser}
                     selectUser={selectUser}
                   />

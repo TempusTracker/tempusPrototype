@@ -18,7 +18,7 @@ function SignInForm(props) {
   const [emailError, setEmailError] = useState("почта пустая");
   const [passwordError, setPasswordError] = useState("пароль пустой");
 
-  const { setIsLogged, setSelectUser } = props;
+  const { setSelectUser } = props;
 
   function LocalStorageSave(user) {
     localStorage.setItem("user", JSON.stringify(user));
@@ -73,7 +73,6 @@ function SignInForm(props) {
       TeamCode: teamcode,
     };
     users.push(NewUser);
-    setIsLogged(true);
     setSelectUser(NewUser);
     LocalStorageSave(NewUser);
   };
