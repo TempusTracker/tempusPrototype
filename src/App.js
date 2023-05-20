@@ -12,8 +12,6 @@ function App() {
   const [isLogged, setIsLogged] = useState(false);
   const [selectUser, setSelectUser] = useState({});
 
-  console.log(selectUser);
-
   return (
     <BrowserRouter>
       <div className="App null.css">

@@ -31,7 +31,7 @@ function SignInForm(props) {
     }
   };
 
-  const ButtonClick = (e) => {
+  const ButtonClick = () => {
     if (isNameExist(login) || isEmailExist(email)) {
       alert("пользователь уже существует");
     } else {
@@ -73,7 +73,7 @@ function SignInForm(props) {
   };
 
   return (
-    <form action="" id="SignInForm" className={styles.SignInForm}>
+    <form className={styles.SignInForm} id="SignInForm" action="">
       <label>Login</label>
       <input
         onChange={(e) => {
