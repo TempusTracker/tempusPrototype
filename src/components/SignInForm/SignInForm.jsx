@@ -1,10 +1,11 @@
 import React, { useContext, useState } from "react";
 import { isNameExist, isEmailExist } from "./utils";
 import styles from "./SignInForm.module.css";
+import { NavLink } from "react-router-dom";
 
 export const users = [
+  { Name: "Masha", Email: "masha@mail.com", Password: "lols", TeamCode: 123 },
   { Name: "Nikita", Email: "nikita@mail.com", Password: "lol", TeamCode: 123 },
-  { Name: "masha", Email: "masha@mail.com", Password: "lol2", TeamCode: 123 },
 ];
 
 function SignInForm(props) {
@@ -30,15 +31,7 @@ function SignInForm(props) {
     }
   };
 
-  const openLogIn = (e) => {
-    e.preventDefault();
-    document.getElementById("LogInForm").style.display = "block";
-    document.getElementById("SignInForm").style.display = "none";
-  };
-
   const ButtonClick = (e) => {
-    e.preventDefault();
-
     if (isNameExist(login) || isEmailExist(email)) {
       alert("пользователь уже существует");
     } else {
@@ -146,14 +139,14 @@ function SignInForm(props) {
         placeholder="code"
         className={styles.InputCodeTeam}
       />
-      <button
-        type="submit"
+      <NavLink
+        to="/MainPage"
         onClick={ButtonClick}
         className={styles.form_button}
       >
         Submit
-      </button>
-      <button onClick={openLogIn}>Есть аккаунт</button>
+      </NavLink>
+      <NavLink to="/LogInForm">Есть аккаунт</NavLink>
     </form>
   );
 }
