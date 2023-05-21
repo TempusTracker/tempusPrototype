@@ -34,7 +34,7 @@ function LogInForm(props) {
   };
 
   return (
-    <form className={styles.LogInForm} id="LogInForm" action="">
+    <form className={styles.LogInForm} action="">
       <label>Login</label>
       <input
         onChange={(e) => {

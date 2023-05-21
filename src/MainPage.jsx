@@ -1,26 +1,20 @@
 import React, { useContext, useState } from "react";
 import styles from "./MainPage.css";
-import { NavLink } from "react-router-dom";
+import NotFound from "./components/NotFound";
+import ProfilPage from "./components/ProfilPage/ProfilPage";
+import { NavLink, Routes, Route } from "react-router-dom";
 
 function MainPage(props) {
-  const { selectUser, setSelectUser, setIsLogged } = props;
-
-  console.log(selectUser);
-
-  function logUot() {
-    setSelectUser({});
-    localStorage.setItem("user", JSON.stringify({}));
-    localStorage.setItem("logged", JSON.stringify(false));
-    alert("пока");
-  }
-
+  const { setSelectUser } = props;
   return (
     <div>
-      <div className="userName">{selectUser.Name}</div>
-      <div className="userLogin">{selectUser.Email}</div>
-      <NavLink to="/" onClick={logUot}>
-        выйти
-      </NavLink>
+      <header>Главная</header>
+      <div>
+        <NavLink to="/MyProfile">Profile</NavLink>
+        <NavLink to="/MainPage">main</NavLink>
+        <NavLink to="/TaskBar">task</NavLink>
+        <NavLink to="/MyTeam">team</NavLink>
+      </div>
     </div>
   );
 }
