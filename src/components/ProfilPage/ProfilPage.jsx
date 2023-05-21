@@ -1,7 +1,8 @@
-import React, { useContext, useState } from "react";
+import React from "react";
+import NavBar from "../NavBar";
 import { NavLink } from "react-router-dom";
 
-function ProfilePage(props) {
+function ProfilPage(props) {
   const { setSelectUser } = props;
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 
@@ -13,15 +14,18 @@ function ProfilePage(props) {
   }
 
   return (
-    <div>
+    <>
       <label>Profil</label>
+      <div>
+        <NavBar />
+      </div>
       <div className="userName">{selectUserLocal.Name}</div>
       <div className="userLogin">{selectUserLocal.Email}</div>
       <NavLink to="/" onClick={logUot}>
         выйти
       </NavLink>
-    </div>
+    </>
   );
 }
 
-export default ProfilePage;
+export default ProfilPage;

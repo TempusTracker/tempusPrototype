@@ -1,21 +1,15 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import styles from "./MainPage.css";
-import NotFound from "./components/NotFound";
-import ProfilPage from "./components/ProfilPage/ProfilPage";
-import { NavLink, Routes, Route } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
-function MainPage(props) {
-  const { setSelectUser } = props;
+function MainPage() {
   return (
-    <div>
+    <>
       <header>Главная</header>
       <div>
-        <NavLink to="/MyProfile">Profile</NavLink>
-        <NavLink to="/MainPage">main</NavLink>
-        <NavLink to="/TaskBar">task</NavLink>
-        <NavLink to="/MyTeam">team</NavLink>
+        <NavBar></NavBar>
       </div>
-    </div>
+    </>
   );
 }
 
