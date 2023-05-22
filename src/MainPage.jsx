@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./MainPage.css";
 import NavBar from "./components/NavBar";
+import Pomodoro from "./Pomodoro/Pomodoro";
 
 function MainPage() {
   return (
@@ -8,6 +9,7 @@ function MainPage() {
       <header>Главная</header>
       <div>
         <NavBar></NavBar>
+        <Pomodoro></Pomodoro>
       </div>
     </>
   );
