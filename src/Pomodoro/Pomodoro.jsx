@@ -1,6 +1,7 @@
 import React from "react";
 import { users } from "../components/SignInForm/SignInForm";
 
+export var Tickin = false;
 function Pomodoro() {
   const Time = {
     pomodoro: { minutes: 25, seconds: 0 },
@@ -10,34 +11,49 @@ function Pomodoro() {
   };
 
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
-  const Minutes = document.getElementsByClassName("minutes");
-  const Seconds = document.getElementsByClassName("seconds");
-  var SelectMode = Time.pomodoro;
+  var SelectMode = {};
+
   var tickingInterval = 0;
   var TotalTime = 0;
+  var SelectBreak = false;
+  let Minutes = React.createRef();
+  let Seconds = React.createRef();
+  let Button = React.createRef();
 
   function HandleClickPomodoro() {
-    UpdateTime();
-    SelectMode = Time.pomodoro;
+    copy("pomodoro");
     console.log(SelectMode);
+    UpdateTime();
     Pausing();
   }
+
   function HandleClickShortBreak() {
-    UpdateTime();
-    SelectMode = Time.shortBreak;
+    copy("shortBreak");
     console.log(SelectMode);
+    UpdateTime();
     Pausing();
   }
+
   function HandleClickLongBreak() {
-    UpdateTime();
-    SelectMode = Time.longBreak;
+    copy("longBreak");
     console.log(SelectMode);
+    UpdateTime();
     Pausing();
+  }
+
+  function copy(mode) {
+    if (mode == "pomodoro") {
+      Object.assign(SelectMode, Time.pomodoro);
+    } else if (mode == "shortBreak") {
+      Object.assign(SelectMode, Time.shortBreak);
+    } else if (mode == "longBreak") {
+      Object.assign(SelectMode, Time.longBreak);
+    }
   }
 
   function UpdateTime() {
-    Minutes.textContent = SelectMode.minutes;
-    Seconds.textContent = SelectMode.seconds;
+    Minutes.current.textContent = SelectMode.minutes;
+    Seconds.current.textContent = SelectMode.seconds;
   }
 
   function StartTimer(e) {
@@ -54,10 +70,8 @@ function Pomodoro() {
   }
 
   function Ticking() {
+    Tickin = true;
     tickingInterval = setInterval(() => {
-      if (SelectMode.seconds < 10) {
-        SelectMode.seconds = SelectMode.seconds;
-      }
       if (SelectMode.seconds === 0) {
         newMinut();
         UpdateTime();
@@ -67,12 +81,25 @@ function Pomodoro() {
       }
       if (SelectMode.minutes === 0 && SelectMode.seconds === 0) {
         Pausing();
+        Button.current.textContent = "start";
+        Button.current.dataset.action = "start";
         if (Time.longBreakInterval != 0) {
-          SelectMode = Time.shortBreak;
           Time.longBreakInterval = Time.longBreakInterval - 1;
+          UpdateTime();
+          if (SelectBreak == false) {
+            copy("shortBreak");
+            SelectBreak = true;
+            UpdateTime();
+          } else if (SelectBreak == true) {
+            copy("pomodoro");
+            SelectBreak = false;
+            UpdateTime();
+          }
         } else {
-          SelectMode = Time.longBreak;
-          Time.longBreakInterval = 4;
+          copy("longBreak");
+          Time.longBreakInterval = 2;
+          SelectBreak = true;
+          UpdateTime();
         }
       }
       console.log(SelectMode);
@@ -80,10 +107,11 @@ function Pomodoro() {
 
     function newMinut() {
       SelectMode.minutes = SelectMode.minutes - 1;
-      SelectMode.seconds = 60;
+      SelectMode.seconds = 59;
       TotalTime = TotalTime + 1;
       AddVallue(TotalTime);
     }
+
     function AddVallue(TotalTime) {
       for (let user of users) {
         if (selectUserLocal.Name == user.Name) {
@@ -93,9 +121,13 @@ function Pomodoro() {
       console.log(users);
     }
   }
+
   function Pausing() {
     clearInterval(tickingInterval);
+    Tickin = false;
   }
+
+  copy("pomodoro");
 
   return (
     <div>
@@ -111,11 +143,15 @@ function Pomodoro() {
         </button>
       </div>
       <div id="js-clock">
-        <span className="minutes">25</span>
+        <span className="minutes" ref={Minutes}>
+          25
+        </span>
         <span>:</span>
-        <span className="seconds">00</span>
+        <span className="seconds" ref={Seconds}>
+          00
+        </span>
       </div>
-      <button data-action="start" onClick={StartTimer}>
+      <button data-action="start" ref={Button} onClick={StartTimer}>
         start
       </button>
     </div>
