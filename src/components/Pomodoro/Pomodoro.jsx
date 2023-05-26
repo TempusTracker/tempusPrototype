@@ -12,7 +12,6 @@ function Pomodoro() {
 
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
   let SelectTimeMode = {};
-  let ViewTime = Time.pomodoro;
 
   let tickingInterval = 0;
   let TotalTime = 0;
@@ -21,9 +20,9 @@ function Pomodoro() {
   let Seconds = React.createRef();
   let Button = React.createRef();
 
-  const [settingPomodoro, setSettingPomodoro] = useState("");
-  const [settingShortBreak, setSettingShortBreak] = useState("");
-  const [settingLongBreak, setSettingLongBreak] = useState("");
+  const [settingPomodoro, setSettingPomodoro] = useState(25);
+  const [settingShortBreak, setSettingShortBreak] = useState(5);
+  const [settingLongBreak, setSettingLongBreak] = useState(15);
 
   function LocalStorageSave(pomodoro, shortBreak, longBreak) {
     localStorage.setItem(
@@ -159,21 +158,33 @@ function Pomodoro() {
     }
   }
 
-  function ChengeTime() {
+  function changeTimer() {
+    Pausing();
     if (
-      settingPomodoro != "" &&
-      settingShortBreak != "" &&
-      settingLongBreak != ""
+      settingPomodoro < 61 &&
+      settingShortBreak < 61 &&
+      settingLongBreak < 61
     ) {
-      Time.pomodoro.minutes = settingPomodoro;
-      Time.shortBreak.minutes = settingShortBreak;
-      Time.longBreak.minutes = settingLongBreak;
+      console.log(settingPomodoro, settingShortBreak, settingLongBreak);
       LocalStorageSave(settingPomodoro, settingShortBreak, settingLongBreak);
-      openPage();
-      document.getElementById("Minutes").textContent = settingPomodoro;
+      ReadTime();
     } else {
-      alert("пустые поля");
+      alert("не советуем делать один режим больше часа");
     }
+    document.getElementById("settingsMenu").style.display = "none";
+    document.getElementById("settingsButton").checked = false;
+  }
+  function ReadTime() {
+    if (JSON.parse(localStorage.getItem("Time")) != null) {
+      Time.pomodoro.minutes =
+        JSON.parse(localStorage.getItem("Time")).pomodoro || 25;
+      Time.shortBreak.minutes =
+        JSON.parse(localStorage.getItem("Time")).shortBreak || 5;
+      Time.longBreak.minutes =
+        JSON.parse(localStorage.getItem("Time")).longBreak || 15;
+    }
+    copy("pomodoro");
+    UpdateTime();
   }
 
   function SelectModePomodoro() {
@@ -184,6 +195,7 @@ function Pomodoro() {
     setSettingShortBreak(5);
     setSettingLongBreak(15);
   }
+
   function SelectModeLongpom() {
     document.getElementById("inputSettingsPomodoro").value = 40;
     document.getElementById("inputSettingsShortBreak").value = 10;
@@ -193,20 +205,9 @@ function Pomodoro() {
     setSettingLongBreak(20);
   }
 
-  function openPage() {
-    if (JSON.parse(localStorage.getItem("Time")) != null) {
-      Time.pomodoro.minutes =
-        JSON.parse(localStorage.getItem("Time")).pomodoro || 25;
-      Time.shortBreak.minutes =
-        JSON.parse(localStorage.getItem("Time")).shortBreak || 5;
-      Time.longBreak.minutes =
-        JSON.parse(localStorage.getItem("Time")).longBreak || 15;
-    }
-    UpdateTime();
-  }
-
+  ReadTime();
   copy("pomodoro");
-  openPage();
+
   return (
     <>
       <div id="js-mode-buttons" onClick={HandleClickMods}>
@@ -216,28 +217,34 @@ function Pomodoro() {
       </div>
       <div id="js-clock">
         <span id="Minutes" className="minutes" ref={Minutes}>
-          {ViewTime.minutes}
+          {SelectTimeMode.minutes}
         </span>
         <span>:</span>
         <span id="Seconds" className="seconds" ref={Seconds}>
-          {ViewTime.seconds}
+          {SelectTimeMode.seconds}
         </span>
       </div>
       <button data-action="start" ref={Button} onClick={StartTimer}>
         start
       </button>
       <button onClick={openSettings}>Настройки</button>
-      <input type="checkbox" onChange={openSettings}></input>
+      <input
+        type="checkbox"
+        id="settingsButton"
+        onChange={openSettings}
+      ></input>
       <div id="settingsMenu" style={{ display: "none" }}>
         <input
           id="inputSettingsPomodoro"
           placeholder="Pomodoro"
           type="number"
+          value={settingPomodoro}
           onChange={(e) => {
             setSettingPomodoro(e.target.value);
           }}
         ></input>
         <input
+          value={settingShortBreak}
           id="inputSettingsShortBreak"
           placeholder="ShortBreak"
           type="number"
@@ -246,6 +253,7 @@ function Pomodoro() {
           }}
         ></input>
         <input
+          value={settingLongBreak}
           id="inputSettingsLongBreak"
           placeholder="LongBreak"
           type="number"
@@ -259,7 +267,7 @@ function Pomodoro() {
         <div>
           mode: <button onClick={SelectModeLongpom}> longpom</button>
         </div>
-        <button onClick={ChengeTime}>сохранить</button>
+        <button onClick={changeTimer}>сохранить</button>
       </div>
     </>
   );
