@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { users } from "../components/SignInForm/SignInForm";
+import { users } from "../SignInForm/SignInForm";
 
 export var Tickin = false;
 function Pomodoro() {
   const Time = {
-    pomodoro: { minutes: 0, seconds: 10 },
-    shortBreak: { minutes: 0, seconds: 5 },
-    longBreak: { minutes: 0, seconds: 6 },
-    longBreakInterval: 2,
+    pomodoro: { minutes: 25, seconds: 0 },
+    shortBreak: { minutes: 5, seconds: 0 },
+    longBreak: { minutes: 15, seconds: 0 },
+    longBreakInterval: 4,
   };
 
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
   let SelectTimeMode = {};
+  let ViewTime = Time.pomodoro;
 
   let tickingInterval = 0;
   let TotalTime = 0;
@@ -20,9 +21,19 @@ function Pomodoro() {
   let Seconds = React.createRef();
   let Button = React.createRef();
 
+  const [settingPomodoro, setSettingPomodoro] = useState("");
+  const [settingShortBreak, setSettingShortBreak] = useState("");
+  const [settingLongBreak, setSettingLongBreak] = useState("");
+
+  function LocalStorageSave(pomodoro, shortBreak, longBreak) {
+    localStorage.setItem(
+      "Time",
+      JSON.stringify({ pomodoro, shortBreak, longBreak })
+    );
+  }
+
   function HandlerSelectMode(mode) {
     copy(mode);
-    console.log(SelectTimeMode);
     SelectBreak = false;
     UpdateTime();
     Button.current.textContent = "start";
@@ -95,7 +106,7 @@ function Pomodoro() {
         }
       } else {
         copy("longBreak");
-        Time.longBreakInterval = 2; //автозамену завезите пожалуйста
+        Time.longBreakInterval = 4; //автозамену завезите пожалуйста
         SelectBreak = true;
         UpdateTime();
       }
@@ -134,12 +145,68 @@ function Pomodoro() {
   }
 
   function UpdateTime() {
-    Minutes.current.textContent = SelectTimeMode.minutes;
-    Seconds.current.textContent = SelectTimeMode.seconds;
+    if (document.getElementById("Minutes") != null) {
+      document.getElementById("Minutes").textContent = SelectTimeMode.minutes;
+      document.getElementById("Seconds").textContent = SelectTimeMode.seconds;
+    }
   } //переписать на верстке
 
-  copy("pomodoro");
+  function openSettings(e) {
+    if (e.target.checked) {
+      document.getElementById("settingsMenu").style.display = "block";
+    } else {
+      document.getElementById("settingsMenu").style.display = "none";
+    }
+  }
 
+  function ChengeTime() {
+    if (
+      settingPomodoro != "" &&
+      settingShortBreak != "" &&
+      settingLongBreak != ""
+    ) {
+      Time.pomodoro.minutes = settingPomodoro;
+      Time.shortBreak.minutes = settingShortBreak;
+      Time.longBreak.minutes = settingLongBreak;
+      LocalStorageSave(settingPomodoro, settingShortBreak, settingLongBreak);
+      openPage();
+      document.getElementById("Minutes").textContent = settingPomodoro;
+    } else {
+      alert("пустые поля");
+    }
+  }
+
+  function SelectModePomodoro() {
+    document.getElementById("inputSettingsPomodoro").value = 25;
+    document.getElementById("inputSettingsShortBreak").value = 5;
+    document.getElementById("inputSettingsLongBreak").value = 15;
+    setSettingPomodoro(25);
+    setSettingShortBreak(5);
+    setSettingLongBreak(15);
+  }
+  function SelectModeLongpom() {
+    document.getElementById("inputSettingsPomodoro").value = 40;
+    document.getElementById("inputSettingsShortBreak").value = 10;
+    document.getElementById("inputSettingsLongBreak").value = 20;
+    setSettingPomodoro(40);
+    setSettingShortBreak(10);
+    setSettingLongBreak(20);
+  }
+
+  function openPage() {
+    if (JSON.parse(localStorage.getItem("Time")) != null) {
+      Time.pomodoro.minutes =
+        JSON.parse(localStorage.getItem("Time")).pomodoro || 25;
+      Time.shortBreak.minutes =
+        JSON.parse(localStorage.getItem("Time")).shortBreak || 5;
+      Time.longBreak.minutes =
+        JSON.parse(localStorage.getItem("Time")).longBreak || 15;
+    }
+    UpdateTime();
+  }
+
+  copy("pomodoro");
+  openPage();
   return (
     <>
       <div id="js-mode-buttons" onClick={HandleClickMods}>
@@ -148,17 +215,52 @@ function Pomodoro() {
         <button data-mode="longBreak">Long break</button>
       </div>
       <div id="js-clock">
-        <span className="minutes" ref={Minutes}>
-          {SelectTimeMode.minutes}
+        <span id="Minutes" className="minutes" ref={Minutes}>
+          {ViewTime.minutes}
         </span>
         <span>:</span>
-        <span className="seconds" ref={Seconds}>
-          {SelectTimeMode.seconds}
+        <span id="Seconds" className="seconds" ref={Seconds}>
+          {ViewTime.seconds}
         </span>
       </div>
       <button data-action="start" ref={Button} onClick={StartTimer}>
         start
       </button>
+      <button onClick={openSettings}>Настройки</button>
+      <input type="checkbox" onChange={openSettings}></input>
+      <div id="settingsMenu" style={{ display: "none" }}>
+        <input
+          id="inputSettingsPomodoro"
+          placeholder="Pomodoro"
+          type="number"
+          onChange={(e) => {
+            setSettingPomodoro(e.target.value);
+          }}
+        ></input>
+        <input
+          id="inputSettingsShortBreak"
+          placeholder="ShortBreak"
+          type="number"
+          onChange={(e) => {
+            setSettingShortBreak(e.target.value);
+          }}
+        ></input>
+        <input
+          id="inputSettingsLongBreak"
+          placeholder="LongBreak"
+          type="number"
+          onChange={(e) => {
+            setSettingLongBreak(e.target.value);
+          }}
+        ></input>
+        <div>
+          mode: <button onClick={SelectModePomodoro}> pomodoro</button>
+        </div>
+        <div>
+          mode: <button onClick={SelectModeLongpom}> longpom</button>
+        </div>
+        <button onClick={ChengeTime}>сохранить</button>
+      </div>
     </>
   );
 }
