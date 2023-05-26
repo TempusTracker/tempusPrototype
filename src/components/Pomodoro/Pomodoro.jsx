@@ -139,6 +139,8 @@ function Pomodoro() {
   }
 
   function Pausing() {
+    Button.current.textContent = "start";
+    Button.current.dataset.action = "start";
     clearInterval(tickingInterval);
     Tickin = false;
   }
@@ -152,6 +154,7 @@ function Pomodoro() {
 
   function openSettings(e) {
     if (e.target.checked) {
+      Pausing();
       document.getElementById("settingsMenu").style.display = "block";
     } else {
       document.getElementById("settingsMenu").style.display = "none";
@@ -169,7 +172,6 @@ function Pomodoro() {
       LocalStorageSave(settingPomodoro, settingShortBreak, settingLongBreak);
       ReadTime();
     } else {
-      alert("не советуем делать один режим больше часа");
     }
     document.getElementById("settingsMenu").style.display = "none";
     document.getElementById("settingsButton").checked = false;
