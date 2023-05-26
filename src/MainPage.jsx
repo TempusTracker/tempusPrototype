@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./MainPage.css";
 import NavBar from "./components/NavBar";
-import Pomodoro from "./components/Pomodoro/Pomodoro";
+import Pomodoro from "./components/Timer/Pomodoro";
 
 function MainPage() {
   return (
