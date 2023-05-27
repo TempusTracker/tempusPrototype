@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { users } from "../SignInForm/SignInForm";
 
 export var Tickin = false;
-function Pomodoro() {
+function Pomodoro(props) {
   const Time = {
     pomodoro: { minutes: 25, seconds: 0 },
     shortBreak: { minutes: 5, seconds: 0 },
     longBreak: { minutes: 15, seconds: 0 },
     longBreakInterval: 4,
   };
+
+  const { setSelectUser, users } = props;
 
   let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
   let SelectTimeMode = {};
@@ -135,7 +136,6 @@ function Pomodoro() {
         user.TotalTime = TotalTime;
       }
     }
-    console.log(users);
   }
 
   function Pausing() {
