@@ -83,7 +83,6 @@ function Pomodoro(props) {
     } else {
       SelectTimeMode.seconds = SelectTimeMode.seconds - 1;
       UpdateTime();
-      console.log(SelectTimeMode.seconds);
     }
   }
 
@@ -119,7 +118,6 @@ function Pomodoro(props) {
       classicTick();
       checkingTime();
       UpdateTime();
-      console.log(SelectTimeMode);
     }, 1000);
   }
 

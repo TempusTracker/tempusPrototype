@@ -6,6 +6,7 @@ import NotFound from "./NotFound";
 import SignInForm from "./SignInForm/SignInForm";
 import ProfilPage from "./ProfilPage/ProfilPage";
 import TeamPage from "./TeamPage/TeamPage";
+import CreateTeam from "./TeamPage/CreateTeam";
 
 function RoutesModule(props) {
   const [selectUser, setSelectUser] = useState({});
@@ -84,12 +85,12 @@ function RoutesModule(props) {
       <Route
         path="/MyTeam"
         element={CheckOnLock(
-          <TeamPage
-            Teams={Teams}
-            setTeams={setTeams}
-            setSelectUser={setSelectUser}
-          />
+          <TeamPage users={users} Teams={Teams} setTeams={setTeams} />
         )}
+      />
+      <Route
+        path="/createTeam"
+        element={CheckOnLock(<CreateTeam Teams={Teams} setTeams={setTeams} />)}
       />
     </Routes>
   );

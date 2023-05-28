@@ -4,14 +4,14 @@ import JoinTeam from "./JoinTeam";
 import Team from "./Team";
 
 function TeamPage(props) {
-  const { Teams, setTeams } = props;
+  const { Teams, setTeams, users } = props;
 
   function CheckOnJoin(page) {
     let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
     if (selectUserLocal.TeamCode !== "none") {
       return page;
     } else {
-      return <JoinTeam Teams={Teams} />;
+      return <JoinTeam users={users} Teams={Teams} />;
     }
   }
   return (
@@ -19,7 +19,7 @@ function TeamPage(props) {
       <header>Твоя команда</header>
       <div>
         <NavBar></NavBar>
-        {CheckOnJoin(<Team Teams={Teams}></Team>)}
+        {CheckOnJoin(<Team users={users} Teams={Teams}></Team>)}
       </div>
     </>
   );

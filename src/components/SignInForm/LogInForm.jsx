@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./LogInForm.module.css";
 import { NavLink } from "react-router-dom";
+import { isNameExist, isEmailExist } from "./utils";
 
 export let selectUser = {};
 
