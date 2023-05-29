@@ -3,10 +3,7 @@ import { isNameExist, isEmailExist } from "./utils";
 import styles from "./SignInForm.module.css";
 import { NavLink } from "react-router-dom";
 
-export const users = [
-  { Name: "Masha", Email: "masha@mail.com", Password: "lols", TeamCode: 123 },
-  { Name: "Nikita", Email: "nikita@mail.com", Password: "lol", TeamCode: 123 },
-];
+export let usersE = [];
 
 function SignInForm(props) {
   const [login, setLogin] = useState("");
@@ -18,7 +15,8 @@ function SignInForm(props) {
   const [emailError, setEmailError] = useState("почта пустая");
   const [passwordError, setPasswordError] = useState("пароль пустой");
 
-  const { setSelectUser } = props;
+  const { setSelectUser, users, setUsers } = props;
+  usersE = users;
 
   function LocalStorageSave(user) {
     localStorage.setItem("user", JSON.stringify(user));
@@ -72,7 +70,8 @@ function SignInForm(props) {
       Password: password,
       TeamCode: teamcode,
     };
-    users.push(NewUser);
+    setUsers((users) => [...users, NewUser]);
+    console.log(users);
     setSelectUser(NewUser);
     LocalStorageSave(NewUser);
   };

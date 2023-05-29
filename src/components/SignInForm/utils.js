@@ -1,8 +1,8 @@
-import { users } from "./SignInForm.jsx";
+import { usersE } from "./SignInForm.jsx";
 
 export function isNameExist(name) {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].Name === name) {
+  for (let i = 0; i < usersE.length; i++) {
+    if (usersE[i].Name === name) {
       return true;
     }
   }
@@ -10,8 +10,8 @@ export function isNameExist(name) {
 }
 
 export function isEmailExist(email) {
-  for (let i = 0; i < users.length; i++) {
-    if (users[i].Email === email) {
+  for (let i = 0; i < usersE.length; i++) {
+    if (usersE[i].Email === email) {
       return true;
     }
   }

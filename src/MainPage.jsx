@@ -1,15 +1,16 @@
 import React from "react";
 import styles from "./MainPage.css";
 import NavBar from "./components/NavBar";
-import Pomodoro from "./components/Timer/Pomodoro";
+import Pomodoro from "./components/TimerPage/Pomodoro";
 
-function MainPage() {
+function MainPage(props) {
+  const { users, setUsers } = props;
   return (
     <>
       <header>Главная</header>
       <div>
         <NavBar></NavBar>
-        <Pomodoro></Pomodoro>
+        <Pomodoro users={users} setUsers={setUsers}></Pomodoro>
       </div>
     </>
   );

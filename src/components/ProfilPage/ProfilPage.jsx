@@ -10,6 +10,7 @@ function ProfilPage(props) {
     setSelectUser({});
     localStorage.setItem("user", JSON.stringify({}));
     localStorage.setItem("logged", JSON.stringify(false));
+    localStorage.setItem("team", JSON.stringify({}));
     alert("пока");
   }
 

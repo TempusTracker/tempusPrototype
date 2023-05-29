@@ -5,7 +5,7 @@ import { UserData } from "./localStorage/localStorage";
 console.log(UserData);
 
 export var Tickin = false;
-function Pomodoro() {
+function Pomodoro(props) {
   const Time = {
     pomodoro: { minutes: 25, seconds: 0 },
     shortBreak: { minutes: 5, seconds: 0 },
@@ -85,7 +85,6 @@ function Pomodoro() {
     } else {
       SelectTimeMode.seconds = SelectTimeMode.seconds - 1;
       UpdateTime();
-      console.log(SelectTimeMode.seconds);
     }
   }
 
@@ -121,7 +120,6 @@ function Pomodoro() {
       classicTick();
       checkingTime();
       UpdateTime();
-      console.log(SelectTimeMode);
     }, 1000);
   }
 
@@ -138,7 +136,6 @@ function Pomodoro() {
         user.TotalTime = TotalTime;
       }
     }
-    console.log(users);
   }
 
   function Pausing() {
