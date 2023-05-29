@@ -20,7 +20,7 @@ function App() {
       Email: "nikita@mail.com",
       Password: "lol",
       TeamCode: 22,
-      Role: "",
+      Role: "admin",
       InviteCode: "none",
     },
   ]);
