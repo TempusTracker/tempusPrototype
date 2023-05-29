@@ -16,7 +16,7 @@ function RoutesModule(props) {
     return isLoggedLocal ? (
       page
     ) : (
-      <LogInForm users={users} setSelectUser={setSelectUser} />
+      <LogInForm Teams={Teams} users={users} setSelectUser={setSelectUser} />
     );
   }
 

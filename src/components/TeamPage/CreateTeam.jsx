@@ -8,7 +8,12 @@ function CreateTeam(props) {
   const [inputCode, setInputCode] = useState(0);
 
   function Create() {
-    if (isTeamExist(Number(inputCode)) === false) {
+    if (
+      isTeamExist(Number(inputCode)) === false &&
+      inputTitle !== "" &&
+      inputDescription !== "" &&
+      inputCode !== ""
+    ) {
       NewTeam();
     }
   }

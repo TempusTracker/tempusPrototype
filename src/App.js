@@ -11,13 +11,17 @@ function App() {
       Name: "Masha",
       Email: "masha@mail.com",
       Password: "lols",
-      TeamCode: "none",
+      TeamCode: 22,
+      Role: "",
+      InviteCode: "none",
     },
     {
       Name: "Nikita",
       Email: "nikita@mail.com",
       Password: "lol",
-      TeamCode: "none",
+      TeamCode: 22,
+      Role: "",
+      InviteCode: "none",
     },
   ]);
 
