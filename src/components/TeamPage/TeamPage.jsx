@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import NavBar from "../NavBar";
-import JoinTeam from "./JoinTeam";
+import JoinTeam from "./components/JoinTeam";
 import Team from "./Team";
 
 function LocalStorageSaveTeam(team) {

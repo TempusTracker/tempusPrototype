@@ -6,7 +6,7 @@ import NotFound from "./NotFound";
 import SignInForm from "./SignInForm/SignInForm";
 import ProfilPage from "./ProfilPage/ProfilPage";
 import TeamPage from "./TeamPage/TeamPage";
-import CreateTeam from "./TeamPage/CreateTeam";
+import CreateTeam from "./TeamPage/components/CreateTeam";
 
 function RoutesModule(props) {
   const [selectUser, setSelectUser] = useState({});
@@ -68,11 +68,7 @@ function RoutesModule(props) {
       <Route
         path="/MainPage"
         element={CheckOnLock(
-          <MainPage
-            users={users}
-            setUsers={setUsers}
-            setSelectUser={setSelectUser}
-          />
+          <MainPage users={users} setSelectUser={setSelectUser} />
         )}
       />
       <Route

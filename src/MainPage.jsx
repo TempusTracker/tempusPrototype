@@ -4,13 +4,13 @@ import NavBar from "./components/NavBar";
 import Pomodoro from "./components/TimerPage/Pomodoro";
 
 function MainPage(props) {
-  const { users, setUsers } = props;
+  const { users } = props;
   return (
     <>
       <header>Главная</header>
       <div>
         <NavBar></NavBar>
-        <Pomodoro users={users} setUsers={setUsers}></Pomodoro>
+        <Pomodoro users={users}></Pomodoro>
       </div>
     </>
   );

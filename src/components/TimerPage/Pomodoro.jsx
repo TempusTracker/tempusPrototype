@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { users } from "../SignInForm/SignInForm";
 import { UserData } from "./localStorage/localStorage";
 
 console.log(UserData);
 
 export var Tickin = false;
 function Pomodoro(props) {
+  const { users } = props;
+
   const Time = {
     pomodoro: { minutes: 25, seconds: 0 },
     shortBreak: { minutes: 5, seconds: 0 },
@@ -67,11 +68,11 @@ function Pomodoro(props) {
 
   function StartTimer(e) {
     const actoin = e.target;
-    if (actoin.dataset.action == "start") {
+    if (actoin.dataset.action === "start") {
       e.target.textContent = "pause";
       actoin.dataset.action = "pause";
       Ticking();
-    } else if (actoin.dataset.action == "pause") {
+    } else if (actoin.dataset.action === "pause") {
       e.target.textContent = "start";
       actoin.dataset.action = "start";
       Pausing();
@@ -93,7 +94,7 @@ function Pomodoro(props) {
       Pausing();
       Button.current.textContent = "start";
       Button.current.dataset.action = "start";
-      if (Time.longBreakInterval != 0) {
+      if (Time.longBreakInterval !== 0) {
         Time.longBreakInterval = Time.longBreakInterval - 1;
         UpdateTime();
         if (SelectBreak === false) {
