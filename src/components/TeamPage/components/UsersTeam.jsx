@@ -22,17 +22,15 @@ function UsersTeam(props) {
     <>
       <button onClick={fUsersTeam}>покажи</button>
 
-      {selectUserLocal.Role === "admin" ? (
-        Object.keys(usersTeam).map((key) => (
-          <div key={key}>
-            <p className="Name">{usersTeam[key].Name}</p>
-            <p className="Time">{usersTeam[key].TotalTime}</p>
-            <p className="Role">{usersTeam[key].Role}</p>
-          </div>
-        ))
-      ) : (
-        <></>
-      )}
+      {selectUserLocal.Role === "admin"
+        ? Object.keys(usersTeam).map((key) => (
+            <div key={key}>
+              <p className="Name">{usersTeam[key].Name}</p>
+              <p className="Time">{usersTeam[key].TotalTime}</p>
+              <p className="Role">{usersTeam[key].Role}</p>
+            </div>
+          ))
+        : alert("не админ")}
     </>
   );
 }
