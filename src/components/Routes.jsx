@@ -11,6 +11,7 @@ import CreateTeam from "./TeamPage/CreateTeam";
 function RoutesModule(props) {
   const [selectUser, setSelectUser] = useState({});
   const { users, setUsers, Teams, setTeams } = props;
+
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   function CheckOnLock(page) {
     return isLoggedLocal ? (
@@ -67,13 +68,7 @@ function RoutesModule(props) {
       />
       <Route
         path="/MainPage"
-        element={CheckOnLock(
-          <MainPage
-            users={users}
-            setUsers={setUsers}
-            setSelectUser={setSelectUser}
-          />
-        )}
+        element={CheckOnLock(<MainPage users={users} />)}
       />
       <Route
         path="/MyProfile"

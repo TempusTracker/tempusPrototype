@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { users } from "../SignInForm/SignInForm";
-import { UserData } from "./localStorage/localStorage";
 
-console.log(UserData);
+import { UserData } from "./localStorage/localStorage";
 
 export var Tickin = false;
 function Pomodoro(props) {
@@ -13,8 +11,9 @@ function Pomodoro(props) {
     longBreakInterval: 4,
   };
 
+  const { users } = props;
   let SelectTimeMode = {};
-
+  console.log(props);
   let tickingInterval = 0;
   let TotalTime = 0;
   let SelectBreak = false;
