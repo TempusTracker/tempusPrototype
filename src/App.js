@@ -14,6 +14,7 @@ function App() {
       TeamCode: 22,
       Role: "",
       InviteCode: "none",
+      TotalTime: "",
     },
     {
       Name: "Nikita",
