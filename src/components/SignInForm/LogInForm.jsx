@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import styles from "./LogInForm.module.css";
 import { NavLink } from "react-router-dom";
-import { isNameExist, isEmailExist } from "./utils";
+import { selectTeam } from "./utils";
 
 export let selectUser = {};
+export let TeamsE;
 
 function LogInForm(props) {
   const [login, setLogin] = useState(false);
   const [password, setPassword] = useState("");
 
-  const { setSelectUser, users } = props;
-
+  const { setSelectUser, users, Teams } = props;
+  TeamsE = Teams;
   function ClearInputs() {
     document.getElementById("InputPassL").value = "";
     document.getElementById("InputLoginL").value = "";
@@ -27,6 +28,7 @@ function LogInForm(props) {
         alert("Доборо пожаловать " + user.Name);
         setSelectUser(user);
         LocalStorageSave(user);
+        selectTeam(user.TeamCode);
         ClearInputs();
       } else {
       }

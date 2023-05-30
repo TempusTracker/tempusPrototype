@@ -1,7 +1,7 @@
 import React from "react";
 
 function InfoTeam(props) {
-  const { selectTeamLocal } = props;
+  let selectTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
 
   return (
     <>

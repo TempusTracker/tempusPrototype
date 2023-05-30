@@ -13,7 +13,7 @@ function LocalStorageSaveTeam(team) {
 }
 
 function Team(props) {
-  const { users, Teams } = props;
+  const { users } = props;
 
   function logOutTeam() {
     selectUserLocal.TeamCode = "none";
