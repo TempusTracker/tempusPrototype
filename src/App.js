@@ -11,9 +11,9 @@ function App() {
       Name: "Masha",
       Email: "masha@mail.com",
       Password: "lols",
-      TeamCode: 22,
+      TeamCode: "none",
       Role: "",
-      InviteCode: "none",
+      InviteCode: "",
       TotalTime: "",
     },
     {
@@ -22,7 +22,7 @@ function App() {
       Password: "lol",
       TeamCode: 22,
       Role: "admin",
-      InviteCode: "none",
+      InviteCode: "22",
     },
   ]);
 

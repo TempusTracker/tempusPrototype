@@ -24,7 +24,7 @@ function Team(props) {
 
   return (
     <>
-      <InfoTeam selectTeamLocal={selectTeamLocal}></InfoTeam>
+      <InfoTeam users={users} selectTeamLocal={selectTeamLocal}></InfoTeam>
       <UsersTeam users={users} selectTeamLocal={selectTeamLocal}></UsersTeam>
       <button onClick={logOutTeam}>выйти</button>
     </>

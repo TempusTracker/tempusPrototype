@@ -3,7 +3,6 @@ import { UserData } from "./localStorage/localStorage";
 
 console.log(UserData);
 
-export var Tickin = false;
 function Pomodoro(props) {
   const { users } = props;
 
@@ -22,6 +21,7 @@ function Pomodoro(props) {
   let Minutes = React.createRef();
   let Seconds = React.createRef();
   let Button = React.createRef();
+  let SettingsOpen = false;
 
   const [settingPomodoro, setSettingPomodoro] = useState(25);
   const [settingShortBreak, setSettingShortBreak] = useState(5);
@@ -68,14 +68,17 @@ function Pomodoro(props) {
 
   function StartTimer(e) {
     const actoin = e.target;
-    if (actoin.dataset.action === "start") {
-      e.target.textContent = "pause";
-      actoin.dataset.action = "pause";
-      Ticking();
-    } else if (actoin.dataset.action === "pause") {
-      e.target.textContent = "start";
-      actoin.dataset.action = "start";
-      Pausing();
+    if (SettingsOpen === false) {
+      if (actoin.dataset.action === "start") {
+        e.target.textContent = "pause";
+        actoin.dataset.action = "pause";
+        Ticking();
+      } else if (actoin.dataset.action === "pause") {
+        e.target.textContent = "start";
+        actoin.dataset.action = "start";
+        Pausing();
+      }
+    } else {
     }
   }
 
@@ -116,7 +119,6 @@ function Pomodoro(props) {
   }
 
   function Ticking() {
-    Tickin = true;
     tickingInterval = setInterval(() => {
       classicTick();
       checkingTime();
@@ -143,7 +145,6 @@ function Pomodoro(props) {
     Button.current.textContent = "start";
     Button.current.dataset.action = "start";
     clearInterval(tickingInterval);
-    Tickin = false;
   }
 
   function UpdateTime() {
@@ -155,9 +156,11 @@ function Pomodoro(props) {
 
   function openSettings(e) {
     if (e.target.checked) {
+      SettingsOpen = true;
       Pausing();
       document.getElementById("settingsMenu").style.display = "block";
     } else {
+      SettingsOpen = false;
       document.getElementById("settingsMenu").style.display = "none";
     }
   }
@@ -169,7 +172,6 @@ function Pomodoro(props) {
       settingShortBreak < 61 &&
       settingLongBreak < 61
     ) {
-      console.log(settingPomodoro, settingShortBreak, settingLongBreak);
       LocalStorageSave(settingPomodoro, settingShortBreak, settingLongBreak);
       ReadTime();
     }
@@ -189,9 +191,6 @@ function Pomodoro(props) {
     document.getElementById("inputSettingsPomodoro").value = 25;
     document.getElementById("inputSettingsShortBreak").value = 5;
     document.getElementById("inputSettingsLongBreak").value = 15;
-    // setSettingPomodoro(25);
-    // setSettingShortBreak(5);
-    // setSettingLongBreak(15);
     LocalStorageSave(25, 5, 15);
   }
 
