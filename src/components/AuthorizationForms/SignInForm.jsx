@@ -31,6 +31,8 @@ function SignInForm(props) {
       case "password":
         setPasswordDirty(true);
         break;
+      default:
+        break;
     }
   };
 
@@ -72,7 +74,7 @@ function SignInForm(props) {
     };
     setUsers((users) => [...users, NewUser]);
     console.log(users);
-    setSelectUser(NewUser);
+    setSelectUser(NewUser); //оставим для будущего api
     LocalStorageSave(NewUser);
   };
 

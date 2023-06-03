@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "../../Navigation/NavBar";
 import { NavLink } from "react-router-dom";
 
 function ProfilPage(props) {

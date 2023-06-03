@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from "../../NavBar";
+import NavBar from "../../../Navigation/NavBar";
 
 function CreateTeam(props) {
   const { Teams, setTeams } = props;

@@ -26,7 +26,7 @@ function LogInForm(props) {
     for (const user of users) {
       if (user.Name === login && user.Password === password) {
         alert("Доборо пожаловать " + user.Name);
-        setSelectUser(user);
+        setSelectUser(user); //оставим для будущего api
         LocalStorageSave(user);
         selectTeam(user.TeamCode);
         ClearInputs();

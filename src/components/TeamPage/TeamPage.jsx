@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "../NavBar";
+import NavBar from "../../Navigation/NavBar";
 import JoinTeam from "./components/JoinTeam";
 import Team from "./Team";
 
 let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 function TeamPage(props) {
-  const { Teams, setTeams, users } = props;
+  const { Teams, users } = props;
 
   function CheckOnJoin(page) {
     if (selectUserLocal.TeamCode !== "none") {
