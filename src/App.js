@@ -2,21 +2,28 @@ import { BrowserRouter } from "react-router-dom";
 import { useState } from "react";
 
 import RoutesModule from "./Routes/Routes";
-import { UserFullData } from "./localStorage/localStorage";
+
 import "./App.css";
 import "./null.css";
 
 function App() {
   const [users, setUsers] = useState([
-    // {
-    //   Name: "Masha",
-    //   Email: "masha@mail.com",
-    //   Password: "lols",
-    //   TeamCode: "none",
-    //   Role: "",
-    //   InviteCode: "",
-    //   TotalTime: "",
-    // },
+    {
+      UserData: {
+        Name: "Masha",
+        Email: "masha@mail.com",
+        Password: "lols",
+        TeamCode: "none",
+        Role: "",
+        InviteCode: "",
+        TotalTime: "",
+      },
+      userTimeSettings: {
+        workTime: 34,
+        shortBreak: 7,
+        longBreak: 17,
+      },
+    },
     {
       UserData: {
         Name: "kate",
@@ -33,14 +40,21 @@ function App() {
         longBreak: 15,
       },
     },
-    // {
-    //   Name: "Nikita",
-    //   Email: "nikita@mail.com",
-    //   Password: "lol",
-    //   TeamCode: 22,
-    //   Role: "admin",
-    //   InviteCode: "22",
-    // },
+    {
+      UserData: {
+        Name: "Nikita",
+        Email: "nikita@mail.com",
+        Password: "lol",
+        TeamCode: 22,
+        Role: "admin",
+        InviteCode: "22",
+      },
+      userTimeSettings: {
+        workTime: 2,
+        shortBreak: 1,
+        longBreak: 3,
+      },
+    },
   ]);
 
   const [Teams, setTeams] = useState([
@@ -64,12 +78,11 @@ function App() {
     <BrowserRouter>
       <div className="App null.css">
         <header className="App-header">
-          <RoutesModule
-            Teams={Teams}
-            setTeams={setTeams}
+          <RoutesModule //!!! обязательно нужно сделать сначала проверку
+            Teams={Teams} //вошел ли юзер и из роутов убрать AuthorizationForms
+            setTeams={setTeams} //и в этот компонент с авторизацией уже вставить роуты
             users={users}
             setUsers={setUsers}
-            UserFullData={UserFullData}
           ></RoutesModule>
         </header>
       </div>

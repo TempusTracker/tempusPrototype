@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../Pages/MainPage";
 import LogInForm from "../components/AuthorizationForms/LogInForm";
@@ -10,7 +10,12 @@ import CreateTeam from "../components/TeamPage/components/CreateTeam";
 
 function RoutesModule(props) {
   const [selectUser, setSelectUser] = useState({}); //оставим для будущего api
-  const { users, Teams, setTeams, UserFullData } = props;
+  const { users, Teams, setTeams } = props;
+
+  const UserFullData = useRef(JSON.parse(localStorage.getItem("user")) || {});
+  useEffect(() => {
+    UserFullData.current = JSON.parse(localStorage.getItem("user")) || {};
+  });
 
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   function CheckOnLock(page) {
@@ -20,9 +25,13 @@ function RoutesModule(props) {
       <LogInForm Teams={Teams} users={users} setSelectUser={setSelectUser} />
     );
   }
-
+  console.log(UserFullData);
   function CheckOffLock(page) {
-    return isLoggedLocal ? <MainPage UserFullData={UserFullData} /> : page;
+    return isLoggedLocal ? (
+      <MainPage UserFullData={UserFullData.current} />
+    ) : (
+      page
+    );
   }
   return (
     <Routes>
@@ -31,12 +40,12 @@ function RoutesModule(props) {
         exact
         path="/"
         element={CheckOnLock(
-          <MainPage users={users} UserFullData={UserFullData} />
+          <MainPage users={users} UserFullData={UserFullData.current} />
         )}
       />
       <Route
         path="/LogInForm"
-        element={CheckOnLock(<MainPage UserFullData={UserFullData} />)}
+        element={CheckOnLock(<MainPage UserFullData={UserFullData.current} />)}
       />
       <Route
         path="/SignInForm"
@@ -44,14 +53,14 @@ function RoutesModule(props) {
       />
       <Route
         path="/MainPage"
-        element={CheckOnLock(<MainPage UserFullData={UserFullData} />)}
+        element={CheckOnLock(<MainPage UserFullData={UserFullData.current} />)}
       />
       <Route
         path="/MyProfile"
         element={CheckOnLock(
           <ProfilPage
             setSelectUser={setSelectUser}
-            UserFullData={UserFullData}
+            UserFullData={UserFullData.current}
           ></ProfilPage>
         )}
       />

@@ -33,8 +33,6 @@ function LogInForm(props) {
         LocalStorageSave(user);
         selectTeam(user.UserData.TeamCode);
         ClearInputs();
-      } else {
-        alert("некорректный лог или пароль");
       }
     }
   };

@@ -7,7 +7,7 @@ function ProfilPage(props) {
 
   function logUot() {
     setSelectUser({});
-
+    //localStorage.removeItem("user");
     localStorage.setItem("logged", JSON.stringify(false));
     localStorage.setItem("team", JSON.stringify({}));
     alert("пока");
