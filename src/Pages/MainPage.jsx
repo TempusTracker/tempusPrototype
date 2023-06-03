@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./MainPage.css";
 import NavBar from "../Navigation/NavBar";
-import Pomodoro from "../components/TimerPage/Pomodoro";
+import TimerPage from "../components/TimerPage/TimerPage";
 
 function MainPage(props) {
-  const { users } = props;
+  const { UserFullData } = props;
 
   return (
     <>
       <header>Главная</header>
       <div>
         <NavBar></NavBar>
-        <Pomodoro users={users}></Pomodoro>
+        <TimerPage UserFullData={UserFullData}></TimerPage>
       </div>
     </>
   );

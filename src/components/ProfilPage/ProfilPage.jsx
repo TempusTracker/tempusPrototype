@@ -3,25 +3,24 @@ import NavBar from "../../Navigation/NavBar";
 import { NavLink } from "react-router-dom";
 
 function ProfilPage(props) {
-  const { setSelectUser } = props;
-  let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
+  const { setSelectUser, UserFullData } = props;
 
   function logUot() {
     setSelectUser({});
-    localStorage.setItem("user", JSON.stringify({}));
+
     localStorage.setItem("logged", JSON.stringify(false));
     localStorage.setItem("team", JSON.stringify({}));
     alert("пока");
   }
-
+  console.log(UserFullData);
   return (
     <>
       <label>Profil</label>
       <div>
         <NavBar />
       </div>
-      <div className="userName">{selectUserLocal.Name}</div>
-      <div className="userLogin">{selectUserLocal.Email}</div>
+      <div className="userName">{UserFullData.UserData.Name}</div>
+      <div className="userLogin">{UserFullData.UserData.Email}</div>
       <NavLink to="/" onClick={logUot}>
         выйти
       </NavLink>

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { UserData } from "./localStorage/localStorage";
+import React, { useRef } from "react";
+import style from "./TimerPage.module.css";
 
-console.log(UserData);
-
-function Pomodoro(props) {
-  const { users } = props;
+function TimerPage(props) {
+  const { UserFullData } = props;
 
   const Time = {
-    pomodoro: { minutes: 25, seconds: 0 },
+    workTime: { minutes: 25, seconds: 0 },
     shortBreak: { minutes: 5, seconds: 0 },
     longBreak: { minutes: 15, seconds: 0 },
     longBreakInterval: 4,
@@ -23,16 +21,13 @@ function Pomodoro(props) {
   let Button = React.createRef();
   let SettingsOpen = false;
 
-  const [settingPomodoro, setSettingPomodoro] = useState(25);
-  const [settingShortBreak, setSettingShortBreak] = useState(5);
-  const [settingLongBreak, setSettingLongBreak] = useState(15);
+  const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
+  const settingShortBreak = useRef(UserFullData.userTimeSettings.workTime);
+  const settingLongBreak = useRef(UserFullData.userTimeSettings.workTime);
 
-  function LocalStorageSave(pomodoro, shortBreak, longBreak) {
-    localStorage.setItem(
-      "userTimeSettings",
-      JSON.stringify({ pomodoro, shortBreak, longBreak })
-    );
-    UserData.userTimeSettings = { pomodoro, shortBreak, longBreak };
+  function LocalStorageSave(workTime, shortBreak, longBreak) {
+    UserFullData.userTimeSettings = { workTime, shortBreak, longBreak };
+    localStorage.setItem("user", JSON.stringify(UserFullData));
   }
 
   function HandlerSelectMode(mode) {
@@ -45,9 +40,8 @@ function Pomodoro(props) {
   }
 
   function HandleClickMods(e) {
-    console.log(e.target.dataset.mode);
-    if (e.target.dataset.mode === "pomodoro") {
-      HandlerSelectMode("pomodoro");
+    if (e.target.dataset.mode === "workTime") {
+      HandlerSelectMode("workTime");
     } else if (e.target.dataset.mode === "shortBreak") {
       HandlerSelectMode("shortBreak");
       Pausing();
@@ -57,8 +51,8 @@ function Pomodoro(props) {
   } //сократить
 
   function copy(mode) {
-    if (mode === "pomodoro") {
-      Object.assign(SelectTimeMode, Time.pomodoro);
+    if (mode === "workTime") {
+      Object.assign(SelectTimeMode, Time.workTime);
     } else if (mode === "shortBreak") {
       Object.assign(SelectTimeMode, Time.shortBreak);
     } else if (mode === "longBreak") {
@@ -67,15 +61,17 @@ function Pomodoro(props) {
   }
 
   function StartTimer(e) {
-    const actoin = e.target;
-    if (SettingsOpen === false) {
-      if (actoin.dataset.action === "start") {
+    const action = e.target;
+    console.log(!SettingsOpen);
+    if (!SettingsOpen) {
+      if (action.dataset.action === "start") {
         e.target.textContent = "pause";
-        actoin.dataset.action = "pause";
+        action.dataset.action = "pause";
+
         Ticking();
-      } else if (actoin.dataset.action === "pause") {
+      } else if (action.dataset.action === "pause") {
         e.target.textContent = "start";
-        actoin.dataset.action = "start";
+        action.dataset.action = "start";
         Pausing();
       }
     } else {
@@ -88,6 +84,7 @@ function Pomodoro(props) {
       UpdateTime();
     } else {
       SelectTimeMode.seconds = SelectTimeMode.seconds - 1;
+
       UpdateTime();
     }
   }
@@ -105,7 +102,7 @@ function Pomodoro(props) {
           SelectBreak = true;
           UpdateTime();
         } else if (SelectBreak === true) {
-          copy("pomodoro");
+          copy("workTime");
           SelectBreak = false;
           UpdateTime();
         }
@@ -130,16 +127,16 @@ function Pomodoro(props) {
     SelectTimeMode.minutes = SelectTimeMode.minutes - 1;
     SelectTimeMode.seconds = 59;
     TotalTime = TotalTime + 1;
-    AddVallue(TotalTime);
+    // AddVallue(TotalTime);
   }
 
-  function AddVallue(TotalTime) {
-    for (let user of users) {
-      if (UserData.selectedUser.Name === user.Name) {
-        user.TotalTime = TotalTime;
-      }
-    }
-  }
+  // function AddVallue(TotalTime) { //позже реализуем, пока лишнее
+  //   for (let user of users) {
+  //     if (UserData.selectedUser.Name === user.Name) {
+  //       user.TotalTime = TotalTime;
+  //     }
+  //   }
+  // }
 
   function Pausing() {
     Button.current.textContent = "start";
@@ -152,7 +149,7 @@ function Pomodoro(props) {
       document.getElementById("Minutes").textContent = SelectTimeMode.minutes;
       document.getElementById("Seconds").textContent = SelectTimeMode.seconds;
     }
-  } //переписать на верстке
+  } //переписать на верстке, пока хз как
 
   function openSettings(e) {
     if (e.target.checked) {
@@ -167,55 +164,65 @@ function Pomodoro(props) {
 
   function changeTimer() {
     Pausing();
+    SettingsOpen = false;
     if (
-      settingPomodoro < 61 &&
-      settingShortBreak < 61 &&
-      settingLongBreak < 61
+      settingWorkTime.current < 61 &&
+      settingShortBreak.current < 61 &&
+      settingLongBreak.current < 61
     ) {
-      LocalStorageSave(settingPomodoro, settingShortBreak, settingLongBreak);
+      LocalStorageSave(
+        settingWorkTime.current,
+        settingShortBreak.current,
+        settingLongBreak.current
+      );
       ReadTime();
     }
+
     document.getElementById("settingsMenu").style.display = "none";
     document.getElementById("settingsButton").checked = false;
   }
   function ReadTime() {
-    Time.pomodoro.minutes = UserData.userTimeSettings.pomodoro;
-    Time.shortBreak.minutes = UserData.userTimeSettings.shortBreak;
+    Time.workTime.minutes = UserFullData.userTimeSettings.workTime;
+    Time.shortBreak.minutes = UserFullData.userTimeSettings.shortBreak;
+    Time.longBreak.minutes = UserFullData.userTimeSettings.longBreak;
 
-    Time.longBreak.minutes = UserData.userTimeSettings.longBreak;
-    copy("pomodoro");
+    copy("workTime");
     UpdateTime();
   }
 
   function SelectModePomodoro() {
-    document.getElementById("inputSettingsPomodoro").value = 25;
+    settingWorkTime.current = 25;
+    settingShortBreak.current = 5;
+    settingLongBreak.current = 15;
+    document.getElementById("inputSettingsPomodoro").value = 25; //тоже переписать, пока хз
     document.getElementById("inputSettingsShortBreak").value = 5;
     document.getElementById("inputSettingsLongBreak").value = 15;
     LocalStorageSave(25, 5, 15);
   }
 
   function SelectModeLongpom() {
+    settingWorkTime.current = 40;
+    settingShortBreak.current = 10;
+    settingLongBreak.current = 20;
     document.getElementById("inputSettingsPomodoro").value = 40;
     document.getElementById("inputSettingsShortBreak").value = 10;
     document.getElementById("inputSettingsLongBreak").value = 20;
-    setSettingPomodoro(40);
-    setSettingShortBreak(10);
-    setSettingLongBreak(20);
+    LocalStorageSave(40, 10, 20);
   }
 
   ReadTime();
-  copy("pomodoro");
+  copy("workTime");
 
   return (
     <>
       <div id="js-mode-buttons" onClick={HandleClickMods}>
-        <button data-mode="pomodoro">Pomodoro&nbsp;</button>
+        <button data-mode="workTime">WorkTime&nbsp;</button>
         <button data-mode="shortBreak">ShortBreak&nbsp;</button>
         <button data-mode="longBreak">LongBreak</button>
       </div>
       <div id="js-clock">
         <span id="Minutes" className="minutes" ref={Minutes}>
-          {SelectTimeMode.minutes}
+          {Number(settingWorkTime.current)}
         </span>
         <span>:</span>
         <span id="Seconds" className="seconds" ref={Seconds}>
@@ -223,7 +230,7 @@ function Pomodoro(props) {
         </span>
       </div>
       <button data-action="start" ref={Button} onClick={StartTimer}>
-        start
+        start&nbsp;
       </button>
       <button onClick={openSettings}>Настройки</button>
       <input
@@ -232,31 +239,37 @@ function Pomodoro(props) {
         onChange={openSettings}
       ></input>
       <div id="settingsMenu" style={{ display: "none" }}>
-        <input
+        <input //на все инпуты времени ограничить ввод числа больше 61, или хотя бы сделать попап предупреждение
+          className={style.inputTimeSettings}
           id="inputSettingsPomodoro"
-          placeholder="Pomodoro"
+          placeholder="work time"
           type="number"
-          value={settingPomodoro}
+          min="0"
+          max="61"
           onChange={(e) => {
-            setSettingPomodoro(e.target.value);
+            settingWorkTime.current = e.target.value;
           }}
         ></input>
         <input
-          value={settingShortBreak}
+          className={style.inputTimeSettings}
           id="inputSettingsShortBreak"
           placeholder="ShortBreak"
           type="number"
+          min="0"
+          max="61"
           onChange={(e) => {
-            setSettingShortBreak(e.target.value);
+            settingShortBreak.current = e.target.value;
           }}
         ></input>
         <input
-          value={settingLongBreak}
+          className={style.inputTimeSettings}
           id="inputSettingsLongBreak"
           placeholder="LongBreak"
           type="number"
+          min="0"
+          max="61"
           onChange={(e) => {
-            setSettingLongBreak(e.target.value);
+            settingLongBreak.current = e.target.value;
           }}
         ></input>
         <div>
@@ -265,10 +278,10 @@ function Pomodoro(props) {
         <div>
           mode: <button onClick={SelectModeLongpom}> longpom</button>
         </div>
-        <button onClick={changeTimer}>сохранить</button>
+        <button onClick={changeTimer}>применить</button>
       </div>
     </>
   );
 }
 
-export default Pomodoro;
+export default TimerPage;

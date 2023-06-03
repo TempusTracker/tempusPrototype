@@ -10,7 +10,7 @@ import CreateTeam from "../components/TeamPage/components/CreateTeam";
 
 function RoutesModule(props) {
   const [selectUser, setSelectUser] = useState({}); //оставим для будущего api
-  const { users, Teams, setTeams } = props;
+  const { users, Teams, setTeams, UserFullData } = props;
 
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   function CheckOnLock(page) {
@@ -22,15 +22,21 @@ function RoutesModule(props) {
   }
 
   function CheckOffLock(page) {
-    return isLoggedLocal ? <MainPage users={users} /> : page;
+    return isLoggedLocal ? <MainPage UserFullData={UserFullData} /> : page;
   }
   return (
     <Routes>
       <Route path="*" Component={NotFound} />
-      <Route exact path="/" element={CheckOnLock(<MainPage users={users} />)} />
+      <Route
+        exact
+        path="/"
+        element={CheckOnLock(
+          <MainPage users={users} UserFullData={UserFullData} />
+        )}
+      />
       <Route
         path="/LogInForm"
-        element={CheckOnLock(<MainPage users={users} />)}
+        element={CheckOnLock(<MainPage UserFullData={UserFullData} />)}
       />
       <Route
         path="/SignInForm"
@@ -38,12 +44,15 @@ function RoutesModule(props) {
       />
       <Route
         path="/MainPage"
-        element={CheckOnLock(<MainPage users={users} />)}
+        element={CheckOnLock(<MainPage UserFullData={UserFullData} />)}
       />
       <Route
         path="/MyProfile"
         element={CheckOnLock(
-          <ProfilPage setSelectUser={setSelectUser}></ProfilPage>
+          <ProfilPage
+            setSelectUser={setSelectUser}
+            UserFullData={UserFullData}
+          ></ProfilPage>
         )}
       />
       <Route path="/TaskBar" Component={NotFound} />

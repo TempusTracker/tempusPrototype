@@ -18,19 +18,23 @@ function LogInForm(props) {
   }
 
   function LocalStorageSave(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+    if (!localStorage.getItem("user")) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
     localStorage.setItem("logged", JSON.stringify(true));
   }
 
   const LogIn = () => {
     for (const user of users) {
-      if (user.Name === login && user.Password === password) {
-        alert("Доборо пожаловать " + user.Name);
+      if (user.UserData.Name === login && user.UserData.Password === password) {
+        console.log(user.UserData.Name);
+        alert("Доборо пожаловать, " + user.UserData.Name);
         setSelectUser(user); //оставим для будущего api
         LocalStorageSave(user);
-        selectTeam(user.TeamCode);
+        selectTeam(user.UserData.TeamCode);
         ClearInputs();
       } else {
+        alert("некорректный лог или пароль");
       }
     }
   };
