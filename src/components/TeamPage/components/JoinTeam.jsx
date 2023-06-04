@@ -16,12 +16,12 @@ function JoinTeam(props) {
   function SearchTeam() {
     for (let i = 0; i < Teams.length; i++) {
       if (Teams[i].Code === Number(inputCode)) {
-        selectUserLocal.TeamCode = Teams[i].Code;
+        selectUserLocal.UserData.TeamCode = Teams[i].Code;
         LocalStorageSaveUser(selectUserLocal);
         LocalStorageSaveTeam(Teams[i]);
         for (let user of users) {
-          if (selectUserLocal.Name === user.Name) {
-            user.TeamCode = Number(inputCode);
+          if (selectUserLocal.UserData.Name === user.UserData.Name) {
+            user.UserData.TeamCode = Number(inputCode);
           }
         }
         window.location.reload();
@@ -33,12 +33,12 @@ function JoinTeam(props) {
   function CheckOnAllert() {
     for (let i = 0; i < users.length; i++) {
       if (
-        users[i].InviteCode !== "" &&
-        users[i].Name === selectUserLocal.Name
+        users[i].UserData.InviteCode !== "" &&
+        users[i].UserData.Name == selectUserLocal.UserData.Name
       ) {
-        for (let i = 0; i < Teams.length; i++) {
-          if (Teams[i].Code == users[i].InviteCode) {
-            ShowInviteTeam = Teams[i].Title;
+        for (let j = 0; j < Teams.length; j++) {
+          if (Teams[j].Code == users[i].UserData.InviteCode) {
+            ShowInviteTeam = Teams[j].Title;
           }
         }
       }

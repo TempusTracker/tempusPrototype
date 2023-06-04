@@ -22,8 +22,8 @@ function TimerPage(props) {
   let SettingsOpen = false;
 
   const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
-  const settingShortBreak = useRef(UserFullData.userTimeSettings.workTime);
-  const settingLongBreak = useRef(UserFullData.userTimeSettings.workTime);
+  const settingShortBreak = useRef(UserFullData.userTimeSettings.shortBreak);
+  const settingLongBreak = useRef(UserFullData.userTimeSettings.longBreak);
 
   function LocalStorageSave(workTime, shortBreak, longBreak) {
     UserFullData.userTimeSettings = { workTime, shortBreak, longBreak };
@@ -108,7 +108,7 @@ function TimerPage(props) {
         }
       } else {
         copy("longBreak");
-        Time.longBreakInterval = 4; //автозамену завезите пожалуйста
+        Time.longBreakInterval = 4;
         SelectBreak = true;
         UpdateTime();
       }

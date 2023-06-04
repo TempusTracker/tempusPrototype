@@ -16,7 +16,7 @@ function Team(props) {
   const { users } = props;
 
   function logOutTeam() {
-    selectUserLocal.TeamCode = "none";
+    selectUserLocal.UserData.TeamCode = "none";
     LocalStorageSaveUser(selectUserLocal);
     LocalStorageSaveTeam({});
     window.location.reload();

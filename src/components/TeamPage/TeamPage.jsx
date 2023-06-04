@@ -8,7 +8,7 @@ function TeamPage(props) {
   const { Teams, users } = props;
 
   function CheckOnJoin(page) {
-    if (selectUserLocal.TeamCode !== "none") {
+    if (selectUserLocal.UserData.TeamCode !== "none") {
       return page;
     } else {
       return <JoinTeam users={users} Teams={Teams} />;

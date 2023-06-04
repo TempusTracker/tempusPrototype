@@ -9,10 +9,9 @@ function UsersTeam(props) {
 
   function fUsersTeam() {
     for (let i = 0; i < users.length; i++) {
-      if (users[i].TeamCode === selectTeamLocal.Code) {
+      if (users[i].UserData.TeamCode === selectTeamLocal.Code) {
         RenderUsers.push(users[i]);
         setUsersTeam({ ...usersTeam, ...RenderUsers });
-        console.log(usersTeam);
       }
     }
     return false;
@@ -21,13 +20,12 @@ function UsersTeam(props) {
   return (
     <>
       <button onClick={fUsersTeam}>покажи</button>
-
-      {selectUserLocal.Role === "admin" ? (
+      {selectUserLocal.UserData.Role === "admin" ? (
         Object.keys(usersTeam).map((key) => (
           <div key={key}>
-            <p className="Name">{usersTeam[key].Name}</p>
-            <p className="Time">{usersTeam[key].TotalTime}</p>
-            <p className="Role">{usersTeam[key].Role}</p>
+            <p className="Name">{usersTeam[key].UserData.Name}</p>
+            <p className="Time">{usersTeam[key].UserData.TotalTime}</p>
+            <p className="Role">{usersTeam[key].UserData.Role}</p>
           </div>
         ))
       ) : (

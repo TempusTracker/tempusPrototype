@@ -13,7 +13,7 @@ function App() {
         Name: "Masha",
         Email: "masha@mail.com",
         Password: "lols",
-        TeamCode: "none",
+        TeamCode: 22,
         Role: "",
         InviteCode: "",
         TotalTime: "",

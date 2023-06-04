@@ -11,8 +11,8 @@ function AllertJoin(props) {
 
   function isNameExist(name) {
     for (let i = 0; i < users.length; i++) {
-      if (users[i].Name === name) {
-        users[i].InviteCode = selectTeamLocal.Code;
+      if (users[i].UserData.Name === name) {
+        users[i].UserData.InviteCode = selectTeamLocal.Code;
       }
     }
     return false;
