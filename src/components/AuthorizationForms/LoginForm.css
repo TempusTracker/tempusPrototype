@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+* {
+  color: #005e6b; }
+
+.LoginForm {
+  padding: 30px 40px;
+  background: #eaffff;
+  border-radius: 20px;
+  display: flex;
+  animation-duration: 2.5s;
+  animation-name: LoginForm;
+  flex-direction: column; }
+  .LoginForm .title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    cursor: default;
+    margin-bottom: 35px; }
+  .LoginForm .label {
+    cursor: default;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-family: "Roboto";
+    font-style: normal;
+    text-align: left;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px; }
+  .LoginForm .input {
+    background: #649ba8;
+    border-radius: 0px 20px;
+    width: 420px;
+    height: 40px;
+    padding-left: 25px;
+    color: #fff;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    padding-right: 25px; }
+  .LoginForm .input::placeholder {
+    color: rgba(180, 180, 180, 0.8); }
+  .LoginForm .button {
+    margin-top: 100px;
+    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
+    border-radius: 0px 20px;
+    width: 420px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 51px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    color: #ffffff; }
+  .LoginForm .link {
+    text-align: right;
+    margin-top: 5px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px; }
+
+@keyframes LoginForm {
+  from {
+    transform: scale(97%);
+    margin-top: 30px; } }
+.petal1 {
+  animation-duration: 2.5s;
+  animation-name: petal1; }
+
+@keyframes petal1 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(-50deg); } }
+.petal2 {
+  animation-duration: 2.5s;
+  animation-name: petal2; }
+
+@keyframes petal2 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(50deg); } }
+.petal3 {
+  animation-duration: 2.5s;
+  animation-name: petal3; }
+
+@keyframes petal3 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(-50deg); } }
+.petal4 {
+  animation-duration: 2.5s;
+  animation-name: petal4; }
+
+@keyframes petal4 {
+  from {
+    bottom: -200px;
+    transform: rotate(-50deg); } }
+.petal5 {
+  animation-duration: 2.5s;
+  animation-name: petal5; }
+
+@keyframes petal5 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(-50deg); } }
+.petal6 {
+  animation-duration: 2.5s;
+  animation-name: petal6; }
+
+@keyframes petal6 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(-50deg); } }
+.petal7 {
+  animation-duration: 2.5s;
+  animation-name: petal7; }
+
+@keyframes petal7 {
+  from {
+    bottom: -200px;
+    right: -200px;
+    transform: rotate(-50deg); } }
+
+/*# sourceMappingURL=LoginForm.css.map */

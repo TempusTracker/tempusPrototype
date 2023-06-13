@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { isNameExist, isEmailExist } from "./utils";
-import styles from "./SignInForm.module.css";
+import styles from "./RegistrationForm.css";
 import { NavLink } from "react-router-dom";
 
 export let usersE = [];

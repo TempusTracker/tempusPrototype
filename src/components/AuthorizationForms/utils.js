@@ -1,4 +1,4 @@
-import { usersE } from "./SignInForm.jsx";
+import { usersE } from "./RegistrationForm.jsx";
 import { TeamsE } from "./LogInForm.jsx";
 
 function LocalStorageSaveTeam(team) {

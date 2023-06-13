@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./LogInForm.module.css";
+import styles from "./LoginForm.css";
 import { NavLink } from "react-router-dom";
 import { selectTeam } from "./utils";
 
@@ -38,32 +38,37 @@ function LogInForm(props) {
   };
 
   return (
-    <form className={styles.LogInForm} action="">
-      <label>Login</label>
-      <input
-        onChange={(e) => {
-          setLogin(e.target.value);
-        }}
-        type="text"
-        id="InputLoginL"
-        placeholder="Login"
-        className={styles.LogInForm_input}
-      />
-      <label>Password</label>
-      <input
-        onChange={(e) => {
-          setPassword(e.target.value);
-        }}
-        type="password"
-        placeholder="Password"
-        id="InputPassL"
-        className={styles.LogInForm_input}
-      />
-      <NavLink to="/MainPage" className={styles.form_button} onClick={LogIn}>
-        Submit
-      </NavLink>
-      <NavLink to="/SignInForm">Нет аккаунта</NavLink>
-    </form>
+    <>
+      <form className="LoginForm" action="">
+        <header className="title">Войти</header>
+        <label className="label">Имя пользователя</label>
+        <input
+          onChange={(e) => {
+            setLogin(e.target.value);
+          }}
+          type="text"
+          id="InputLoginL"
+          placeholder="Login"
+          className="input"
+        />
+        <label className="label">Пароль</label>
+        <input
+          className="input"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+          type="password"
+          placeholder="Password"
+          id="InputPassL"
+        />
+        <NavLink className="button" to="/MainPage" onClick={LogIn}>
+          Продолжить
+        </NavLink>
+        <NavLink className="link" to="/SignInForm">
+          Зарегистрироваться
+        </NavLink>
+      </form>
+    </>
   );
 }
 

@@ -3,13 +3,14 @@ import { useState, useEffect, useRef } from "react";
 import MainPage from "./Pages/MainPage";
 import LogInForm from "./components/AuthorizationForms/LogInForm";
 import NotFound from "./components/NotFoundPage/NotFound";
-import SignInForm from "./components/AuthorizationForms/SignInForm";
+import SignInForm from "./components/AuthorizationForms/RegistrationForm";
 import ProfilPage from "./components/ProfilPage/ProfilPage";
 import TeamPage from "./components/TeamPage/TeamPage";
 import CreateTeam from "./components/TeamPage/components/CreateTeam";
+import animationPetals from "./assets/animations/animationPetals";
 
-import "./App.css";
-import "./null.css";
+import "./assets/css/null.css";
+import "./assets/css/App.css";
 
 function App() {
   const [selectUser, setSelectUser] = useState({});
@@ -87,10 +88,12 @@ function App() {
 
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
 
+  animationPetals();
   return (
     <BrowserRouter>
       <div className="App null.css">
-        <header className="App-header">
+        <header className="App-header"></header>
+        <div className="App-body">
           {isLoggedLocal ? (
             <Routes>
               <Route path="*" Component={NotFound} />
@@ -154,7 +157,53 @@ function App() {
               />
             </Routes>
           )}
-        </header>
+        </div>
+        <div className="App-backGround">
+          <div className="App-logo">
+            <img
+              src={require("./assets/images/logo/LogoTempus.svg").default}
+              alt="LogoTempus"
+              className="LogoTempus"
+            />
+          </div>
+          <div className="BackGround-Petals">
+            <img
+              src={require("./assets/images/petals/petal1.svg").default}
+              alt="petal1"
+              className="petal petal1"
+            />
+            <img
+              src={require("./assets/images/petals/petal2.svg").default}
+              alt="petal2"
+              className="petal petal2"
+            />
+            <img
+              src={require("./assets/images/petals/petal3.svg").default}
+              alt="petal3"
+              className="petal petal3"
+            />
+            <img
+              src={require("./assets/images/petals/petal4.svg").default}
+              alt="petal4"
+              className="petal petal4"
+            />
+            <img
+              src={require("./assets/images/petals/petal5.svg").default}
+              alt="petal5"
+              className="petal petal5"
+            />
+            <img
+              src={require("./assets/images/petals/petal6.svg").default}
+              alt="petal6"
+              className="petal petal6"
+            />
+            <img
+              src={require("./assets/images/petals/petal7.svg").default}
+              alt="petal7"
+              className="petal petal7"
+            />
+          </div>
+        </div>
       </div>
     </BrowserRouter>
   );
