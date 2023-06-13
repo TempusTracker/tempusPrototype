@@ -7,7 +7,7 @@ export let selectUser = {};
 export let TeamsE;
 
 function LogInForm(props) {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   const { setSelectUser, users, Teams } = props;
