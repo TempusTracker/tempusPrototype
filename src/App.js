@@ -1,12 +1,18 @@
-import { BrowserRouter } from "react-router-dom";
-import { useState } from "react";
-
-import RoutesModule from "./Routes/Routes";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import MainPage from "./Pages/MainPage";
+import LogInForm from "./components/AuthorizationForms/LogInForm";
+import NotFound from "./components/NotFoundPage/NotFound";
+import SignInForm from "./components/AuthorizationForms/SignInForm";
+import ProfilPage from "./components/ProfilPage/ProfilPage";
+import TeamPage from "./components/TeamPage/TeamPage";
+import CreateTeam from "./components/TeamPage/components/CreateTeam";
 
 import "./App.css";
 import "./null.css";
 
 function App() {
+  const [selectUser, setSelectUser] = useState({});
   const [users, setUsers] = useState([
     {
       UserData: {
@@ -74,16 +80,80 @@ function App() {
     },
   ]);
 
+  const UserFullData = useRef(JSON.parse(localStorage.getItem("user")) || {});
+  useEffect(() => {
+    UserFullData.current = JSON.parse(localStorage.getItem("user")) || {};
+  });
+
+  let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
+
   return (
     <BrowserRouter>
       <div className="App null.css">
         <header className="App-header">
-          <RoutesModule //!!! обязательно нужно сделать сначала проверку
-            Teams={Teams} //вошел ли юзер и из роутов убрать AuthorizationForms
-            setTeams={setTeams} //и в этот компонент с авторизацией уже вставить роуты
-            users={users}
-            setUsers={setUsers}
-          ></RoutesModule>
+          {isLoggedLocal ? (
+            <Routes>
+              <Route path="*" Component={NotFound} />
+              <Route
+                exact
+                path="/"
+                element={
+                  <MainPage users={users} UserFullData={UserFullData.current} />
+                }
+              />
+              <Route
+                path="/MainPage"
+                element={<MainPage UserFullData={UserFullData.current} />}
+              />
+              <Route
+                path="/MyProfile"
+                element={
+                  <ProfilPage
+                    setSelectUser={setSelectUser}
+                    UserFullData={UserFullData.current}
+                  ></ProfilPage>
+                }
+              />
+              <Route path="/TaskBar" Component={NotFound} />
+              <Route
+                path="/MyTeam"
+                element={<TeamPage users={users} Teams={Teams} />}
+              />
+              <Route
+                path="/createTeam"
+                element={<CreateTeam Teams={Teams} setTeams={setTeams} />}
+              />
+            </Routes>
+          ) : (
+            <Routes>
+              <Route path="*" Component={NotFound} />
+              <Route
+                exact
+                path="/"
+                element={
+                  <LogInForm
+                    setSelectUser={setSelectUser}
+                    users={users}
+                    Teams={Teams}
+                  />
+                }
+              />
+              <Route
+                path="/LogInForm"
+                element={
+                  <LogInForm
+                    setSelectUser={setSelectUser}
+                    users={users}
+                    Teams={Teams}
+                  />
+                }
+              />
+              <Route
+                path="/SignInForm"
+                element={<SignInForm users={users} />}
+              />
+            </Routes>
+          )}
         </header>
       </div>
     </BrowserRouter>
