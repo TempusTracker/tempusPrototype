@@ -1,7 +1,7 @@
 export default function animationPetals() {
   window.onload = setTimeout(() => {
     const paralax = document.querySelector(".App-body");
-    console.log(paralax);
+
     if (paralax) {
       const petal1 = document.querySelector(".petal1");
       const petal2 = document.querySelector(".petal2");
@@ -78,7 +78,6 @@ export default function animationPetals() {
       setMouseParalaxStyle();
 
       paralax.addEventListener("mousemove", (e) => {
-        console.log(paralax);
         const parallaxW = paralax.offsetWidth;
         const parallaxH = paralax.offsetHeight;
 

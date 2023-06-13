@@ -81,12 +81,8 @@ function App() {
     },
   ]);
 
-  const UserFullData = useRef(JSON.parse(localStorage.getItem("user")) || {});
-  useEffect(() => {
-    UserFullData.current = JSON.parse(localStorage.getItem("user")) || {};
-  });
-
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
+  console.log(selectUser);
 
   animationPetals();
   return (
@@ -100,20 +96,18 @@ function App() {
               <Route
                 exact
                 path="/"
-                element={
-                  <MainPage users={users} UserFullData={UserFullData.current} />
-                }
+                element={<MainPage users={users} UserFullData={selectUser} />}
               />
               <Route
                 path="/MainPage"
-                element={<MainPage UserFullData={UserFullData.current} />}
+                element={<MainPage UserFullData={selectUser} />}
               />
               <Route
                 path="/MyProfile"
                 element={
                   <ProfilPage
                     setSelectUser={setSelectUser}
-                    UserFullData={UserFullData.current}
+                    UserFullData={selectUser}
                   ></ProfilPage>
                 }
               />

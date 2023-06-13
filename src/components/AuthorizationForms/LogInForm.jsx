@@ -7,7 +7,7 @@ export let selectUser = {};
 export let TeamsE;
 
 function LogInForm(props) {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
   const { setSelectUser, users, Teams } = props;
@@ -24,6 +24,8 @@ function LogInForm(props) {
     localStorage.setItem("logged", JSON.stringify(true));
   }
 
+  console.log(login);
+
   const LogIn = () => {
     for (const user of users) {
       if (user.UserData.Name === login && user.UserData.Password === password) {
@@ -32,6 +34,8 @@ function LogInForm(props) {
         setSelectUser(user); //оставим для будущего api
         LocalStorageSave(user);
         selectTeam(user.UserData.TeamCode);
+
+        setSelectUser(user);
         ClearInputs();
       }
     }
