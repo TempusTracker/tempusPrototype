@@ -168,7 +168,13 @@ function TimerPage(props) {
     if (
       settingWorkTime.current < 61 &&
       settingShortBreak.current < 61 &&
-      settingLongBreak.current < 61
+      settingLongBreak.current < 61 &&
+      settingWorkTime.current > 0 &&
+      settingShortBreak.current > 0 &&
+      settingLongBreak.current > 0 &&
+      settingWorkTime.current !== 0 &&
+      settingShortBreak.current !== 0 &&
+      settingLongBreak.current !== 0
     ) {
       LocalStorageSave(
         settingWorkTime.current,

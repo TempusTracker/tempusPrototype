@@ -1,7 +1,6 @@
 export default function animationPetals() {
   window.onload = setTimeout(() => {
     const paralax = document.querySelector(".App-body");
-
     if (paralax) {
       const petal1 = document.querySelector(".petal1");
       const petal2 = document.querySelector(".petal2");
