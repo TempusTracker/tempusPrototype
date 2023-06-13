@@ -77,8 +77,6 @@
 
 @keyframes petal1 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(-50deg); } }
 .petal2 {
   animation-duration: 2.5s;
@@ -86,8 +84,6 @@
 
 @keyframes petal2 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(50deg); } }
 .petal3 {
   animation-duration: 2.5s;
@@ -95,8 +91,6 @@
 
 @keyframes petal3 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(-50deg); } }
 .petal4 {
   animation-duration: 2.5s;
@@ -104,7 +98,6 @@
 
 @keyframes petal4 {
   from {
-    bottom: -200px;
     transform: rotate(-50deg); } }
 .petal5 {
   animation-duration: 2.5s;
@@ -112,8 +105,6 @@
 
 @keyframes petal5 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(-50deg); } }
 .petal6 {
   animation-duration: 2.5s;
@@ -121,8 +112,6 @@
 
 @keyframes petal6 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(-50deg); } }
 .petal7 {
   animation-duration: 2.5s;
@@ -130,8 +119,6 @@
 
 @keyframes petal7 {
   from {
-    bottom: -200px;
-    right: -200px;
     transform: rotate(-50deg); } }
 
 /*# sourceMappingURL=LoginForm.css.map */
