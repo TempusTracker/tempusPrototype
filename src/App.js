@@ -12,6 +12,9 @@ import animationPetals from "./assets/animations/animationPetals";
 import "./assets/css/null.css";
 import "./assets/css/App.css";
 
+export let usersUtils = {};
+export let TeamsUtils = {};
+
 function App() {
   const [users, setUsers] = useState([
     {
@@ -79,6 +82,9 @@ function App() {
       Code: 22,
     },
   ]);
+
+  usersUtils = users;
+  TeamsUtils = Teams;
 
   let isTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;

@@ -52,8 +52,11 @@ function SignInForm(props) {
   const teamButtonChange = (e) => {
     if (e.target.checked) {
       document.getElementById("InputCodeTeam").style.display = "block";
+      document.getElementById("haveTeam").style.display = "none";
+      document.getElementById("labelforteam").style.display = "block";
     } else {
       document.getElementById("InputCodeTeam").style.display = "none";
+      document.getElementById("labelforteam").style.display = "none";
     }
   };
 
@@ -66,15 +69,22 @@ function SignInForm(props) {
 
   function checkOnTeam(teamcode) {
     for (let i = 0; i < Teams.length; i++) {
-      if (Teams[i].Code === teamcode) {
-        selectTeam(teamcode);
+      if (teamcode === "none") {
         return true;
+      } else {
+        if (Teams[i].Code === teamcode) {
+          selectTeam(teamcode);
+          return true;
+        }
       }
     }
     return false;
   }
 
   const CreateUser = (login, email, password, teamcode = "none") => {
+    if (teamcode === 0) {
+      teamcode = "none";
+    }
     if (checkOnTeam(teamcode) === true) {
       const NewUser = {
         UserData: {
@@ -102,18 +112,22 @@ function SignInForm(props) {
 
   return (
     <form className="RegistrationForm" action="">
-      <header className="title"></header>
-      <label className="label">Login</label>
+      <header className="title">Создать учетную запись</header>
+      <label for="InputLogin" className="label">
+        Имя пользователя
+      </label>
       <input
         onChange={(e) => {
           setLogin(e.target.value);
         }}
         type="text"
-        placeholder="Login"
+        placeholder="Vladimir_Designer"
         className="input"
         id="InputLogin"
       />
-      <label className="label">Email</label>
+      <label for="InputMail" className="label">
+        E-MAIL
+      </label>
       <input
         onChange={(e) => {
           const re =
@@ -128,14 +142,16 @@ function SignInForm(props) {
         name="email"
         type="email"
         id="InputMail"
-        placeholder="Email"
+        placeholder="Tempus@greatapp.ru"
         onBlur={(e) => blurHandler(e)}
         className="input"
       />
       {emailDirty && emailError && (
         <div style={{ color: "red" }}>{emailError}</div>
       )}
-      <label className="label">Password</label>
+      <label for="InputPass" className="label">
+        Пароль
+      </label>
       <input
         onChange={(e) => {
           const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
@@ -150,31 +166,45 @@ function SignInForm(props) {
         name="password"
         id="InputPass"
         onBlur={(e) => blurHandler(e)}
-        placeholder="Password"
+        placeholder="*******"
         className="input"
       />
       {passwordDirty && passwordError && (
         <div style={{ color: "red" }}>{passwordError}</div>
       )}
-      <p>
-        Есть команда?
-        <input type="checkbox" className="" onChange={teamButtonChange} />
+      <p className="haveTeam" id="haveTeam">
+        <label for="check" className="haveTeam-label">
+          Я с командой
+        </label>
+        <input type="checkbox" id="check" onChange={teamButtonChange} />
       </p>
+      <label
+        for="InputCodeTeam"
+        className="label labelforteam"
+        id="labelforteam"
+      >
+        Команда
+      </label>
       <input
         id="InputCodeTeam"
         type="number"
         onChange={(e) => {
           setTeamcode(Number(e.target.value));
         }}
-        placeholder="code"
-        className="inputCode"
+        placeholder="#"
+        className="inputCode input"
       />
       <button onClick={ButtonClick} className="button">
-        Submit
+        Продолжить
       </button>
       <NavLink to="/LogInForm" className="link">
-        Есть аккаунт
+        Уже зарегистрированы?
       </NavLink>
+      <p className="polici">
+        Регистрируясь, вы соглашаетесь с{" "}
+        <a href="#">Условиями использования </a>и{" "}
+        <a href="#">Политикой Конфиденциальности</a> Tempus.
+      </p>
     </form>
   );
 }

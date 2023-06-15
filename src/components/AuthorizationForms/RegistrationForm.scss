@@ -1,26 +1,115 @@
-.SignInForm {
-  width: 200px;
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+.RegistrationForm {
+  padding: 30px 40px 20px 40px;
+  background: #eaffff;
+  border-radius: 20px;
   margin: 0 auto;
-  margin-top: 30px;
-}
-.SignInForm_input {
-  margin-bottom: 10px;
-  margin-top: 5px;
-  border: 1px solid #000;
-  width: 200px;
-}
+  display: flex;
+  flex-direction: column;
+  .title {
+    color: #005e6b;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 33px;
+    margin-bottom: 15px;
+  }
+  .label {
+    margin-top: 15px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+    color: #005e6b;
+  }
+  .input {
+    width: 420px;
+    margin-top: 5px;
+    background: #649ba8;
+    border-radius: 0px 20px;
+    padding: 8px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    color: #ffffff;
+  }
+  .input::placeholder {
+    color: rgba(180, 180, 180, 0.8);
+  }
 
-.inputCode {
-  display: none;
-}
-.InputCodeTeam::-webkit-outer-spin-button,
-.InputCodeTeam::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
+  .haveTeam {
+    display: flex;
+    width: 420px;
+    justify-content: right;
+    .haveTeam-label {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      color: #068fa7;
+      margin-top: 10px;
+    }
+    input {
+      display: none;
+    }
+  }
+  .button {
+    margin-top: 60px;
+    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
+    border-radius: 0px 20px;
+    padding: 14px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 23px;
+    width: 420px;
+    color: #ffffff;
+  }
+  .link {
+    text-align: right;
+    margin-top: 5px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    color: #068fa7;
+  }
 
-.form_button {
-  margin-top: 10px;
-  border: 1px solid #aaa;
-  padding: 5px;
-  margin-right: 10px;
+  .inputCode {
+    display: none;
+  }
+  .labelforteam {
+    display: none;
+  }
+
+  .polici {
+    width: 420px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 36px;
+    color: #a7a7a7;
+    text-align: left;
+    a {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 14px;
+      color: #068fa7;
+    }
+  }
 }
