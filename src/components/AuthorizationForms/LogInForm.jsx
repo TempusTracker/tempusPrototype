@@ -26,7 +26,8 @@ function LogInForm(props) {
 
   console.log(login);
 
-  const LogIn = () => {
+  const LogIn = (e) => {
+    e.preventDefault();
     for (const user of users) {
       if (user.UserData.Name === login && user.UserData.Password === password) {
         console.log(user.UserData.Name);

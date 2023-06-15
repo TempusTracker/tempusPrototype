@@ -5,11 +5,12 @@ import { NavLink } from "react-router-dom";
 function ProfilPage(props) {
   const { UserFullData } = props;
 
-  function logUot() {
+  function logUot(e) {
+    e.preventDefault();
     localStorage.removeItem("user");
     localStorage.setItem("logged", JSON.stringify(false));
     localStorage.setItem("team", JSON.stringify({}));
-    window.location.href = "/";
+    window.location.href = "/LoginForm";
     alert("пока");
   }
   console.log(UserFullData);

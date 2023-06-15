@@ -9,7 +9,7 @@
   background: #eaffff;
   border-radius: 20px;
   display: flex;
-  animation-duration: 2.5s;
+  animation-duration: 0.5s;
   animation-name: LoginForm;
   flex-direction: column;
   .title {
@@ -144,6 +144,6 @@
 }
 @keyframes petal7 {
   from {
-    transform: rotate(50deg);
+    transform: rotate(-50deg);
   }
 }
