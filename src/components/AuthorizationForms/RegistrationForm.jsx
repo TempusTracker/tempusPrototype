@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isNameExist, isEmailExist } from "./utils";
+import { isNameExist, isEmailExist, selectTeam } from "./utils";
 import styles from "./RegistrationForm.css";
 import { NavLink } from "react-router-dom";
 
@@ -15,11 +15,13 @@ function SignInForm(props) {
   const [emailError, setEmailError] = useState("почта пустая");
   const [passwordError, setPasswordError] = useState("пароль пустой");
 
-  const { setSelectUser, users, setUsers } = props;
+  const { users, setUsers, Teams } = props;
   usersE = users;
 
   function LocalStorageSave(user) {
-    localStorage.setItem("user", JSON.stringify(user));
+    if (!localStorage.getItem("user")) {
+      localStorage.setItem("user", JSON.stringify(user));
+    }
     localStorage.setItem("logged", JSON.stringify(true));
   }
 
@@ -36,16 +38,13 @@ function SignInForm(props) {
     }
   };
 
-  const ButtonClick = () => {
+  const ButtonClick = (e) => {
+    e.preventDefault();
     if (isNameExist(login) || isEmailExist(email)) {
-      alert("пользователь уже существует");
     } else {
       if (login === "" || password === "" || email === "") {
-        alert("ошибка");
       } else {
         CreateUser(login, email, password, teamcode);
-        alert("Доборо пожаловать " + login);
-        ClearInputs();
       }
     }
   };
@@ -65,32 +64,56 @@ function SignInForm(props) {
     document.getElementById("InputCodeTeam").value = "";
   }
 
+  function checkOnTeam(teamcode) {
+    for (let i = 0; i < Teams.length; i++) {
+      if (Teams[i].Code === teamcode) {
+        selectTeam(teamcode);
+        return true;
+      }
+    }
+    return false;
+  }
+
   const CreateUser = (login, email, password, teamcode = "none") => {
-    const NewUser = {
-      Name: login,
-      Email: email,
-      Password: password,
-      TeamCode: teamcode,
-    };
-    setUsers((users) => [...users, NewUser]);
-    console.log(users);
-    setSelectUser(NewUser); //оставим для будущего api
-    LocalStorageSave(NewUser);
+    if (checkOnTeam(teamcode) === true) {
+      const NewUser = {
+        UserData: {
+          Name: login,
+          Email: email,
+          Password: password,
+          TeamCode: teamcode,
+          Role: "",
+          InviteCode: "",
+        },
+        userTimeSettings: {
+          workTime: 25,
+          shortBreak: 5,
+          longBreak: 15,
+        },
+      };
+      setUsers((users) => [...users, NewUser]);
+      LocalStorageSave(NewUser);
+      window.location.href = "/MainPage";
+      ClearInputs();
+    } else {
+      alert("такой команды не существует");
+    }
   };
 
   return (
-    <form className={styles.SignInForm} id="SignInForm" action="">
-      <label>Login</label>
+    <form className="RegistrationForm" action="">
+      <header className="title"></header>
+      <label className="label">Login</label>
       <input
         onChange={(e) => {
           setLogin(e.target.value);
         }}
         type="text"
         placeholder="Login"
-        className={styles.SignInForm_input}
+        className="input"
         id="InputLogin"
       />
-      <label>Email</label>
+      <label className="label">Email</label>
       <input
         onChange={(e) => {
           const re =
@@ -107,12 +130,12 @@ function SignInForm(props) {
         id="InputMail"
         placeholder="Email"
         onBlur={(e) => blurHandler(e)}
-        className={styles.SignInForm_input}
+        className="input"
       />
       {emailDirty && emailError && (
         <div style={{ color: "red" }}>{emailError}</div>
       )}
-      <label>Password</label>
+      <label className="label">Password</label>
       <input
         onChange={(e) => {
           const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
@@ -128,31 +151,30 @@ function SignInForm(props) {
         id="InputPass"
         onBlur={(e) => blurHandler(e)}
         placeholder="Password"
-        className={styles.SignInForm_input}
+        className="input"
       />
       {passwordDirty && passwordError && (
         <div style={{ color: "red" }}>{passwordError}</div>
       )}
       <p>
-        Есть команда? <input type="checkbox" onChange={teamButtonChange} />
+        Есть команда?
+        <input type="checkbox" className="" onChange={teamButtonChange} />
       </p>
       <input
-        type="number"
         id="InputCodeTeam"
+        type="number"
         onChange={(e) => {
           setTeamcode(Number(e.target.value));
         }}
         placeholder="code"
-        className={styles.InputCodeTeam}
+        className="inputCode"
       />
-      <NavLink
-        to="/MainPage"
-        onClick={ButtonClick}
-        className={styles.form_button}
-      >
+      <button onClick={ButtonClick} className="button">
         Submit
+      </button>
+      <NavLink to="/LogInForm" className="link">
+        Есть аккаунт
       </NavLink>
-      <NavLink to="/LogInForm">Есть аккаунт</NavLink>
     </form>
   );
 }

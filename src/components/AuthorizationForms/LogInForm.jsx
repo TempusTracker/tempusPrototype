@@ -31,7 +31,6 @@ function LogInForm(props) {
     for (const user of users) {
       if (user.UserData.Name === login && user.UserData.Password === password) {
         console.log(user.UserData.Name);
-        alert("Доборо пожаловать, " + user.UserData.Name);
         LocalStorageSave(user);
         selectTeam(user.UserData.TeamCode);
         window.location.href = "/MainPage";
