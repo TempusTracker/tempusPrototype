@@ -13,7 +13,6 @@ import "./assets/css/null.css";
 import "./assets/css/App.css";
 
 function App() {
-  const [selectUser, setSelectUser] = useState({});
   const [users, setUsers] = useState([
     {
       UserData: {
@@ -81,8 +80,9 @@ function App() {
     },
   ]);
 
+  let isTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
-  console.log(selectUser);
+  let isUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 
   animationPetals();
   return (
@@ -96,25 +96,27 @@ function App() {
               <Route
                 exact
                 path="/"
-                element={<MainPage users={users} UserFullData={selectUser} />}
+                element={<MainPage users={users} UserFullData={isUserLocal} />}
               />
               <Route
                 path="/MainPage"
-                element={<MainPage UserFullData={selectUser} />}
+                element={<MainPage UserFullData={isUserLocal} />}
               />
               <Route
                 path="/MyProfile"
-                element={
-                  <ProfilPage
-                    setSelectUser={setSelectUser}
-                    UserFullData={selectUser}
-                  ></ProfilPage>
-                }
+                element={<ProfilPage UserFullData={isUserLocal}></ProfilPage>}
               />
               <Route path="/TaskBar" Component={NotFound} />
               <Route
                 path="/MyTeam"
-                element={<TeamPage users={users} Teams={Teams} />}
+                element={
+                  <TeamPage
+                    UserFullData={isUserLocal}
+                    isTeamLocal={isTeamLocal}
+                    users={users}
+                    Teams={Teams}
+                  />
+                }
               />
               <Route
                 path="/createTeam"
@@ -123,27 +125,19 @@ function App() {
             </Routes>
           ) : (
             <Routes>
+              <Route
+                path="/MainPage"
+                element={<LogInForm users={users} Teams={Teams} />}
+              />
               <Route path="*" Component={NotFound} />
               <Route
                 exact
                 path="/"
-                element={
-                  <LogInForm
-                    setSelectUser={setSelectUser}
-                    users={users}
-                    Teams={Teams}
-                  />
-                }
+                element={<LogInForm users={users} Teams={Teams} />}
               />
               <Route
                 path="/LogInForm"
-                element={
-                  <LogInForm
-                    setSelectUser={setSelectUser}
-                    users={users}
-                    Teams={Teams}
-                  />
-                }
+                element={<LogInForm users={users} Teams={Teams} />}
               />
               <Route
                 path="/SignInForm"

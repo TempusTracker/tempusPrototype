@@ -2,14 +2,13 @@ import React from "react";
 import AllertJoin from "./allertJoinTeam";
 
 function InfoTeam(props) {
-  let selectTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
-  const { users } = props;
+  const { users, isTeamLocal } = props;
 
   return (
     <>
-      <h1>{selectTeamLocal.Title}</h1>
-      <h1>{selectTeamLocal.Description}</h1>
-      <h1>Код: {selectTeamLocal.Code}</h1>
+      <h1>{isTeamLocal.Title}</h1>
+      <h1>{isTeamLocal.Description}</h1>
+      <h1>Код: {isTeamLocal.Code}</h1>
 
       <AllertJoin users={users} />
     </>

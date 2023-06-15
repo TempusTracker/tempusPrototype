@@ -2,9 +2,6 @@ import React from "react";
 import InfoTeam from "./components/InfoTeam";
 import UsersTeam from "./components/UsersTeam";
 
-let selectTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
-let selectUserLocal = JSON.parse(localStorage.getItem("user")) || {};
-
 function LocalStorageSaveUser(user) {
   localStorage.setItem("user", JSON.stringify(user));
 }
@@ -13,19 +10,23 @@ function LocalStorageSaveTeam(team) {
 }
 
 function Team(props) {
-  const { users } = props;
+  const { users, isTeamLocal, UserFullData } = props;
 
   function logOutTeam() {
-    selectUserLocal.UserData.TeamCode = "none";
-    LocalStorageSaveUser(selectUserLocal);
+    UserFullData.UserData.TeamCode = "none";
+    LocalStorageSaveUser(UserFullData);
     LocalStorageSaveTeam({});
     window.location.reload();
   }
 
   return (
     <>
-      <InfoTeam users={users} selectTeamLocal={selectTeamLocal}></InfoTeam>
-      <UsersTeam users={users} selectTeamLocal={selectTeamLocal}></UsersTeam>
+      <InfoTeam users={users} isTeamLocal={isTeamLocal}></InfoTeam>
+      <UsersTeam
+        UserFullData={UserFullData}
+        users={users}
+        isTeamLocal={isTeamLocal}
+      ></UsersTeam>
       <button onClick={logOutTeam}>выйти</button>
     </>
   );

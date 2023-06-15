@@ -10,7 +10,7 @@ function LogInForm(props) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setSelectUser, users, Teams } = props;
+  const { users, Teams } = props;
   TeamsE = Teams;
   function ClearInputs() {
     document.getElementById("InputPassL").value = "";
@@ -31,11 +31,9 @@ function LogInForm(props) {
       if (user.UserData.Name === login && user.UserData.Password === password) {
         console.log(user.UserData.Name);
         alert("Доборо пожаловать, " + user.UserData.Name);
-        setSelectUser(user); //оставим для будущего api
         LocalStorageSave(user);
         selectTeam(user.UserData.TeamCode);
-
-        setSelectUser(user);
+        window.location.href = "/MainPage";
         ClearInputs();
       }
     }
@@ -65,9 +63,9 @@ function LogInForm(props) {
           placeholder="Password"
           id="InputPassL"
         />
-        <NavLink className="button" to="/MainPage" onClick={LogIn}>
+        <button type="submit" className="button" onClick={LogIn}>
           Продолжить
-        </NavLink>
+        </button>
         <NavLink className="link" to="/SignInForm">
           Зарегистрироваться
         </NavLink>
