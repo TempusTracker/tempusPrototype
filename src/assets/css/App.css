@@ -47,4 +47,40 @@
     bottom: -150px;
     left: 165px; }
 
+.App-popup {
+  position: absolute;
+  width: 700px;
+  height: 100px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #eaffff;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  cursor: pointer;
+  padding-bottom: 10px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 33px;
+  color: #005e6b;
+  animation-name: PopupOpen;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; }
+
+@keyframes PopupOpen {
+  from {
+    top: -70px; }
+  to {
+    top: 0px; } }
+@keyframes PopupClouse {
+  from {
+    top: 0px; }
+  to {
+    top: -70px; } }
+
 /*# sourceMappingURL=App.css.map */

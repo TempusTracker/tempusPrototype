@@ -10,13 +10,38 @@ function SignInForm(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [teamcode, setTeamcode] = useState(0);
-  const [emailDirty, setEmailDirty] = useState(false);
-  const [passwordDirty, setPasswordDirty] = useState(false);
-  const [emailError, setEmailError] = useState("почта пустая");
-  const [passwordError, setPasswordError] = useState("пароль пустой");
 
-  const { users, setUsers, Teams } = props;
+  const { users, setUsers, Teams, error } = props;
   usersE = users;
+
+  const CreateUser = (login, email, password, teamcode = "none") => {
+    if (teamcode === 0) {
+      teamcode = "none";
+    }
+    if (checkOnTeam(teamcode) === true) {
+      const NewUser = {
+        UserData: {
+          Name: login,
+          Email: email,
+          Password: password,
+          TeamCode: teamcode,
+          Role: "",
+          InviteCode: "",
+        },
+        userTimeSettings: {
+          workTime: 25,
+          shortBreak: 5,
+          longBreak: 15,
+        },
+      };
+      setUsers((users) => [...users, NewUser]);
+      LocalStorageSave(NewUser);
+      window.location.href = "/MainPage";
+      ClearInputs();
+    } else {
+      error("Ошибка: такой команды не существует");
+    }
+  };
 
   function LocalStorageSave(user) {
     if (!localStorage.getItem("user")) {
@@ -25,22 +50,32 @@ function SignInForm(props) {
     localStorage.setItem("logged", JSON.stringify(true));
   }
 
-  const blurHandler = (e) => {
-    switch (e.target.name) {
-      case "email":
-        setEmailDirty(true);
-        break;
-      case "password":
-        setPasswordDirty(true);
-        break;
-      default:
-        break;
+  function ErrorMain() {
+    const re =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (
+      !re.test(String(document.getElementById("InputMail").value).toLowerCase())
+    ) {
+      error("Ошибка: поле почты должно соответствовать нормам");
+    } else {
+      setEmail(document.getElementById("InputMail").value);
     }
-  };
+  }
+  function ErrorPass() {
+    const re2 = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
+    if (!re2.test(String(document.getElementById("InputPass").value))) {
+      error("Ошибка: поле пароль должно соответствовать нормам");
+    } else {
+      setPassword(document.getElementById("InputPass").value);
+    }
+  }
 
   const ButtonClick = (e) => {
     e.preventDefault();
+    ErrorMain();
+    ErrorPass();
     if (isNameExist(login) || isEmailExist(email)) {
+      error("Ошибка: пользователь уже существует");
     } else {
       if (login === "" || password === "" || email === "") {
       } else {
@@ -81,35 +116,6 @@ function SignInForm(props) {
     return false;
   }
 
-  const CreateUser = (login, email, password, teamcode = "none") => {
-    if (teamcode === 0) {
-      teamcode = "none";
-    }
-    if (checkOnTeam(teamcode) === true) {
-      const NewUser = {
-        UserData: {
-          Name: login,
-          Email: email,
-          Password: password,
-          TeamCode: teamcode,
-          Role: "",
-          InviteCode: "",
-        },
-        userTimeSettings: {
-          workTime: 25,
-          shortBreak: 5,
-          longBreak: 15,
-        },
-      };
-      setUsers((users) => [...users, NewUser]);
-      LocalStorageSave(NewUser);
-      window.location.href = "/MainPage";
-      ClearInputs();
-    } else {
-      alert("такой команды не существует");
-    }
-  };
-
   return (
     <form className="RegistrationForm" action="">
       <header className="title">Создать учетную запись</header>
@@ -129,49 +135,22 @@ function SignInForm(props) {
         E-MAIL
       </label>
       <input
-        onChange={(e) => {
-          const re =
-            /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-          if (!re.test(String(e.target.value).toLowerCase())) {
-            setEmailError("ошибка в поле почты");
-          } else {
-            setEmailError("");
-            setEmail(e.target.value);
-          }
-        }}
         name="email"
         type="email"
         id="InputMail"
         placeholder="Tempus@greatapp.ru"
-        onBlur={(e) => blurHandler(e)}
         className="input"
       />
-      {emailDirty && emailError && (
-        <div style={{ color: "red" }}>{emailError}</div>
-      )}
       <label for="InputPass" className="label">
         Пароль
       </label>
       <input
-        onChange={(e) => {
-          const re = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})$/;
-          if (!re.test(String(e.target.value))) {
-            setPasswordError("ошибка в поле пароля");
-          } else {
-            setPasswordError("");
-            setPassword(e.target.value);
-          }
-        }}
         type="password"
         name="password"
         id="InputPass"
-        onBlur={(e) => blurHandler(e)}
         placeholder="*******"
         className="input"
       />
-      {passwordDirty && passwordError && (
-        <div style={{ color: "red" }}>{passwordError}</div>
-      )}
       <p className="haveTeam" id="haveTeam">
         <label for="check" className="haveTeam-label">
           Я с командой

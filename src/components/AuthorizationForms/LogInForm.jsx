@@ -10,7 +10,7 @@ function LogInForm(props) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const { users, Teams } = props;
+  const { users, Teams, error } = props;
   TeamsE = Teams;
   function ClearInputs() {
     document.getElementById("InputPassL").value = "";
@@ -35,6 +35,8 @@ function LogInForm(props) {
         selectTeam(user.UserData.TeamCode);
         window.location.href = "/MainPage";
         ClearInputs();
+      } else {
+        error("Ошибка: пользователь не найден");
       }
     }
   };

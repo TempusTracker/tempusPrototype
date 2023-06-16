@@ -4,6 +4,8 @@
   background: #eaffff;
   border-radius: 20px;
   margin: 0 auto;
+  animation-duration: 0.5s;
+  animation-name: RegistrationForm;
   display: flex;
   flex-direction: column; }
   .RegistrationForm .title {
@@ -95,5 +97,10 @@
       font-size: 12px;
       line-height: 14px;
       color: #068fa7; }
+
+@keyframes RegistrationForm {
+  from {
+    transform: scale(97%);
+    margin-top: 30px; } }
 
 /*# sourceMappingURL=RegistrationForm.css.map */

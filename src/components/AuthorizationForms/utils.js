@@ -1,13 +1,13 @@
-import { usersE } from "./RegistrationForm.jsx";
-import { TeamsE } from "./LogInForm.jsx";
+import { usersUtils } from "../../App.js";
+import { TeamsUtils } from "../../App.js";
 
 function LocalStorageSaveTeam(team) {
   localStorage.setItem("team", JSON.stringify(team));
 }
 
 export function isNameExist(name) {
-  for (let i = 0; i < usersE.length; i++) {
-    if (usersE[i].Name === name) {
+  for (let i = 0; i < usersUtils.length; i++) {
+    if (usersUtils[i].UserData.Name === name) {
       return true;
     }
   }
@@ -15,8 +15,8 @@ export function isNameExist(name) {
 }
 
 export function isEmailExist(email) {
-  for (let i = 0; i < usersE.length; i++) {
-    if (usersE[i].Email === email) {
+  for (let i = 0; i < usersUtils.length; i++) {
+    if (usersUtils[i].UserData.Email === email) {
       return true;
     }
   }
@@ -24,9 +24,9 @@ export function isEmailExist(email) {
 }
 
 export function selectTeam(code) {
-  for (let i = 0; i < TeamsE.length; i++) {
-    if (TeamsE[i].Code === code) {
-      LocalStorageSaveTeam(TeamsE[i]);
+  for (let i = 0; i < TeamsUtils.length; i++) {
+    if (TeamsUtils[i].Code === code) {
+      LocalStorageSaveTeam(TeamsUtils[i]);
     }
   }
   return false;

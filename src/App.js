@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MainPage from "./Pages/MainPage";
 import LogInForm from "./components/AuthorizationForms/LogInForm";
 import NotFound from "./components/NotFoundPage/NotFound";
@@ -8,14 +8,18 @@ import ProfilPage from "./components/ProfilPage/ProfilPage";
 import TeamPage from "./components/TeamPage/TeamPage";
 import CreateTeam from "./components/TeamPage/components/CreateTeam";
 import animationPetals from "./assets/animations/animationPetals";
+import { createPopup } from "./assets/animations/popup";
 
 import "./assets/css/null.css";
 import "./assets/css/App.css";
 
 export let usersUtils = {};
 export let TeamsUtils = {};
+export let ErrorAnimate = {};
+export let setErrorAnimate = {};
 
 function App() {
+  const [error, setError] = useState("");
   const [users, setUsers] = useState([
     {
       UserData: {
@@ -85,15 +89,19 @@ function App() {
 
   usersUtils = users;
   TeamsUtils = Teams;
+  ErrorAnimate = error;
+  setErrorAnimate = setError;
 
   let isTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   let isUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 
   animationPetals();
+
   return (
     <BrowserRouter>
       <div className="App null.css">
+        {error ? createPopup() : ""}
         <header className="App-header"></header>
         <div className="App-body">
           {isLoggedLocal ? (
@@ -133,22 +141,33 @@ function App() {
             <Routes>
               <Route
                 path="/MainPage"
-                element={<LogInForm users={users} Teams={Teams} />}
+                element={
+                  <LogInForm error={setError} users={users} Teams={Teams} />
+                }
               />
               <Route path="*" Component={NotFound} />
               <Route
                 exact
                 path="/"
-                element={<LogInForm users={users} Teams={Teams} />}
+                element={
+                  <LogInForm error={setError} users={users} Teams={Teams} />
+                }
               />
               <Route
                 path="/LogInForm"
-                element={<LogInForm users={users} Teams={Teams} />}
+                element={
+                  <LogInForm error={setError} users={users} Teams={Teams} />
+                }
               />
               <Route
                 path="/SignInForm"
                 element={
-                  <SignInForm Teams={Teams} setUsers={setUsers} users={users} />
+                  <SignInForm
+                    error={setError}
+                    Teams={Teams}
+                    setUsers={setUsers}
+                    users={users}
+                  />
                 }
               />
             </Routes>

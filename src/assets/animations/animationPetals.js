@@ -1,6 +1,6 @@
 export default function animationPetals() {
-  window.onload = setTimeout(() => {
-    const paralax = document.querySelector(".App-body");
+  window.onload = () => {
+    const paralax = document.querySelector(".App");
     if (paralax) {
       const petal1 = document.querySelector(".petal1");
       const petal2 = document.querySelector(".petal2");
@@ -87,5 +87,5 @@ export default function animationPetals() {
         coordYprocent = (coordY / parallaxH) * 100;
       });
     }
-  }, 2500);
+  };
 }
