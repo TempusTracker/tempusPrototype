@@ -43,7 +43,8 @@
     top: 20px;
     right: 20px;
     padding: 8.5px;
-    background: #161c1a;
+    cursor: pointer;
+    background: #2e3935;
     border-radius: 50%; }
     .TimerBlock .ButtonSettings input {
       display: none; }
@@ -84,5 +85,62 @@
     font-size: 17.871px;
     line-height: 21px;
     cursor: pointer; }
+
+.settingsMenu .buttonClose {
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  width: 46px;
+  background-color: #2e3935; }
+.settingsMenu .saveButton {
+  cursor: pointer;
+  bottom: 20px;
+  right: 20px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  position: absolute;
+  font-size: 17px;
+  line-height: 20px;
+  color: #e9d3c6;
+  padding: 10px 20px;
+  border: 0.687345px solid #e9d3c6;
+  border-radius: 44px; }
+.settingsMenu .inputSettings {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  position: relative; }
+  .settingsMenu .inputSettings .label {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    color: #848484; }
+  .settingsMenu .inputSettings input {
+    text-align: center;
+    margin-top: 10px;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px; }
+  .settingsMenu .inputSettings .plus {
+    position: absolute;
+    font-size: 35px;
+    right: 20px;
+    bottom: -4px; }
+  .settingsMenu .inputSettings .minus {
+    position: absolute;
+    font-size: 35px;
+    left: 20px;
+    bottom: -4px; }
 
 /*# sourceMappingURL=timerPage.css.map */

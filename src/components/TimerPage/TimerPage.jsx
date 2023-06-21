@@ -8,7 +8,7 @@ function TimerPage(props) {
     workTime: { minutes: 25, seconds: 0 },
     shortBreak: { minutes: 5, seconds: 0 },
     longBreak: { minutes: 15, seconds: 0 },
-    longBreakInterval: 4,
+    longBreakInterval: 6,
   };
 
   let SelectTimeMode = {};
@@ -100,11 +100,17 @@ function TimerPage(props) {
         }
       } else {
         copy("longBreak");
-        Time.longBreakInterval = 4;
+        Time.longBreakInterval = 7;
         SelectBreak = true;
         UpdateTime();
       }
     }
+  }
+
+  function clickNext() {
+    SelectTimeMode.minutes = 0;
+    SelectTimeMode.seconds = 0;
+    checkingTime();
   }
 
   function Ticking() {
@@ -117,7 +123,7 @@ function TimerPage(props) {
 
   function newMinut() {
     SelectTimeMode.minutes = SelectTimeMode.minutes - 1;
-    SelectTimeMode.seconds = 59;
+    SelectTimeMode.seconds = 10;
     TotalTime = TotalTime + 1;
   }
 
@@ -136,17 +142,19 @@ function TimerPage(props) {
     }
   }
 
-  function openSettings(e) {
-    if (e.target.checked) {
-      SettingsOpen = true;
-      Pausing();
-      MainBlock.current.style.display = "none";
-      document.getElementById("settingsMenu").style.display = "block";
-    } else {
-      SettingsOpen = false;
-      MainBlock.current.style.display = "block";
-      document.getElementById("settingsMenu").style.display = "none";
-    }
+  function openSettings() {
+    SettingsOpen = true;
+    Pausing();
+    MainBlock.current.style.display = "none";
+    document.getElementById("settingsMenu").style.display = "block";
+    SelectModePomodoro();
+  }
+
+  function closeSettings() {
+    SettingsOpen = false;
+    document.getElementById("settingsMenu").style.display = "none";
+    MainBlock.current.style.display = "block";
+    ReadTime();
   }
 
   function changeTimer() {
@@ -179,7 +187,6 @@ function TimerPage(props) {
     Time.workTime.minutes = UserFullData.userTimeSettings.workTime;
     Time.shortBreak.minutes = UserFullData.userTimeSettings.shortBreak;
     Time.longBreak.minutes = UserFullData.userTimeSettings.longBreak;
-
     copy("workTime");
     UpdateTime();
   }
@@ -206,6 +213,37 @@ function TimerPage(props) {
     document.getElementById("inputSettingsPomodoro").value = 40;
     document.getElementById("inputSettingsShortBreak").value = 10;
     document.getElementById("inputSettingsLongBreak").value = 20;
+  }
+
+  function clickPlusSetting(e) {
+    if (e.target.classList.contains("plusWork")) {
+      settingWorkTime.current = settingWorkTime.current + 1;
+      document.getElementById("inputSettingsPomodoro").value =
+        settingWorkTime.current;
+    } else if (e.target.classList.contains("plusShort")) {
+      settingShortBreak.current = settingShortBreak.current + 1;
+      document.getElementById("inputSettingsShortBreak").value =
+        settingShortBreak.current;
+    } else if (e.target.classList.contains("plusLong")) {
+      settingLongBreak.current = settingLongBreak.current + 1;
+      document.getElementById("inputSettingsLongBreak").value =
+        settingLongBreak.current;
+    }
+  }
+  function clickMinusSetting(e) {
+    if (e.target.classList.contains("minusWork")) {
+      settingWorkTime.current = settingWorkTime.current - 1;
+      document.getElementById("inputSettingsPomodoro").value =
+        settingWorkTime.current;
+    } else if (e.target.classList.contains("minusShort")) {
+      settingShortBreak.current = settingShortBreak.current - 1;
+      document.getElementById("inputSettingsShortBreak").value =
+        settingShortBreak.current;
+    } else if (e.target.classList.contains("minusLong")) {
+      settingLongBreak.current = settingLongBreak.current - 1;
+      document.getElementById("inputSettingsLongBreak").value =
+        settingLongBreak.current;
+    }
   }
 
   ReadTime();
@@ -241,66 +279,104 @@ function TimerPage(props) {
             Пауза&nbsp;
           </button>
         </div>
-        <div className="ButtonSettings">
-          <label for="settingsButton">
-            <img
-              alt="settings"
-              src={require("./settings/setting.svg").default}
-            ></img>
-          </label>
-          <input
-            type="checkbox"
-            id="settingsButton"
-            onChange={openSettings}
-          ></input>
+        <div className="ButtonSettings" onClick={openSettings}>
+          <img
+            alt="settings"
+            src={require("./settings/setting.svg").default}
+          ></img>
         </div>
-        <div className="NextText">Следующее: </div>
+        <div className="NextText" onClick={clickNext}>
+          Следующее{" "}
+        </div>
         <div className="clearButton" onClick={ClickClearTime}>
           Сброс
         </div>
       </div>
 
-      <div id="settingsMenu" style={{ display: "none" }}>
-        <input //на все инпуты времени ограничить ввод числа больше 61, или хотя бы сделать попап предупреждение
-          className={style.inputTimeSettings}
-          id="inputSettingsPomodoro"
-          placeholder="work time"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingWorkTime.current = e.target.value;
-          }}
-        ></input>
-        <input
-          className={style.inputTimeSettings}
-          id="inputSettingsShortBreak"
-          placeholder="ShortBreak"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingShortBreak.current = e.target.value;
-          }}
-        ></input>
-        <input
-          className={style.inputTimeSettings}
-          id="inputSettingsLongBreak"
-          placeholder="LongBreak"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingLongBreak.current = e.target.value;
-          }}
-        ></input>
+      <div
+        id="settingsMenu"
+        className="settingsMenu"
+        style={{ display: "none" }}
+      >
+        <div className="buttonClose" onClick={closeSettings}>
+          <img src={require("./settings/settingback.svg").default} alt="" />
+        </div>
+        <div className="inputWork inputSettings">
+          <label className="label" for="inputSettingsPomodoro">
+            Время работы
+          </label>
+          <input
+            className={style.inputTimeSettings}
+            id="inputSettingsPomodoro"
+            placeholder="work time"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingWorkTime.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusWork" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusWork" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+        <div className="inputShort inputSettings">
+          <label className="label" for="inputSettingsShortBreak">
+            Короткий перерыв
+          </label>
+          <input
+            className={style.inputTimeSettings}
+            id="inputSettingsShortBreak"
+            placeholder="ShortBreak"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingShortBreak.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusShort" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusShort" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+        <div className="inputLong inputSettings">
+          <label className="label" for="inputSettingsLongBreak">
+            Длинный перерыв
+          </label>
+          <input
+            className={style.inputTimeSettings}
+            id="inputSettingsLongBreak"
+            placeholder="LongBreak"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingLongBreak.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusLong" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusLong" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+
         <div>
           mode: <button onClick={SelectModePomodoro}> pomodoro</button>
         </div>
         <div>
           mode: <button onClick={SelectModeLongpom}> longpom</button>
         </div>
-        <button onClick={changeTimer}>применить</button>
+        <button onClick={changeTimer} className="saveButton">
+          Сохранить
+        </button>
       </div>
     </div>
   );
