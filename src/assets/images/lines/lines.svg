@@ -1,0 +1,44 @@
+<svg width="2009" height="242" viewBox="0 0 2009 242" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_236_818)" filter="url(#filter0_d_236_818)">
+<path d="M80 140L80 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1680 140L1680 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M480 140L480 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M880 140L880 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1280 140L1280 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M160 140L160 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1760 140L1760 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M560 140L560 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M960 140L960 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1360 140L1360 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M240 140L240 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1840 140L1840 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M640 140L640 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1040 140L1040 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1440 140L1440 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M320 140L320 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1920 140L1920 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M720 140L720 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1120 140L1120 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1520 140L1520 707" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M400 12L400 579" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M2000 12L2000 579" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M800 12L800 579" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1200 12L1200 579" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+<path d="M1600 12L1600 579" stroke="white" stroke-opacity="0.3" stroke-width="10" stroke-linecap="round"/>
+</g>
+<defs>
+<filter id="filter0_d_236_818" x="-4" y="0" width="2013" height="242" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="4"/>
+<feGaussianBlur stdDeviation="2"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_236_818"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_236_818" result="shape"/>
+</filter>
+<clipPath id="clip0_236_818">
+<rect width="2005" height="234" fill="white"/>
+</clipPath>
+</defs>
+</svg>

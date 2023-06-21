@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import style from "./TimerPage.module.css";
+import style from "./timerPage.css";
 
 function TimerPage(props) {
   const { UserFullData } = props;
@@ -19,6 +19,8 @@ function TimerPage(props) {
   let Minutes = React.createRef();
   let Seconds = React.createRef();
   let Button = React.createRef();
+  let ButtonStop = React.createRef();
+  let MainBlock = React.createRef();
   let SettingsOpen = false;
 
   const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
@@ -30,25 +32,7 @@ function TimerPage(props) {
     localStorage.setItem("user", JSON.stringify(UserFullData));
   }
 
-  function HandlerSelectMode(mode) {
-    copy(mode);
-    SelectBreak = false;
-    UpdateTime();
-    Button.current.textContent = "start";
-    Button.current.dataset.action = "start";
-    Pausing();
-  }
-
-  function HandleClickMods(e) {
-    if (e.target.dataset.mode === "workTime") {
-      HandlerSelectMode("workTime");
-    } else if (e.target.dataset.mode === "shortBreak") {
-      HandlerSelectMode("shortBreak");
-      Pausing();
-    } else if (e.target.dataset.mode === "longBreak") {
-      HandlerSelectMode("longBreak");
-    }
-  } //сократить
+  //сократить
 
   function copy(mode) {
     if (mode === "workTime") {
@@ -64,14 +48,20 @@ function TimerPage(props) {
     const action = e.target;
     console.log(!SettingsOpen);
     if (!SettingsOpen) {
-      if (action.dataset.action === "start") {
-        e.target.textContent = "pause";
-        action.dataset.action = "pause";
-
+      if (
+        action.dataset.action === "start" &&
+        Button.current.classList.contains("ButtonStart")
+      ) {
+        e.target.classList.add("ButtonStop");
+        e.target.classList.remove("ButtonStart");
+        ButtonStop.current.classList.add("ButtonStart");
+        ButtonStop.current.classList.remove("ButtonStop");
         Ticking();
       } else if (action.dataset.action === "pause") {
-        e.target.textContent = "start";
-        action.dataset.action = "start";
+        e.target.classList.add("ButtonStart");
+        e.target.classList.remove("ButtonStop");
+        ButtonStop.current.classList.add("ButtonStop");
+        ButtonStop.current.classList.remove("ButtonStart");
         Pausing();
       }
     } else {
@@ -92,8 +82,10 @@ function TimerPage(props) {
   function checkingTime() {
     if (SelectTimeMode.minutes === 0 && SelectTimeMode.seconds === 0) {
       Pausing();
-      Button.current.textContent = "start";
-      Button.current.dataset.action = "start";
+      Button.current.classList.add("ButtonStart");
+      Button.current.classList.remove("ButtonStop");
+      ButtonStop.current.classList.add("ButtonStop");
+      ButtonStop.current.classList.remove("ButtonStart");
       if (Time.longBreakInterval !== 0) {
         Time.longBreakInterval = Time.longBreakInterval - 1;
         UpdateTime();
@@ -127,20 +119,13 @@ function TimerPage(props) {
     SelectTimeMode.minutes = SelectTimeMode.minutes - 1;
     SelectTimeMode.seconds = 59;
     TotalTime = TotalTime + 1;
-    // AddVallue(TotalTime);
   }
 
-  // function AddVallue(TotalTime) { //позже реализуем, пока лишнее
-  //   for (let user of users) {
-  //     if (UserData.selectedUser.Name === user.Name) {
-  //       user.TotalTime = TotalTime;
-  //     }
-  //   }
-  // }
-
   function Pausing() {
-    Button.current.textContent = "start";
-    Button.current.dataset.action = "start";
+    Button.current.classList.add("ButtonStart");
+    Button.current.classList.remove("ButtonStop");
+    ButtonStop.current.classList.add("ButtonStop");
+    ButtonStop.current.classList.remove("ButtonStart");
     clearInterval(tickingInterval);
   }
 
@@ -149,15 +134,17 @@ function TimerPage(props) {
       document.getElementById("Minutes").textContent = SelectTimeMode.minutes;
       document.getElementById("Seconds").textContent = SelectTimeMode.seconds;
     }
-  } //переписать на верстке, пока хз как
+  }
 
   function openSettings(e) {
     if (e.target.checked) {
       SettingsOpen = true;
       Pausing();
+      MainBlock.current.style.display = "none";
       document.getElementById("settingsMenu").style.display = "block";
     } else {
       SettingsOpen = false;
+      MainBlock.current.style.display = "block";
       document.getElementById("settingsMenu").style.display = "none";
     }
   }
@@ -165,6 +152,7 @@ function TimerPage(props) {
   function changeTimer() {
     Pausing();
     SettingsOpen = false;
+    MainBlock.current.style.display = "block";
     if (
       settingWorkTime.current < 61 &&
       settingShortBreak.current < 61 &&
@@ -196,6 +184,12 @@ function TimerPage(props) {
     UpdateTime();
   }
 
+  function ClickClearTime() {
+    Pausing();
+    LocalStorageSave(25, 5, 15);
+    ReadTime();
+  }
+
   function SelectModePomodoro() {
     settingWorkTime.current = 25;
     settingShortBreak.current = 5;
@@ -203,7 +197,6 @@ function TimerPage(props) {
     document.getElementById("inputSettingsPomodoro").value = 25; //тоже переписать, пока хз
     document.getElementById("inputSettingsShortBreak").value = 5;
     document.getElementById("inputSettingsLongBreak").value = 15;
-    LocalStorageSave(25, 5, 15);
   }
 
   function SelectModeLongpom() {
@@ -213,37 +206,60 @@ function TimerPage(props) {
     document.getElementById("inputSettingsPomodoro").value = 40;
     document.getElementById("inputSettingsShortBreak").value = 10;
     document.getElementById("inputSettingsLongBreak").value = 20;
-    LocalStorageSave(40, 10, 20);
   }
 
   ReadTime();
   copy("workTime");
 
   return (
-    <>
-      <div id="js-mode-buttons" onClick={HandleClickMods}>
-        <button data-mode="workTime">WorkTime&nbsp;</button>
-        <button data-mode="shortBreak">ShortBreak&nbsp;</button>
-        <button data-mode="longBreak">LongBreak</button>
+    <div className="TimerBlock">
+      <div className="mainBlock" ref={MainBlock}>
+        <div id="js-clock" className="Clock">
+          <span id="Minutes" className="minutes" ref={Minutes}>
+            {Number(settingWorkTime.current)}
+          </span>
+          <span>:</span>
+          <span id="Seconds" className="seconds" ref={Seconds}>
+            {SelectTimeMode.seconds}
+          </span>
+        </div>
+        <div className="Buttons">
+          <button
+            data-action="start"
+            className="ButtonStart"
+            ref={Button}
+            onClick={StartTimer}
+          >
+            Старт&nbsp;
+          </button>
+          <button
+            data-action="pause"
+            className="ButtonStop"
+            ref={ButtonStop}
+            onClick={StartTimer}
+          >
+            Пауза&nbsp;
+          </button>
+        </div>
+        <div className="ButtonSettings">
+          <label for="settingsButton">
+            <img
+              alt="settings"
+              src={require("./settings/setting.svg").default}
+            ></img>
+          </label>
+          <input
+            type="checkbox"
+            id="settingsButton"
+            onChange={openSettings}
+          ></input>
+        </div>
+        <div className="NextText">Следующее: </div>
+        <div className="clearButton" onClick={ClickClearTime}>
+          Сброс
+        </div>
       </div>
-      <div id="js-clock">
-        <span id="Minutes" className="minutes" ref={Minutes}>
-          {Number(settingWorkTime.current)}
-        </span>
-        <span>:</span>
-        <span id="Seconds" className="seconds" ref={Seconds}>
-          {SelectTimeMode.seconds}
-        </span>
-      </div>
-      <button data-action="start" ref={Button} onClick={StartTimer}>
-        start&nbsp;
-      </button>
-      <button onClick={openSettings}>Настройки</button>
-      <input
-        type="checkbox"
-        id="settingsButton"
-        onChange={openSettings}
-      ></input>
+
       <div id="settingsMenu" style={{ display: "none" }}>
         <input //на все инпуты времени ограничить ввод числа больше 61, или хотя бы сделать попап предупреждение
           className={style.inputTimeSettings}
@@ -286,7 +302,7 @@ function TimerPage(props) {
         </div>
         <button onClick={changeTimer}>применить</button>
       </div>
-    </>
+    </div>
   );
 }
 

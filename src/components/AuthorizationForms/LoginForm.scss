@@ -1,14 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import "../variables";
 
 * {
-  color: #005e6b;
+  color: $-text-main-color;
 }
 
 .LoginForm {
   padding: 30px 40px;
-  background: #eaffff;
+  background: $-bg-second-color;
   border-radius: 20px;
+  margin-top: 228px;
   display: flex;
+  letter-spacing: 1px;
   animation-duration: 0.5s;
   animation-name: LoginForm;
   flex-direction: column;
@@ -33,12 +36,12 @@
     line-height: 19px;
   }
   .input {
-    background: #649ba8;
-    border-radius: 0px 20px;
+    background: $-bg-light-color;
+    border-radius: 10px;
     width: 420px;
     height: 40px;
     padding-left: 25px;
-    color: #fff;
+    color: $-text-main-color;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -47,24 +50,23 @@
     padding-right: 25px;
   }
   .input::placeholder {
-    color: rgba(180, 180, 180, 0.8);
+    color: $-text-placeholder-color;
   }
   .button {
     margin-top: 100px;
-    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
-    border-radius: 0px 20px;
+    background: $-bg-button-color;
+    border-radius: 10px;
     width: 420px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 51px;
-
     font-family: "Roboto";
     font-style: normal;
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    color: #ffffff;
+    color: $-text-second-color;
   }
   .link {
     text-align: right;
@@ -79,71 +81,5 @@
 @keyframes LoginForm {
   from {
     transform: scale(97%);
-    margin-top: 30px;
-  }
-}
-.petal1 {
-  animation-duration: 2.5s;
-  animation-name: petal1;
-}
-
-@keyframes petal1 {
-  from {
-    transform: rotate(-50deg);
-  }
-}
-
-.petal2 {
-  animation-duration: 2.5s;
-  animation-name: petal2;
-}
-@keyframes petal2 {
-  from {
-    transform: rotate(50deg);
-  }
-}
-.petal3 {
-  animation-duration: 2.5s;
-  animation-name: petal3;
-}
-@keyframes petal3 {
-  from {
-    transform: rotate(-50deg);
-  }
-}
-.petal4 {
-  animation-duration: 2.5s;
-  animation-name: petal4;
-}
-@keyframes petal4 {
-  from {
-    transform: rotate(-50deg);
-  }
-}
-.petal5 {
-  animation-duration: 2.5s;
-  animation-name: petal5;
-}
-@keyframes petal5 {
-  from {
-    transform: rotate(-50deg);
-  }
-}
-.petal6 {
-  animation-duration: 2.5s;
-  animation-name: petal6;
-}
-@keyframes petal6 {
-  from {
-    transform: rotate(-50deg);
-  }
-}
-.petal7 {
-  animation-duration: 2.5s;
-  animation-name: petal7;
-}
-@keyframes petal7 {
-  from {
-    transform: rotate(-50deg);
   }
 }

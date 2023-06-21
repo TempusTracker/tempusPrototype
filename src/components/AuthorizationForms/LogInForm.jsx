@@ -45,7 +45,9 @@ function LogInForm(props) {
     <>
       <form className="LoginForm" action="">
         <header className="title">Войти</header>
-        <label className="label">Имя пользователя</label>
+        <label for="InputLoginL" className="label">
+          Имя пользователя
+        </label>
         <input
           onChange={(e) => {
             setLogin(e.target.value);
@@ -55,7 +57,9 @@ function LogInForm(props) {
           placeholder="Login"
           className="input"
         />
-        <label className="label">Пароль</label>
+        <label for="InputPassL" className="label">
+          Пароль
+        </label>
         <input
           className="input"
           onChange={(e) => {

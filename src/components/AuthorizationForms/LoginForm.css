@@ -1,12 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 * {
-  color: #005e6b; }
+  color: #e9d3c6; }
 
 .LoginForm {
   padding: 30px 40px;
-  background: #eaffff;
+  background: #23302b;
   border-radius: 20px;
+  margin-top: 228px;
   display: flex;
+  letter-spacing: 1px;
   animation-duration: 0.5s;
   animation-name: LoginForm;
   flex-direction: column; }
@@ -29,12 +31,12 @@
     font-size: 16px;
     line-height: 19px; }
   .LoginForm .input {
-    background: #649ba8;
-    border-radius: 0px 20px;
+    background: #2e3935;
+    border-radius: 10px;
     width: 420px;
     height: 40px;
     padding-left: 25px;
-    color: #fff;
+    color: #e9d3c6;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
@@ -45,8 +47,8 @@
     color: rgba(180, 180, 180, 0.8); }
   .LoginForm .button {
     margin-top: 100px;
-    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
-    border-radius: 0px 20px;
+    background: #e9d3c6;
+    border-radius: 10px;
     width: 420px;
     display: flex;
     justify-content: center;
@@ -57,7 +59,7 @@
     font-weight: 500;
     font-size: 20px;
     line-height: 23px;
-    color: #ffffff; }
+    color: #23302b; }
   .LoginForm .link {
     text-align: right;
     margin-top: 5px;
@@ -69,56 +71,6 @@
 
 @keyframes LoginForm {
   from {
-    transform: scale(97%);
-    margin-top: 30px; } }
-.petal1 {
-  animation-duration: 2.5s;
-  animation-name: petal1; }
-
-@keyframes petal1 {
-  from {
-    transform: rotate(-50deg); } }
-.petal2 {
-  animation-duration: 2.5s;
-  animation-name: petal2; }
-
-@keyframes petal2 {
-  from {
-    transform: rotate(50deg); } }
-.petal3 {
-  animation-duration: 2.5s;
-  animation-name: petal3; }
-
-@keyframes petal3 {
-  from {
-    transform: rotate(-50deg); } }
-.petal4 {
-  animation-duration: 2.5s;
-  animation-name: petal4; }
-
-@keyframes petal4 {
-  from {
-    transform: rotate(-50deg); } }
-.petal5 {
-  animation-duration: 2.5s;
-  animation-name: petal5; }
-
-@keyframes petal5 {
-  from {
-    transform: rotate(-50deg); } }
-.petal6 {
-  animation-duration: 2.5s;
-  animation-name: petal6; }
-
-@keyframes petal6 {
-  from {
-    transform: rotate(-50deg); } }
-.petal7 {
-  animation-duration: 2.5s;
-  animation-name: petal7; }
-
-@keyframes petal7 {
-  from {
-    transform: rotate(-50deg); } }
+    transform: scale(97%); } }
 
 /*# sourceMappingURL=LoginForm.css.map */

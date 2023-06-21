@@ -1,16 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+@import "../variables";
 
 .RegistrationForm {
   padding: 30px 40px 20px 40px;
-  background: #eaffff;
+  background: $-bg-second-color;
   border-radius: 20px;
   margin: 0 auto;
   animation-duration: 0.5s;
   animation-name: RegistrationForm;
   display: flex;
+  margin-top: 150px;
+  letter-spacing: 1px;
   flex-direction: column;
   .title {
-    color: #005e6b;
+    color: $-text-main-color;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
@@ -26,13 +29,13 @@
     font-size: 16px;
     line-height: 19px;
     text-align: left;
-    color: #005e6b;
+    color: $-text-main-color;
   }
   .input {
     width: 420px;
     margin-top: 5px;
-    background: #649ba8;
-    border-radius: 0px 20px;
+    background: $-bg-light-color;
+    border-radius: 10px;
     padding: 8px;
     padding-left: 25px;
     padding-right: 25px;
@@ -41,10 +44,10 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
-    color: #ffffff;
+    color: $-text-main-color;
   }
   .input::placeholder {
-    color: rgba(180, 180, 180, 0.8);
+    color: $-text-placeholder-color;
   }
 
   .haveTeam {
@@ -57,7 +60,7 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-      color: #068fa7;
+      color: $-text-main-color;
       margin-top: 10px;
     }
     input {
@@ -66,7 +69,7 @@
   }
   .button {
     margin-top: 60px;
-    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
+    background: $-bg-button-color;
     border-radius: 0px 20px;
     padding: 14px;
     font-family: "Roboto";
@@ -75,7 +78,7 @@
     font-size: 20px;
     line-height: 23px;
     width: 420px;
-    color: #ffffff;
+    color: $-text-second-color;
   }
   .link {
     text-align: right;
@@ -85,7 +88,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    color: #068fa7;
+    color: $-text-main-color;
   }
 
   .inputCode {
@@ -103,7 +106,7 @@
     font-size: 12px;
     line-height: 14px;
     margin-top: 36px;
-    color: #a7a7a7;
+    color: $-text-third-color;
     text-align: left;
     a {
       font-family: "Roboto";
@@ -111,7 +114,7 @@
       font-weight: 400;
       font-size: 12px;
       line-height: 14px;
-      color: #068fa7;
+      color: $-text-main-color;
     }
   }
 }
@@ -119,6 +122,5 @@
 @keyframes RegistrationForm {
   from {
     transform: scale(97%);
-    margin-top: 30px;
   }
 }

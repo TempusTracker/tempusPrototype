@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@300;500&display=swap");
+.inputTimeSettings:out-of-range {
+  background-color: rgba(255, 0, 0, 0.25);
+  border: 2px solid red; }
+
+.TimerBlock {
+  background-color: #23302b;
+  padding: 15px;
+  position: relative;
+  width: 510px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -2.74938px 2.74938px 6.87345px rgba(0, 0, 0, 0.25);
+  border-radius: 27.1316px; }
+  .TimerBlock .clearButton {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    border: 0.687345px solid #e9d3c6;
+    border-radius: 44px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 20px;
+    cursor: pointer; }
+  .TimerBlock .Clock {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    font-size: 48.1141px;
+    line-height: 58px;
+    text-align: justify;
+    color: #e9d3c6; }
+  .TimerBlock .ButtonSettings {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 8.5px;
+    background: #161c1a;
+    border-radius: 50%; }
+    .TimerBlock .ButtonSettings input {
+      display: none; }
+  .TimerBlock .Buttons {
+    display: flex;
+    margin-top: 130px;
+    gap: 22px; }
+    .TimerBlock .Buttons .ButtonStart {
+      background: #e9d3c6;
+      color: #23302b;
+      border-radius: 20px;
+      padding: 16px 40px;
+      font-family: "Raleway";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px; }
+    .TimerBlock .Buttons .ButtonStop {
+      border-radius: 20px;
+      padding: 16px 40px;
+      font-family: "Raleway";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+      border: 1px solid #e9d3c6;
+      border-radius: 20px; }
+  .TimerBlock .NextText {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: #2e3935;
+    border-radius: 44px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 300;
+    font-size: 17.871px;
+    line-height: 21px;
+    cursor: pointer; }
+
+/*# sourceMappingURL=timerPage.css.map */

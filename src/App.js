@@ -7,7 +7,6 @@ import SignInForm from "./components/AuthorizationForms/RegistrationForm";
 import ProfilPage from "./components/ProfilPage/ProfilPage";
 import TeamPage from "./components/TeamPage/TeamPage";
 import CreateTeam from "./components/TeamPage/components/CreateTeam";
-import animationPetals from "./assets/animations/animationPetals";
 import { createPopup } from "./assets/animations/popup";
 
 import "./assets/css/null.css";
@@ -96,8 +95,6 @@ function App() {
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   let isUserLocal = JSON.parse(localStorage.getItem("user")) || {};
 
-  animationPetals();
-
   return (
     <BrowserRouter>
       <div className="App null.css">
@@ -181,42 +178,8 @@ function App() {
               className="LogoTempus"
             />
           </div>
-          <div className="BackGround-Petals">
-            <img
-              src={require("./assets/images/petals/petal1.svg").default}
-              alt="petal1"
-              className="petal petal1"
-            />
-            <img
-              src={require("./assets/images/petals/petal2.svg").default}
-              alt="petal2"
-              className="petal petal2"
-            />
-            <img
-              src={require("./assets/images/petals/petal3.svg").default}
-              alt="petal3"
-              className="petal petal3"
-            />
-            <img
-              src={require("./assets/images/petals/petal4.svg").default}
-              alt="petal4"
-              className="petal petal4"
-            />
-            <img
-              src={require("./assets/images/petals/petal5.svg").default}
-              alt="petal5"
-              className="petal petal5"
-            />
-            <img
-              src={require("./assets/images/petals/petal6.svg").default}
-              alt="petal6"
-              className="petal petal6"
-            />
-            <img
-              src={require("./assets/images/petals/petal7.svg").default}
-              alt="petal7"
-              className="petal petal7"
-            />
+          <div className="App-lines">
+            <img className="lines-bg" />
           </div>
         </div>
       </div>

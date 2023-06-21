@@ -1,3 +1,10 @@
+@import "../variables";
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
 .App {
   text-align: center;
 }
@@ -7,55 +14,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   color: white;
 }
 
 .App-backGround {
   position: absolute;
-  background-color: #bbccd4;
+  background-color: $-bg-main-color;
   z-index: -1;
   width: 100vw;
   height: 100vh;
   top: 0;
   overflow: hidden;
-  .petal {
-    position: absolute;
-    z-index: 0;
-  }
   .LogoTempus {
     position: absolute;
     z-index: 1;
     top: 40px;
     left: 120px;
   }
-  .petal1 {
-    bottom: -365px;
-    right: -310px;
+  .App-lines {
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    height: 234px;
+    width: 100%;
+    background: url(/src/assets/images/lines/lines.svg);
+    animation: linesAnimate 1000s infinite linear;
+    background-position: 100000px 0;
   }
-  .petal2 {
-    top: 130px;
-    right: -125px;
-  }
-  .petal3 {
-    top: -230px;
-    right: -35px;
-  }
-  .petal4 {
-    right: 455px;
-    top: -215px;
-  }
-  .petal5 {
-    top: -365px;
-    left: 285px;
-  }
-  .petal6 {
-    top: -190px;
-    left: -190px;
-  }
-  .petal7 {
-    bottom: -150px;
-    left: 165px;
+}
+
+@keyframes linesAnimate {
+  0% {
+    background-position: 0 0;
   }
 }
 

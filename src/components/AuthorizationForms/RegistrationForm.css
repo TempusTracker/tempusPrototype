@@ -1,15 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 .RegistrationForm {
   padding: 30px 40px 20px 40px;
-  background: #eaffff;
+  background: #23302b;
   border-radius: 20px;
   margin: 0 auto;
   animation-duration: 0.5s;
   animation-name: RegistrationForm;
   display: flex;
+  margin-top: 150px;
+  letter-spacing: 1px;
   flex-direction: column; }
   .RegistrationForm .title {
-    color: #005e6b;
+    color: #e9d3c6;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 600;
@@ -24,12 +26,12 @@
     font-size: 16px;
     line-height: 19px;
     text-align: left;
-    color: #005e6b; }
+    color: #e9d3c6; }
   .RegistrationForm .input {
     width: 420px;
     margin-top: 5px;
-    background: #649ba8;
-    border-radius: 0px 20px;
+    background: #2e3935;
+    border-radius: 10px;
     padding: 8px;
     padding-left: 25px;
     padding-right: 25px;
@@ -38,7 +40,7 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 23px;
-    color: #ffffff; }
+    color: #e9d3c6; }
   .RegistrationForm .input::placeholder {
     color: rgba(180, 180, 180, 0.8); }
   .RegistrationForm .haveTeam {
@@ -51,13 +53,13 @@
       font-weight: 400;
       font-size: 16px;
       line-height: 19px;
-      color: #068fa7;
+      color: #e9d3c6;
       margin-top: 10px; }
     .RegistrationForm .haveTeam input {
       display: none; }
   .RegistrationForm .button {
     margin-top: 60px;
-    background: linear-gradient(180deg, #4ebdd4 0%, #008ba3 100%);
+    background: #e9d3c6;
     border-radius: 0px 20px;
     padding: 14px;
     font-family: "Roboto";
@@ -66,7 +68,7 @@
     font-size: 20px;
     line-height: 23px;
     width: 420px;
-    color: #ffffff; }
+    color: #23302b; }
   .RegistrationForm .link {
     text-align: right;
     margin-top: 5px;
@@ -75,7 +77,7 @@
     font-weight: 400;
     font-size: 12px;
     line-height: 14px;
-    color: #068fa7; }
+    color: #e9d3c6; }
   .RegistrationForm .inputCode {
     display: none; }
   .RegistrationForm .labelforteam {
@@ -96,11 +98,10 @@
       font-weight: 400;
       font-size: 12px;
       line-height: 14px;
-      color: #068fa7; }
+      color: #e9d3c6; }
 
 @keyframes RegistrationForm {
   from {
-    transform: scale(97%);
-    margin-top: 30px; } }
+    transform: scale(97%); } }
 
 /*# sourceMappingURL=RegistrationForm.css.map */
