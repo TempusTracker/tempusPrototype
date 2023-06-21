@@ -144,10 +144,10 @@ function TimerPage(props) {
 
   function openSettings() {
     SettingsOpen = true;
-    Pausing();
     MainBlock.current.style.display = "none";
     document.getElementById("settingsMenu").style.display = "block";
     SelectModePomodoro();
+    Pausing();
   }
 
   function closeSettings() {
@@ -181,7 +181,6 @@ function TimerPage(props) {
     }
 
     document.getElementById("settingsMenu").style.display = "none";
-    document.getElementById("settingsButton").checked = false;
   }
   function ReadTime() {
     Time.workTime.minutes = UserFullData.userTimeSettings.workTime;
