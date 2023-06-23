@@ -100,7 +100,8 @@
     border-radius: 0px 30px 30px 30px; }
     .TaskPage .TaskMain .addTask-place {
       border-radius: 0px 0px 30px 30px;
-      background-color: #e9d3c6; }
+      background-color: #e9d3c6;
+      position: relative; }
       .TaskPage .TaskMain .addTask-place form {
         display: flex;
         justify-content: space-between; }

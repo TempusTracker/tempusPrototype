@@ -110,9 +110,9 @@
     .addTask-place {
       border-radius: 0px 0px 30px 30px;
       background-color: $-bg-button-color;
+      position: relative;
       form {
         display: flex;
-
         justify-content: space-between;
         .left {
           width: 100%;
