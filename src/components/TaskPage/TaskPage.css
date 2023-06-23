@@ -96,6 +96,92 @@
     width: 800px;
     background: #23302b;
     height: 800px;
+    overflow: hidden;
     border-radius: 0px 30px 30px 30px; }
+    .TaskPage .TaskMain .addTask-place {
+      border-radius: 0px 0px 30px 30px;
+      background-color: #e9d3c6; }
+      .TaskPage .TaskMain .addTask-place form {
+        display: flex;
+        justify-content: space-between; }
+        .TaskPage .TaskMain .addTask-place form .left {
+          width: 100%;
+          display: flex;
+          flex-direction: column; }
+          .TaskPage .TaskMain .addTask-place form .left input {
+            font-size: 24px;
+            font-family: Roboto;
+            color: #23302b; }
+          .TaskPage .TaskMain .addTask-place form .left input::placeholder {
+            color: rgba(35, 48, 43, 0.5); }
+          .TaskPage .TaskMain .addTask-place form .left textarea {
+            color: #23302b;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            resize: none;
+            margin-top: 30px;
+            height: 500px;
+            padding-right: 30px; }
+          .TaskPage .TaskMain .addTask-place form .left textarea::placeholder {
+            color: rgba(35, 48, 43, 0.5); }
+        .TaskPage .TaskMain .addTask-place form .right {
+          display: flex;
+          flex-direction: column;
+          color: #23302b;
+          gap: 30px; }
+          .TaskPage .TaskMain .addTask-place form .right select {
+            cursor: pointer;
+            color: #23302b;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            width: 200px; }
+            .TaskPage .TaskMain .addTask-place form .right select option {
+              cursor: pointer;
+              color: #23302b;
+              font-size: 24px;
+              font-family: Raleway;
+              font-weight: 300;
+              width: 200px; }
+          .TaskPage .TaskMain .addTask-place form .right input {
+            cursor: pointer;
+            color: #23302b;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            width: 200px; }
+        .TaskPage .TaskMain .addTask-place form button {
+          bottom: 50px;
+          right: 50px;
+          position: absolute;
+          padding: 15px 64px;
+          border-radius: 10px;
+          color: #e9d3c6;
+          font-size: 20px;
+          width: 300px;
+          font-family: Roboto;
+          font-weight: 500;
+          background: #161c1a; }
+    .TaskPage .TaskMain .place {
+      width: 100%;
+      border-radius: 0px 30px 30px 30px;
+      height: 100%;
+      padding: 30px 50px; }
+      .TaskPage .TaskMain .place .task-group .task-title {
+        text-align: left;
+        color: #e9d3c6;
+        margin-top: 20px;
+        font-size: 26px;
+        font-family: Raleway;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        cursor: pointer; }
+      .TaskPage .TaskMain .place .task-group .task-description {
+        text-align: left;
+        display: none;
+        margin-top: 5px; }
 
 /*# sourceMappingURL=TaskPage.css.map */
