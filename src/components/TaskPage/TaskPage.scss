@@ -105,6 +105,110 @@
     width: 800px;
     background: $-bg-second-color;
     height: 800px;
+    overflow: hidden;
     border-radius: 0px 30px 30px 30px;
+    .addTask-place {
+      border-radius: 0px 0px 30px 30px;
+      background-color: $-bg-button-color;
+      position: relative;
+      form {
+        display: flex;
+        justify-content: space-between;
+        .left {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          input {
+            font-size: 24px;
+            font-family: Roboto;
+            color: $-text-second-color;
+          }
+          input::placeholder {
+            color: rgba(35, 48, 43, 0.5);
+          }
+          textarea {
+            color: $-text-second-color;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            resize: none;
+            margin-top: 30px;
+            height: 500px;
+            padding-right: 30px;
+          }
+          textarea::placeholder {
+            color: rgba(35, 48, 43, 0.5);
+          }
+        }
+        .right {
+          display: flex;
+          flex-direction: column;
+          color: #23302b;
+          gap: 30px;
+          select {
+            cursor: pointer;
+            color: #23302b;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            width: 200px;
+            option {
+              cursor: pointer;
+              color: #23302b;
+              font-size: 24px;
+              font-family: Raleway;
+              font-weight: 300;
+              width: 200px;
+            }
+          }
+          input {
+            cursor: pointer;
+            color: #23302b;
+            font-size: 24px;
+            font-family: Raleway;
+            font-weight: 300;
+            width: 200px;
+          }
+        }
+        button {
+          bottom: 50px;
+          right: 50px;
+          position: absolute;
+          padding: 15px 64px;
+          border-radius: 10px;
+          color: #e9d3c6;
+          font-size: 20px;
+          width: 300px;
+          font-family: Roboto;
+          font-weight: 500;
+          background: #161c1a;
+        }
+      }
+    }
+    .place {
+      width: 100%;
+      border-radius: 0px 30px 30px 30px;
+      height: 100%;
+      padding: 30px 50px;
+      .task-group {
+        .task-title {
+          text-align: left;
+          color: $-text-main-color;
+          margin-top: 20px;
+          font-size: 26px;
+          font-family: Raleway;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+        }
+        .task-description {
+          text-align: left;
+          display: none;
+          margin-top: 5px;
+        }
+      }
+    }
   }
 }
