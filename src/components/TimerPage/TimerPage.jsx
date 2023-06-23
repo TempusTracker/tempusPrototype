@@ -123,7 +123,7 @@ function TimerPage(props) {
 
   function newMinut() {
     SelectTimeMode.minutes = SelectTimeMode.minutes - 1;
-    SelectTimeMode.seconds = 10;
+    SelectTimeMode.seconds = 59;
     TotalTime = TotalTime + 1;
   }
 
