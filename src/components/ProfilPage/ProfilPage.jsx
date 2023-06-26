@@ -13,7 +13,7 @@ function ProfilPage(props) {
     window.location.href = "/LoginForm";
     alert("пока");
   }
-  console.log(UserFullData);
+
   return (
     <>
       <label>Profil</label>
