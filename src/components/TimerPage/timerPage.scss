@@ -57,7 +57,7 @@
       justify-content: center;
       z-index: 1;
       align-items: center;
-      animation: progress 60s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
+      animation: progress 1s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
       animation-play-state: paused;
       animation-iteration-count: infinite;
     }

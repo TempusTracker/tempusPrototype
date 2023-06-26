@@ -21,7 +21,9 @@ function TimerPage(props) {
   let Button = React.createRef();
   let ButtonStop = React.createRef();
   let MainBlock = React.createRef();
+  let circle = React.createRef();
   let SettingsOpen = false;
+  let TimeForAnimate = 99999;
 
   const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
   const settingShortBreak = useRef(UserFullData.userTimeSettings.shortBreak);
@@ -56,8 +58,9 @@ function TimerPage(props) {
         e.target.classList.remove("ButtonStart");
         ButtonStop.current.classList.add("ButtonStart");
         ButtonStop.current.classList.remove("ButtonStop");
-        document.querySelector(".circle").style.cssText =
-          "animation-play-state: running;";
+        console.log(TimeForAnimate);
+
+        circle.current.style.cssText = "animation-play-state: running;";
         Ticking();
       } else if (action.dataset.action === "pause") {
         e.target.classList.add("ButtonStart");
@@ -69,7 +72,6 @@ function TimerPage(props) {
     } else {
     }
   }
-
   function classicTick() {
     if (SelectTimeMode.seconds === 0) {
       newMinut();
@@ -94,8 +96,12 @@ function TimerPage(props) {
           copy("shortBreak");
           SelectBreak = true;
           UpdateTime();
+          TimeForAnimate = 60 * SelectTimeMode.minutes;
+          console.log(TimeForAnimate);
         } else if (SelectBreak === true) {
           copy("workTime");
+          TimeForAnimate = 60 * SelectTimeMode.minutes;
+          console.log(TimeForAnimate);
           SelectBreak = false;
           UpdateTime();
         }
@@ -103,6 +109,8 @@ function TimerPage(props) {
         copy("longBreak");
         Time.longBreakInterval = 7;
         SelectBreak = true;
+        TimeForAnimate = 60 * SelectTimeMode.minutes;
+        console.log(TimeForAnimate);
         UpdateTime();
       }
     }
@@ -113,6 +121,7 @@ function TimerPage(props) {
     SelectTimeMode.minutes = 0;
     SelectTimeMode.seconds = 0;
     checkingTime();
+    circle.current.style.cssText = "animation: none;";
   }
 
   function Ticking() {
@@ -130,8 +139,7 @@ function TimerPage(props) {
   }
 
   function Pausing() {
-    document.querySelector(".circle").style.cssText =
-      "animation-play-state: paused;";
+    circle.current.style.cssText = "animation-play-state: paused;";
     Button.current.classList.add("ButtonStart");
     Button.current.classList.remove("ButtonStop");
     ButtonStop.current.classList.add("ButtonStop");
@@ -150,7 +158,6 @@ function TimerPage(props) {
     SettingsOpen = true;
     MainBlock.current.style.display = "none";
     document.getElementById("settingsMenu").style.display = "block";
-    SelectModePomodoro();
     Pausing();
   }
 
@@ -164,7 +171,7 @@ function TimerPage(props) {
   function changeTimer() {
     Pausing();
     SettingsOpen = false;
-    MainBlock.current.style.display = "block";
+
     if (
       settingWorkTime.current < 61 &&
       settingShortBreak.current < 61 &&
@@ -183,8 +190,9 @@ function TimerPage(props) {
       );
       ReadTime();
     }
-
+    MainBlock.current.style.display = "block";
     document.getElementById("settingsMenu").style.display = "none";
+    circle.current.style.cssText = "animation: none;";
   }
   function ReadTime() {
     Time.workTime.minutes = UserFullData.userTimeSettings.workTime;
@@ -196,6 +204,8 @@ function TimerPage(props) {
 
   function ClickClearTime() {
     Pausing();
+    circle.current.style.cssText = "animation: none;";
+    checkingTime();
     LocalStorageSave(25, 5, 15);
     ReadTime();
   }
@@ -256,7 +266,7 @@ function TimerPage(props) {
     <div className="TimerBlock">
       <div className="mainBlock" ref={MainBlock}>
         <div id="js-clock" className="Clock">
-          <div className="circle"></div>
+          <div className="circle" ref={circle}></div>
           <div className="circle-back"></div>
           <div className="time">
             <span id="Minutes" className="minutes" ref={Minutes}>
