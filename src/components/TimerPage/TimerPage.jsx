@@ -56,8 +56,6 @@ function TimerPage(props) {
         e.target.classList.remove("ButtonStart");
         ButtonStop.current.classList.add("ButtonStart");
         ButtonStop.current.classList.remove("ButtonStop");
-        document.querySelector(".circle").style.cssText =
-          "animation-play-state: running;";
         Ticking();
       } else if (action.dataset.action === "pause") {
         e.target.classList.add("ButtonStart");
@@ -76,6 +74,7 @@ function TimerPage(props) {
       UpdateTime();
     } else {
       SelectTimeMode.seconds = SelectTimeMode.seconds - 1;
+
       UpdateTime();
     }
   }
@@ -111,6 +110,7 @@ function TimerPage(props) {
   function clickNext() {
     SelectTimeMode.minutes = 0;
     SelectTimeMode.seconds = 0;
+    checkingTime();
   }
 
   function Ticking() {
@@ -128,8 +128,6 @@ function TimerPage(props) {
   }
 
   function Pausing() {
-    document.querySelector(".circle").style.cssText =
-      "animation-play-state: paused;";
     Button.current.classList.add("ButtonStart");
     Button.current.classList.remove("ButtonStop");
     ButtonStop.current.classList.add("ButtonStop");
@@ -254,17 +252,13 @@ function TimerPage(props) {
     <div className="TimerBlock">
       <div className="mainBlock" ref={MainBlock}>
         <div id="js-clock" className="Clock">
-          <div className="circle"></div>
-          <div className="circle-back"></div>
-          <div className="time">
-            <span id="Minutes" className="minutes" ref={Minutes}>
-              {Number(settingWorkTime.current)}
-            </span>
-            <span>:</span>
-            <span id="Seconds" className="seconds" ref={Seconds}>
-              {SelectTimeMode.seconds}
-            </span>
-          </div>
+          <span id="Minutes" className="minutes" ref={Minutes}>
+            {Number(settingWorkTime.current)}
+          </span>
+          <span>:</span>
+          <span id="Seconds" className="seconds" ref={Seconds}>
+            {SelectTimeMode.seconds}
+          </span>
         </div>
         <div className="Buttons">
           <button
