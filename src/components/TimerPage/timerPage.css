@@ -9,9 +9,10 @@
   position: relative;
   width: 510px;
   height: 800px;
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 80px;
   align-items: center;
   box-shadow: -2.74938px 2.74938px 6.87345px rgba(0, 0, 0, 0.25);
   border-radius: 27.1316px; }
@@ -29,6 +30,7 @@
     line-height: 20px;
     cursor: pointer; }
   .TimerBlock .Clock {
+    padding-top: 2.9em;
     font-family: "Inter";
     font-style: normal;
     font-weight: 400;
@@ -37,7 +39,46 @@
     font-size: 48.1141px;
     line-height: 58px;
     text-align: justify;
+    position: relative;
     color: #e9d3c6; }
+    .TimerBlock .Clock .circle {
+      position: absolute;
+      top: 0px;
+      display: inline-block;
+      width: 7em;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 10px solid #e9d3c6;
+      display: flex;
+      justify-content: center;
+      z-index: 1;
+      align-items: center;
+      animation: progress 60s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
+      animation-play-state: paused;
+      animation-iteration-count: infinite; }
+    .TimerBlock .Clock .circle-back {
+      position: absolute;
+      top: 1px;
+      z-index: 0;
+      display: inline-block;
+      width: 6.95em;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 8px solid #4e5855;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+@keyframes progress {
+  0% {
+    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 50% -21%); }
+  25% {
+    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 121% 50%); }
+  50% {
+    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 50% 121%, 50% 121%); }
+  75% {
+    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, -21% 50%, -21% 50%, -21% 50%); }
+  100% {
+    clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%); } }
   .TimerBlock .ButtonSettings {
     position: absolute;
     top: 20px;
@@ -50,7 +91,7 @@
       display: none; }
   .TimerBlock .Buttons {
     display: flex;
-    margin-top: 130px;
+    margin-top: 280px;
     gap: 22px; }
     .TimerBlock .Buttons .ButtonStart {
       background: #e9d3c6;
