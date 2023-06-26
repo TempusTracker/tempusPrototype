@@ -109,8 +109,10 @@ function TimerPage(props) {
   }
 
   function clickNext() {
+    Pausing();
     SelectTimeMode.minutes = 0;
     SelectTimeMode.seconds = 0;
+    checkingTime();
   }
 
   function Ticking() {
