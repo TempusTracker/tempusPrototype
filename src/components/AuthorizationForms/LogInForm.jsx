@@ -1,7 +1,19 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import styles from "./LoginForm.css";
 import { NavLink } from "react-router-dom";
 import { selectTeam } from "./utils";
+
+import { useDispatch, useSelector } from "react-redux";
+import {
+  getUserStart,
+  getUserSuccess,
+  getUserFailure,
+} from "../store/userSlice";
+import { useNavigate } from "react-router-dom";
+
+import { findUserByUsernameAndPassword } from "../DATA/DATA";
+import LocalStorageSave from "../../localStorage/localStorage";
 
 export let selectUser = {};
 export let TeamsE;
@@ -10,35 +22,31 @@ function LogInForm(props) {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
 
-  const { users, Teams, error } = props;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { Teams, errors, setUser, user } = props;
   TeamsE = Teams;
   function ClearInputs() {
     document.getElementById("InputPassL").value = "";
     document.getElementById("InputLoginL").value = "";
   }
 
-  function LocalStorageSave(user) {
-    if (!localStorage.getItem("user")) {
-      localStorage.setItem("user", JSON.stringify(user));
-    }
-    localStorage.setItem("logged", JSON.stringify(true));
-  }
-
-  console.log(login);
+  const { data, loading, error } = useSelector((state) => state.user);
 
   const LogIn = (e) => {
     e.preventDefault();
-    for (const user of users) {
-      if (user.UserData.Name === login && user.UserData.Password === password) {
-        console.log(user.UserData.Name);
-        LocalStorageSave(user);
-        selectTeam(user.UserData.TeamCode);
-        window.location.href = "/MainPage";
-        ClearInputs();
-      } else {
-        error("Ошибка: пользователь не найден");
-      }
-    }
+    const userData = findUserByUsernameAndPassword(login, password);
+    console.log(userData);
+    if (userData) {
+      // LocalStorageSave(userData);
+      // setUser(userData);
+      dispatch(getUserSuccess(userData));
+      localStorage.setItem("logged", JSON.stringify(true));
+      // window.location.href = "/MainPage";
+      navigate("/MainPage");
+      ClearInputs();
+    } else errors("Ошибка: пользователь не найден");
   };
 
   return (

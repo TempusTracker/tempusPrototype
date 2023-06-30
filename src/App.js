@@ -19,6 +19,9 @@ export let setErrorAnimate = {};
 
 function App() {
   const [error, setError] = useState("");
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("user")) || {}
+  );
   const [users, setUsers] = useState([
     {
       UserData: {
@@ -93,7 +96,16 @@ function App() {
 
   let isTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
-  let isUserLocal = JSON.parse(localStorage.getItem("user")) || {};
+
+  function logUot(e) {
+    e.preventDefault();
+    // localStorage.removeItem("user");
+    localStorage.setItem("logged", JSON.stringify(false));
+    localStorage.setItem("team", JSON.stringify({}));
+    //localStorage.setItem("user", JSON.stringify({}));
+    window.location.href = "/LoginForm";
+    alert("poka!!!!!");
+  }
 
   return (
     <BrowserRouter>
@@ -104,25 +116,18 @@ function App() {
           {isLoggedLocal ? (
             <Routes>
               <Route path="*" Component={NotFound} />
-              <Route
-                exact
-                path="/"
-                element={<MainPage users={users} UserFullData={isUserLocal} />}
-              />
-              <Route
-                path="/MainPage"
-                element={<MainPage UserFullData={isUserLocal} />}
-              />
+              <Route exact path="/" element={<MainPage user={user} />} />
+              <Route path="/MainPage" element={<MainPage user={user} />} />
               <Route
                 path="/MyProfile"
-                element={<ProfilPage UserFullData={isUserLocal}></ProfilPage>}
+                element={<ProfilPage UserFullData={user}></ProfilPage>}
               />
               <Route path="/TaskBar" Component={NotFound} />
               <Route
                 path="/MyTeam"
                 element={
                   <TeamPage
-                    UserFullData={isUserLocal}
+                    UserFullData={user}
                     isTeamLocal={isTeamLocal}
                     users={users}
                     Teams={Teams}
@@ -139,7 +144,12 @@ function App() {
               <Route
                 path="/MainPage"
                 element={
-                  <LogInForm error={setError} users={users} Teams={Teams} />
+                  <LogInForm
+                    error={setError}
+                    Teams={Teams}
+                    setUser={setUser}
+                    user={user}
+                  />
                 }
               />
               <Route path="*" Component={NotFound} />
@@ -147,13 +157,23 @@ function App() {
                 exact
                 path="/"
                 element={
-                  <LogInForm error={setError} users={users} Teams={Teams} />
+                  <LogInForm
+                    error={setError}
+                    Teams={Teams}
+                    setUser={setUser}
+                    user={user}
+                  />
                 }
               />
               <Route
                 path="/LogInForm"
                 element={
-                  <LogInForm error={setError} users={users} Teams={Teams} />
+                  <LogInForm
+                    error={setError}
+                    Teams={Teams}
+                    setUser={setUser}
+                    user={user}
+                  />
                 }
               />
               <Route
@@ -183,6 +203,7 @@ function App() {
           </div>
         </div>
       </div>
+      <button onClick={logUot}>выйти</button>
     </BrowserRouter>
   );
 }
