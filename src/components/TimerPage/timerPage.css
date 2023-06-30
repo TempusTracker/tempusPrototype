@@ -37,8 +37,9 @@
     right: 20px;
     padding: 10px 20px;
     border: 0.687345px solid #e9d3c6;
-    border-radius: 44px;
+    border-radius: 8px;
     font-family: "Raleway";
+    color: #e9d3c6;
     font-style: normal;
     font-weight: 300;
     font-size: 17px;
@@ -55,7 +56,7 @@
     line-height: 58px;
     text-align: justify;
     position: relative;
-    color: #e9d3c6; }
+    color: #fff; }
     .TimerBlock .Clock .circle {
       position: absolute;
       top: 0px;
@@ -98,10 +99,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 8.5px;
-    cursor: pointer;
-    background: #2e3935;
-    border-radius: 50%; }
+    cursor: pointer; }
     .TimerBlock .ButtonSettings input {
       display: none; }
     .TimerBlock .ButtonSettings img {
@@ -116,8 +114,8 @@
     position: relative; }
     .TimerBlock .Buttons .ButtonStart {
       color: #e9d3c6;
-      border-radius: 20px;
-      padding: 16px 40px;
+      border-radius: 10px;
+      padding: 15px 40px;
       font-family: "Raleway";
       font-style: normal;
       animation: all 1s;
@@ -133,8 +131,7 @@
       animation-name: color1; }
     .TimerBlock .Buttons .ButtonStop {
       animation: all 1s;
-      border-radius: 20px;
-      padding: 16px 40px;
+      padding: 15px 40px;
       font-family: "Raleway";
       z-index: 1;
       color: #e9d3c6;
@@ -144,7 +141,7 @@
       width: 155px;
       line-height: 28px;
       border: 1px solid #e9d3c6;
-      border-radius: 20px;
+      border-radius: 10px;
       animation-duration: 1s;
       animation-fill-mode: forwards;
       animation-name: color2; }
@@ -161,7 +158,7 @@
 .Buttonafter {
   content: "";
   left: 0;
-  border-radius: 20px;
+  border-radius: 10px;
   position: absolute;
   width: 155px;
   height: 62px;
@@ -186,7 +183,7 @@
   left: 20px;
   padding: 10px 20px;
   background: #2e3935;
-  border-radius: 44px;
+  border-radius: 8px;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;
@@ -228,9 +225,9 @@
     position: absolute;
     font-size: 17px;
     line-height: 20px;
-    color: #e9d3c6;
+    color: #fff;
     padding: 10px 20px;
-    border: 0.687345px solid #e9d3c6;
+    border: 0.687345px solid #fff;
     border-radius: 44px; }
   .settingsMenu .inputSettings {
     display: flex;

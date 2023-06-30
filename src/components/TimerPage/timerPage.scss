@@ -45,9 +45,10 @@
     bottom: 20px;
     right: 20px;
     padding: 10px 20px;
-    border: 0.687345px solid $-text-main-color;
-    border-radius: 44px;
+    border: 0.687345px solid $-bg-button-color;
+    border-radius: 8px;
     font-family: "Raleway";
+    color: $-bg-button-color;
     font-style: normal;
     font-weight: 300;
     font-size: 17px;
@@ -73,7 +74,7 @@
       width: 7em;
       aspect-ratio: 1;
       border-radius: 50%;
-      border: 10px solid $-text-main-color;
+      border: 10px solid $-bg-button-color;
       display: flex;
       justify-content: center;
       z-index: 1;
@@ -152,10 +153,7 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    padding: 8.5px;
     cursor: pointer;
-    background: $-bg-light-color;
-    border-radius: 50%;
     input {
       display: none;
     }
@@ -174,8 +172,8 @@
     position: relative;
     .ButtonStart {
       color: $-bg-button-color;
-      border-radius: 20px;
-      padding: 16px 40px;
+      border-radius: 10px;
+      padding: 15px 40px;
       font-family: "Raleway";
       font-style: normal;
       animation: all 1s;
@@ -192,18 +190,17 @@
     }
     .ButtonStop {
       animation: all 1s;
-      border-radius: 20px;
-      padding: 16px 40px;
+      padding: 15px 40px;
       font-family: "Raleway";
       z-index: 1;
-      color: $-text-main-color;
+      color: $-bg-button-color;
       font-style: normal;
       font-weight: 500;
       font-size: 24px;
       width: 155px;
       line-height: 28px;
       border: 1px solid $-bg-button-color;
-      border-radius: 20px;
+      border-radius: 10px;
       animation-duration: 1s;
       animation-fill-mode: forwards;
       animation-name: color2;
@@ -213,12 +210,12 @@
         color: $-bg-second-color;
       }
       to {
-        color: $-text-main-color;
+        color: $-bg-button-color;
       }
     }
     @keyframes color1 {
       from {
-        color: $-text-main-color;
+        color: $-bg-button-color;
       }
       to {
         color: $-bg-second-color;
@@ -229,7 +226,7 @@
 .Buttonafter {
   content: "";
   left: 0;
-  border-radius: 20px;
+  border-radius: 10px;
   position: absolute;
   width: 155px;
   height: 62px;
@@ -261,7 +258,7 @@
   left: 20px;
   padding: 10px 20px;
   background: $-bg-light-color;
-  border-radius: 44px;
+  border-radius: 8px;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;

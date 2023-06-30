@@ -76,6 +76,7 @@ function TaskPage() {
       e.target.children[0].style.filter = "invert(50%)";
       e.target.children[1].style.filter = "invert(50%)";
       e.target.children[2].style.filter = "invert(50%)";
+      document.querySelector(".fier1").children[0].style.filter = "invert(50%)";
       document.querySelector(".fier2").children[0].style.filter = "invert(50%)";
       document.querySelector(".fier2").children[1].style.filter = "invert(50%)";
       e.target.classList.add("fill-fier");

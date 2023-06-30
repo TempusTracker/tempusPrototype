@@ -44,7 +44,7 @@
       left: 20px;
     }
     .title {
-      color: #e9d3c6;
+      color: $-text-main-color;
       font-size: 32px;
       font-family: Roboto;
       font-style: normal;
@@ -112,7 +112,7 @@
           cursor: pointer;
           padding: 10px 20px;
           border-radius: 8px;
-          border: 0.687px solid $-text-main-color;
+          border: 0.687px solid $-bg-button-color;
           img {
             pointer-events: none;
           }
@@ -139,7 +139,7 @@
     .button-next {
       padding: 15px 40px;
       border-radius: 10px;
-      border: 1px solid $-text-main-color;
+      border: 1px solid $-bg-button-color;
       width: 140px;
       margin-top: -23px;
       justify-self: end;
@@ -147,6 +147,7 @@
       font-size: 20px;
       font-family: Roboto;
       align-self: end;
+      color: $-bg-button-color;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -159,7 +160,7 @@
 }
 
 .TaskPage {
-  width: 800px;
+  width: 1024px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -250,7 +251,7 @@
   .TaskMain {
     z-index: 10;
     position: absolute;
-    width: 800px;
+    width: 1024px;
     background: $-bg-second-color;
     height: 800px;
     overflow: hidden;

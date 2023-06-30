@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 * {
-  color: #e9d3c6; }
+  color: #fff; }
 
 .LoginForm {
   padding: 30px 40px;
@@ -36,7 +36,7 @@
     width: 420px;
     height: 40px;
     padding-left: 25px;
-    color: #e9d3c6;
+    color: #fff;
     font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
