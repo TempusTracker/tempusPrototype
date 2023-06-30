@@ -1,11 +1,14 @@
 .zOpen {
-  z-index: 3; }
+  z-index: 3;
+}
 
 .zNext {
-  z-index: 2; }
+  z-index: 2;
+}
 
 .zLast {
-  z-index: 1; }
+  z-index: 1;
+}
 
 .TaskPage {
   width: 800px;
@@ -14,175 +17,198 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 850px; }
-  .TaskPage .TaskBar {
-    height: 50px;
-    width: 100%;
-    justify-content: space-between;
-    display: flex;
-    top: -25px;
-    left: 0;
-    z-index: 0;
-    position: absolute; }
-    .TaskPage .TaskBar .mods {
-      display: flex;
-      height: 50px;
-      overflow: hidden; }
-      .TaskPage .TaskBar .mods .modeToDay {
-        width: 200px;
-        font-family: "Raleway";
-        font-style: normal;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        z-index: 3;
-        cursor: pointer;
-        justify-content: center;
-        font-size: 20px;
-        line-height: 23px;
-        color: #e9d3c6;
-        background: #23302b;
-        box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px 30px 0px 0px; }
-      .TaskPage .TaskBar .mods .modeTomorrow {
-        margin-left: -20px;
-        width: 200px;
-        cursor: pointer;
-        font-family: "Raleway";
-        font-style: normal;
-        justify-content: center;
-        display: flex;
-        align-items: center;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 23px;
-        color: #e9d3c6;
-        background: #2e3935;
-        box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px 30px 0px 0px; }
-      .TaskPage .TaskBar .mods .modeAll {
-        width: 200px;
-        margin-left: -20px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: "Raleway";
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 23px;
-        color: #e9d3c6;
-        background: #444e4a;
-        box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
-        border-radius: 20px 30px 0px 0px; }
-    .TaskPage .TaskBar .buttonAdd {
-      background: #e9d3c6;
-      border-radius: 20px 20px 0px 0px;
-      padding: 5px 20px;
-      font-family: "Raleway";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 58px;
-      cursor: pointer;
-      line-height: 68px;
-      position: absolute;
-      right: 0;
-      color: #2e3935;
-      height: 78px; }
-  .TaskPage .TaskMain {
-    z-index: 10;
-    position: absolute;
-    width: 800px;
-    background: #23302b;
-    height: 800px;
-    overflow: hidden;
-    border-radius: 0px 30px 30px 30px; }
-    .TaskPage .TaskMain .addTask-place {
-      border-radius: 0px 0px 30px 30px;
-      background-color: #e9d3c6;
-      position: relative; }
-      .TaskPage .TaskMain .addTask-place form {
-        display: flex;
-        justify-content: space-between; }
-        .TaskPage .TaskMain .addTask-place form .left {
-          width: 100%;
-          display: flex;
-          flex-direction: column; }
-          .TaskPage .TaskMain .addTask-place form .left input {
-            font-size: 24px;
-            font-family: Roboto;
-            color: #23302b; }
-          .TaskPage .TaskMain .addTask-place form .left input::placeholder {
-            color: rgba(35, 48, 43, 0.5); }
-          .TaskPage .TaskMain .addTask-place form .left textarea {
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            resize: none;
-            margin-top: 30px;
-            height: 500px;
-            padding-right: 30px; }
-          .TaskPage .TaskMain .addTask-place form .left textarea::placeholder {
-            color: rgba(35, 48, 43, 0.5); }
-        .TaskPage .TaskMain .addTask-place form .right {
-          display: flex;
-          flex-direction: column;
-          color: #23302b;
-          gap: 30px; }
-          .TaskPage .TaskMain .addTask-place form .right select {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px; }
-            .TaskPage .TaskMain .addTask-place form .right select option {
-              cursor: pointer;
-              color: #23302b;
-              font-size: 24px;
-              font-family: Raleway;
-              font-weight: 300;
-              width: 200px; }
-          .TaskPage .TaskMain .addTask-place form .right input {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px; }
-        .TaskPage .TaskMain .addTask-place form button {
-          bottom: 50px;
-          right: 50px;
-          position: absolute;
-          padding: 15px 64px;
-          border-radius: 10px;
-          color: #e9d3c6;
-          font-size: 20px;
-          width: 300px;
-          font-family: Roboto;
-          font-weight: 500;
-          background: #161c1a; }
-    .TaskPage .TaskMain .place {
-      width: 100%;
-      border-radius: 0px 30px 30px 30px;
-      height: 100%;
-      padding: 30px 50px; }
-      .TaskPage .TaskMain .place .task-group .task-title {
-        text-align: left;
-        color: #e9d3c6;
-        margin-top: 20px;
-        font-size: 26px;
-        font-family: Raleway;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer; }
-      .TaskPage .TaskMain .place .task-group .task-description {
-        text-align: left;
-        display: none;
-        margin-top: 5px; }
+  height: 850px;
+}
+.TaskPage .TaskBar {
+  height: 50px;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  top: -25px;
+  left: 0;
+  z-index: 0;
+  position: absolute;
+}
+.TaskPage .TaskBar .mods {
+  display: flex;
+  height: 50px;
+  overflow: hidden;
+}
+.TaskPage .TaskBar .mods .modeToDay {
+  width: 200px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 20px;
+  line-height: 23px;
+  color: #e9d3c6;
+  background: #23302b;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 30px 0px 0px;
+}
+.TaskPage .TaskBar .mods .modeTomorrow {
+  margin-left: -20px;
+  width: 200px;
+  cursor: pointer;
+  font-family: "Raleway";
+  font-style: normal;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #e9d3c6;
+  background: #2e3935;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 30px 0px 0px;
+}
+.TaskPage .TaskBar .mods .modeAll {
+  width: 200px;
+  margin-left: -20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #e9d3c6;
+  background: #444e4a;
+  box-shadow: 3px 0px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px 30px 0px 0px;
+}
+.TaskPage .TaskBar .buttonAdd {
+  background: #e9d3c6;
+  border-radius: 20px 20px 0px 0px;
+  padding: 5px 20px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 58px;
+  cursor: pointer;
+  line-height: 68px;
+  position: absolute;
+  right: 0;
+  color: #2e3935;
+  height: 78px;
+}
+.TaskPage .TaskMain {
+  z-index: 10;
+  position: absolute;
+  width: 800px;
+  background: #23302b;
+  height: 800px;
+  overflow: hidden;
+  border-radius: 0px 30px 30px 30px;
+}
+.TaskPage .TaskMain .addTask-place {
+  border-radius: 0px 0px 30px 30px;
+  background-color: #e9d3c6;
+  position: relative;
+}
+.TaskPage .TaskMain .addTask-place form {
+  display: flex;
+  justify-content: space-between;
+}
+.TaskPage .TaskMain .addTask-place form .left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.TaskPage .TaskMain .addTask-place form .left input {
+  font-size: 24px;
+  font-family: Roboto;
+  color: #23302b;
+}
+.TaskPage .TaskMain .addTask-place form .left input::placeholder {
+  color: rgba(35, 48, 43, 0.5);
+}
+.TaskPage .TaskMain .addTask-place form .left textarea {
+  color: #23302b;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 300;
+  resize: none;
+  margin-top: 30px;
+  height: 500px;
+  padding-right: 30px;
+}
+.TaskPage .TaskMain .addTask-place form .left textarea::placeholder {
+  color: rgba(35, 48, 43, 0.5);
+}
+.TaskPage .TaskMain .addTask-place form .right {
+  display: flex;
+  flex-direction: column;
+  color: #23302b;
+  gap: 30px;
+}
+.TaskPage .TaskMain .addTask-place form .right select {
+  cursor: pointer;
+  color: #23302b;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 300;
+  width: 200px;
+}
+.TaskPage .TaskMain .addTask-place form .right select option {
+  cursor: pointer;
+  color: #23302b;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 300;
+  width: 200px;
+}
+.TaskPage .TaskMain .addTask-place form .right input {
+  cursor: pointer;
+  color: #23302b;
+  font-size: 24px;
+  font-family: Raleway;
+  font-weight: 300;
+  width: 200px;
+}
+.TaskPage .TaskMain .addTask-place form button {
+  bottom: 50px;
+  right: 50px;
+  position: absolute;
+  padding: 15px 64px;
+  border-radius: 10px;
+  color: #e9d3c6;
+  font-size: 20px;
+  width: 300px;
+  font-family: Roboto;
+  font-weight: 500;
+  background: #161c1a;
+}
+.TaskPage .TaskMain .place {
+  width: 100%;
+  border-radius: 0px 30px 30px 30px;
+  height: 100%;
+  padding: 30px 50px;
+}
+.TaskPage .TaskMain .place .task-group .task-title {
+  text-align: left;
+  color: #e9d3c6;
+  margin-top: 20px;
+  font-size: 26px;
+  font-family: Raleway;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.TaskPage .TaskMain .place .task-group .task-description {
+  text-align: left;
+  display: none;
+  margin-top: 5px;
+}
 
 /*# sourceMappingURL=TaskPage.css.map */

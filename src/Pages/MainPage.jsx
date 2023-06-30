@@ -1,4 +1,5 @@
 import React from "react";
+
 import styles from "./MainPage.css";
 import NavBar from "../Navigation/NavBar";
 import TimerPage from "../components/TimerPage/TimerPage";

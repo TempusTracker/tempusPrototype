@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./TaskPage.css";
+import UserDataTasks from "../DATA/DATA";
 
 function TaskPage() {
   let modeToDay = React.createRef();
@@ -61,54 +62,23 @@ function TaskPage() {
       </div>
       <div className="TaskMain">
         <div ref={modeToDayplace} className="modeToDay-place place">
-          <div className="task-group">
-            <div className="task-title">
-              <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-              <img
-                onClick={openDesc}
-                src={require("../../assets/images/task/open.svg").default}
-                alt=""
-              />
+          {/* {UserDataTasks.AllTasks.map((task) => (
+            <div className="task-group">
+              <div className="task-title">
+                <p onClick={openDesc}>{task.TaskName}</p>
+                <img
+                  onClick={openDesc}
+                  src={require("../../assets/images/task/open.svg").default}
+                  alt=""
+                />
+              </div>
+              <div className="task-description">
+                {task.SubTasks.map((subTask) => (
+                  <div className="task-subtask">{subTask}</div>
+                ))}
+              </div>
             </div>
-            <div className="task-description">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-              nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-              sit ullam eius rem illo laborum non eaque quas culpa deleniti
-              nesciunt aliquid!
-            </div>
-          </div>
-          <div className="task-group">
-            <div className="task-title">
-              <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-              <img
-                onClick={openDesc}
-                src={require("../../assets/images/task/open.svg").default}
-                alt=""
-              />
-            </div>
-            <div className="task-description">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-              nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-              sit ullam eius rem illo laborum non eaque quas culpa deleniti
-              nesciunt aliquid!
-            </div>
-          </div>
-          <div className="task-group">
-            <div className="task-title">
-              <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-              <img
-                onClick={openDesc}
-                src={require("../../assets/images/task/open.svg").default}
-                alt=""
-              />
-            </div>
-            <div className="task-description">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-              nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-              sit ullam eius rem illo laborum non eaque quas culpa deleniti
-              nesciunt aliquid!
-            </div>
-          </div>
+          ))} */}
         </div>
         <div
           ref={modeTomorrowplace}

@@ -1,8 +1,13 @@
 import React, { useRef } from "react";
 import style from "./timerPage.css";
 
+import { useSelector } from "react-redux";
+
 function TimerPage(props) {
   const { UserFullData } = props;
+  console.log(UserFullData);
+  const data = useSelector((state) => state.user.data);
+  console.log(data);
 
   const Time = {
     workTime: { minutes: 25, seconds: 0 },
