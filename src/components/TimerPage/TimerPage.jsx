@@ -20,6 +20,7 @@ function TimerPage(props) {
   let Seconds = React.createRef();
   let Button = React.createRef();
   let ButtonStop = React.createRef();
+  let Buttonafter = React.createRef();
   let MainBlock = React.createRef();
   let circle = React.createRef();
   let SettingsOpen = false;
@@ -58,14 +59,14 @@ function TimerPage(props) {
         e.target.classList.remove("ButtonStart");
         ButtonStop.current.classList.add("ButtonStart");
         ButtonStop.current.classList.remove("ButtonStop");
-        console.log(TimeForAnimate);
-
+        Buttonafter.current.style.cssText = "animation-name: slideinLeft";
         circle.current.style.cssText = "animation-play-state: running;";
         Ticking();
       } else if (action.dataset.action === "pause") {
         e.target.classList.add("ButtonStart");
         e.target.classList.remove("ButtonStop");
         ButtonStop.current.classList.add("ButtonStop");
+        Buttonafter.current.style.cssText = "animation-name: slideinRight";
         ButtonStop.current.classList.remove("ButtonStart");
         Pausing();
       }
@@ -89,6 +90,7 @@ function TimerPage(props) {
       Button.current.classList.remove("ButtonStop");
       ButtonStop.current.classList.add("ButtonStop");
       ButtonStop.current.classList.remove("ButtonStart");
+      Buttonafter.current.style.cssText = "animation-name: slideinRight";
       if (Time.longBreakInterval !== 0) {
         Time.longBreakInterval = Time.longBreakInterval - 1;
         UpdateTime();
@@ -144,34 +146,43 @@ function TimerPage(props) {
     Button.current.classList.remove("ButtonStop");
     ButtonStop.current.classList.add("ButtonStop");
     ButtonStop.current.classList.remove("ButtonStart");
+    Buttonafter.current.style.cssText = "animation-name: slideinRight";
     clearInterval(tickingInterval);
   }
 
   function UpdateTime() {
     if (document.getElementById("Minutes") != null) {
       document.getElementById("Minutes").textContent = SelectTimeMode.minutes;
-      document.getElementById("Seconds").textContent = SelectTimeMode.seconds;
+      if (SelectTimeMode.seconds < 10) {
+        document.getElementById("Seconds").textContent =
+          "0" + SelectTimeMode.seconds;
+      } else {
+        document.getElementById("Seconds").textContent =
+          SelectTimeMode.seconds + "";
+      }
     }
   }
 
   function openSettings() {
     SettingsOpen = true;
-    MainBlock.current.style.display = "none";
-    document.getElementById("settingsMenu").style.display = "block";
+    MainBlock.current.style.cssText = "animation-name: displaynone;";
+    document.getElementById("settingsMenu").style.cssText =
+      "animation-name: displayblock;";
     Pausing();
+    Buttonafter.current.style.cssText = "animation-name: none";
   }
 
   function closeSettings() {
     SettingsOpen = false;
-    document.getElementById("settingsMenu").style.display = "none";
-    MainBlock.current.style.display = "block";
+    document.getElementById("settingsMenu").style.cssText =
+      "animation-name: displaynone;";
+    MainBlock.current.style.cssText = "animation-name: displayblock;";
     ReadTime();
   }
 
   function changeTimer() {
     Pausing();
     SettingsOpen = false;
-
     if (
       settingWorkTime.current < 61 &&
       settingShortBreak.current < 61 &&
@@ -190,9 +201,11 @@ function TimerPage(props) {
       );
       ReadTime();
     }
-    MainBlock.current.style.display = "block";
-    document.getElementById("settingsMenu").style.display = "none";
+    MainBlock.current.style.cssText = "animation-name: displayblock;";
+    document.getElementById("settingsMenu").style.cssText =
+      "animation-name: displaynone;";
     circle.current.style.cssText = "animation: none;";
+    Buttonafter.current.style.cssText = "animation-name: none";
   }
   function ReadTime() {
     Time.workTime.minutes = UserFullData.userTimeSettings.workTime;
@@ -274,7 +287,7 @@ function TimerPage(props) {
             </span>
             <span>:</span>
             <span id="Seconds" className="seconds" ref={Seconds}>
-              {SelectTimeMode.seconds}
+              {SelectTimeMode.seconds}0
             </span>
           </div>
         </div>
@@ -295,6 +308,7 @@ function TimerPage(props) {
           >
             Пауза&nbsp;
           </button>
+          <div className="Buttonafter" ref={Buttonafter}></div>
         </div>
         <div className="ButtonSettings" onClick={openSettings}>
           <img

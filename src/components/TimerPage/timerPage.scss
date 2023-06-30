@@ -6,7 +6,28 @@
   border: 2px solid red;
 }
 
+@keyframes displaynone {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+@keyframes displayblock {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+  }
+}
 .TimerBlock {
+  overflow: hidden;
   background-color: $-bg-second-color;
   padding: 15px;
   position: relative;
@@ -57,7 +78,7 @@
       justify-content: center;
       z-index: 1;
       align-items: center;
-      animation: progress 1s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
+      animation: progress 60s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
       animation-play-state: paused;
       animation-iteration-count: infinite;
     }
@@ -138,51 +159,129 @@
     input {
       display: none;
     }
+    img {
+      transition: all 0.5s;
+    }
+  }
+  .ButtonSettings:hover img {
+    transform: rotate(40deg);
   }
   .Buttons {
     display: flex;
     margin-top: 280px;
     gap: 22px;
+    animation: all 1s;
+    position: relative;
     .ButtonStart {
-      background: $-bg-button-color;
-      color: $-text-second-color;
+      color: $-bg-button-color;
       border-radius: 20px;
       padding: 16px 40px;
       font-family: "Raleway";
       font-style: normal;
+      animation: all 1s;
+      width: 155px;
       font-weight: 500;
+      border: 1px solid $-bg-button-color;
       font-size: 24px;
       line-height: 28px;
+      color: $-bg-second-color;
+      z-index: 1;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-name: color1;
     }
     .ButtonStop {
+      animation: all 1s;
       border-radius: 20px;
       padding: 16px 40px;
       font-family: "Raleway";
+      z-index: 1;
+      color: $-text-main-color;
       font-style: normal;
       font-weight: 500;
       font-size: 24px;
+      width: 155px;
       line-height: 28px;
       border: 1px solid $-bg-button-color;
       border-radius: 20px;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-name: color2;
+    }
+    @keyframes color2 {
+      from {
+        color: $-bg-second-color;
+      }
+      to {
+        color: $-text-main-color;
+      }
+    }
+    @keyframes color1 {
+      from {
+        color: $-text-main-color;
+      }
+      to {
+        color: $-bg-second-color;
+      }
     }
   }
-  .NextText {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    background: $-bg-light-color;
-    border-radius: 44px;
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 17.871px;
-    line-height: 21px;
-    cursor: pointer;
-  }
+}
+.Buttonafter {
+  content: "";
+  left: 0;
+  border-radius: 20px;
+  position: absolute;
+  width: 155px;
+  height: 62px;
+  z-index: 0;
+  background-color: $-bg-button-color;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
 }
 
+@keyframes slideinLeft {
+  from {
+    margin-left: 0;
+  }
+  to {
+    margin-left: calc(100% - 155px);
+  }
+}
+@keyframes slideinRight {
+  from {
+    margin-left: calc(100% - 155px);
+  }
+  to {
+    margin-left: 0;
+  }
+}
+.NextText {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: $-bg-light-color;
+  border-radius: 44px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17.871px;
+  line-height: 21px;
+  cursor: pointer;
+}
+
+.mainBlock {
+  animation-duration: 0.5s;
+  display: displayblock;
+  animation-name: dis;
+  opacity: 1;
+  animation-fill-mode: forwards;
+}
 .settingsMenu {
+  animation-duration: 0.5s;
+  opacity: 0;
+  margin-top: -350px;
+  animation-fill-mode: forwards;
   .buttonClose {
     cursor: pointer;
     border-radius: 50%;
@@ -214,7 +313,7 @@
   .inputSettings {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 0px;
     position: relative;
     .label {
       font-family: "Roboto";

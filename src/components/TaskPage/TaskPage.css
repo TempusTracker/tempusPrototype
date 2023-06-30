@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 .zOpen {
   z-index: 3; }
 
@@ -6,6 +7,131 @@
 
 .zLast {
   z-index: 1; }
+
+.addTask-place {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards; }
+  .addTask-place .addTask-bg {
+    border-radius: 30px;
+    background: #23302b;
+    position: relative;
+    padding: 50px;
+    padding-top: 25px;
+    max-height: 500px;
+    width: 1024px; }
+    .addTask-place .addTask-bg form {
+      display: flex;
+      flex-direction: column; }
+    .addTask-place .addTask-bg .button-back {
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px; }
+    .addTask-place .addTask-bg .title {
+      color: #e9d3c6;
+      font-size: 32px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal; }
+    .addTask-place .addTask-bg .inputs {
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      display: flex;
+      margin-top: 50px;
+      gap: 60px;
+      opacity: 1;
+      flex-direction: column; }
+      .addTask-place .addTask-bg .inputs .wrapper {
+        display: flex;
+        flex-direction: column; }
+        .addTask-place .addTask-bg .inputs .wrapper label {
+          color: #e9d3c6;
+          font-size: 24px;
+          text-align: left;
+          margin-bottom: 10px;
+          font-family: Raleway;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal; }
+        .addTask-place .addTask-bg .inputs .wrapper .input {
+          padding: 12px 15px;
+          border-radius: 15px;
+          width: 50%;
+          background: #2e3935;
+          color: #e9d3c6;
+          font-size: 24px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal; }
+        .addTask-place .addTask-bg .inputs .wrapper .input::placeholder {
+          color: #585858; }
+    .addTask-place .addTask-bg input::-webkit-calendar-picker-indicator {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute; }
+    .addTask-place .addTask-bg .inputs-second {
+      opacity: 0;
+      display: none;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      gap: 30px;
+      flex-direction: column; }
+      .addTask-place .addTask-bg .inputs-second .fiers {
+        display: flex;
+        gap: 4px; }
+        .addTask-place .addTask-bg .inputs-second .fiers .fier {
+          display: flex;
+          gap: 10px;
+          cursor: pointer;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: 0.687px solid #e9d3c6; }
+          .addTask-place .addTask-bg .inputs-second .fiers .fier img {
+            pointer-events: none; }
+        .addTask-place .addTask-bg .inputs-second .fiers .fill-fier {
+          background-color: #e9d3c6; }
+      .addTask-place .addTask-bg .inputs-second .wrapper2 {
+        flex-direction: row;
+        gap: 20px; }
+        .addTask-place .addTask-bg .inputs-second .wrapper2 .secondWrapper {
+          display: flex;
+          width: 162px;
+          flex-direction: column; }
+          .addTask-place .addTask-bg .inputs-second .wrapper2 .secondWrapper input {
+            text-align: center;
+            width: 100%;
+            position: relative; }
+    .addTask-place .addTask-bg .button-next {
+      padding: 15px 40px;
+      border-radius: 10px;
+      border: 1px solid #e9d3c6;
+      width: 140px;
+      margin-top: -23px;
+      justify-self: end;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: Roboto;
+      align-self: end;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal; }
+    .addTask-place .addTask-bg .button-add {
+      width: 254px;
+      margin-top: -74px; }
 
 .TaskPage {
   width: 800px;
@@ -98,73 +224,29 @@
     height: 800px;
     overflow: hidden;
     border-radius: 0px 30px 30px 30px; }
-    .TaskPage .TaskMain .addTask-place {
-      border-radius: 0px 0px 30px 30px;
-      background-color: #e9d3c6;
-      position: relative; }
-      .TaskPage .TaskMain .addTask-place form {
-        display: flex;
-        justify-content: space-between; }
-        .TaskPage .TaskMain .addTask-place form .left {
-          width: 100%;
-          display: flex;
-          flex-direction: column; }
-          .TaskPage .TaskMain .addTask-place form .left input {
-            font-size: 24px;
-            font-family: Roboto;
-            color: #23302b; }
-          .TaskPage .TaskMain .addTask-place form .left input::placeholder {
-            color: rgba(35, 48, 43, 0.5); }
-          .TaskPage .TaskMain .addTask-place form .left textarea {
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            resize: none;
-            margin-top: 30px;
-            height: 500px;
-            padding-right: 30px; }
-          .TaskPage .TaskMain .addTask-place form .left textarea::placeholder {
-            color: rgba(35, 48, 43, 0.5); }
-        .TaskPage .TaskMain .addTask-place form .right {
-          display: flex;
-          flex-direction: column;
-          color: #23302b;
-          gap: 30px; }
-          .TaskPage .TaskMain .addTask-place form .right select {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px; }
-            .TaskPage .TaskMain .addTask-place form .right select option {
-              cursor: pointer;
-              color: #23302b;
-              font-size: 24px;
-              font-family: Raleway;
-              font-weight: 300;
-              width: 200px; }
-          .TaskPage .TaskMain .addTask-place form .right input {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px; }
-        .TaskPage .TaskMain .addTask-place form button {
-          bottom: 50px;
-          right: 50px;
-          position: absolute;
-          padding: 15px 64px;
-          border-radius: 10px;
-          color: #e9d3c6;
-          font-size: 20px;
-          width: 300px;
-          font-family: Roboto;
-          font-weight: 500;
-          background: #161c1a; }
+    .TaskPage .TaskMain .modeToDay-place {
+      background-color: #23302b;
+      animation-duration: 0.5s;
+      display: block;
+      opacity: 1;
+      animation-fill-mode: forwards; }
+    .TaskPage .TaskMain .modeTomorrow-place {
+      opacity: 0;
+      background-color: #2e3935;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards; }
+    .TaskPage .TaskMain .modeAll-place {
+      opacity: 0;
+      background-color: #444e4a;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards; }
     .TaskPage .TaskMain .place {
+      position: absolute;
+      top: 0;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      left: 0;
+      transition: all 0.5s;
       width: 100%;
       border-radius: 0px 30px 30px 30px;
       height: 100%;
@@ -184,5 +266,22 @@
         text-align: left;
         display: none;
         margin-top: 5px; }
+
+@keyframes displaynone {
+  from {
+    display: block;
+    opacity: 1; }
+  to {
+    display: none;
+    opacity: 0;
+    pointer-events: none; } }
+@keyframes displayblock {
+  from {
+    display: none;
+    opacity: 0; }
+  to {
+    display: block;
+    opacity: 1;
+    pointer-events: all; } }
 
 /*# sourceMappingURL=TaskPage.css.map */

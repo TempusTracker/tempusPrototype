@@ -1,4 +1,5 @@
 @import "../variables";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 
 .zOpen {
   z-index: 3;
@@ -8,6 +9,153 @@
 }
 .zLast {
   z-index: 1;
+}
+
+.addTask-place {
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  .addTask-bg {
+    border-radius: 30px;
+    background: #23302b;
+    position: relative;
+    padding: 50px;
+    padding-top: 25px;
+    max-height: 500px;
+    width: 1024px;
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .button-back {
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .title {
+      color: #e9d3c6;
+      font-size: 32px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+    .inputs {
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      display: flex;
+      margin-top: 50px;
+      gap: 60px;
+      opacity: 1;
+      flex-direction: column;
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        label {
+          color: $-text-main-color;
+          font-size: 24px;
+          text-align: left;
+          margin-bottom: 10px;
+          font-family: Raleway;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+        .input {
+          padding: 12px 15px;
+          border-radius: 15px;
+          width: 50%;
+          background: #2e3935;
+          color: $-text-main-color;
+          font-size: 24px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+        .input::placeholder {
+          color: #585858;
+        }
+      }
+    }
+    input::-webkit-calendar-picker-indicator {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      position: absolute;
+    }
+    .inputs-second {
+      opacity: 0;
+      display: none;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      gap: 30px;
+      flex-direction: column;
+      .fiers {
+        display: flex;
+        gap: 4px;
+        .fier {
+          display: flex;
+          gap: 10px;
+          cursor: pointer;
+          padding: 10px 20px;
+          border-radius: 8px;
+          border: 0.687px solid $-text-main-color;
+          img {
+            pointer-events: none;
+          }
+        }
+        .fill-fier {
+          background-color: $-text-main-color;
+        }
+      }
+      .wrapper2 {
+        flex-direction: row;
+        gap: 20px;
+        .secondWrapper {
+          display: flex;
+          width: 162px;
+          flex-direction: column;
+          input {
+            text-align: center;
+            width: 100%;
+            position: relative;
+          }
+        }
+      }
+    }
+    .button-next {
+      padding: 15px 40px;
+      border-radius: 10px;
+      border: 1px solid $-text-main-color;
+      width: 140px;
+      margin-top: -23px;
+      justify-self: end;
+      cursor: pointer;
+      font-size: 20px;
+      font-family: Roboto;
+      align-self: end;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+    .button-add {
+      width: 254px;
+      margin-top: -74px;
+    }
+  }
 }
 
 .TaskPage {
@@ -107,85 +255,33 @@
     height: 800px;
     overflow: hidden;
     border-radius: 0px 30px 30px 30px;
-    .addTask-place {
-      border-radius: 0px 0px 30px 30px;
-      background-color: $-bg-button-color;
-      position: relative;
-      form {
-        display: flex;
-        justify-content: space-between;
-        .left {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          input {
-            font-size: 24px;
-            font-family: Roboto;
-            color: $-text-second-color;
-          }
-          input::placeholder {
-            color: rgba(35, 48, 43, 0.5);
-          }
-          textarea {
-            color: $-text-second-color;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            resize: none;
-            margin-top: 30px;
-            height: 500px;
-            padding-right: 30px;
-          }
-          textarea::placeholder {
-            color: rgba(35, 48, 43, 0.5);
-          }
-        }
-        .right {
-          display: flex;
-          flex-direction: column;
-          color: #23302b;
-          gap: 30px;
-          select {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px;
-            option {
-              cursor: pointer;
-              color: #23302b;
-              font-size: 24px;
-              font-family: Raleway;
-              font-weight: 300;
-              width: 200px;
-            }
-          }
-          input {
-            cursor: pointer;
-            color: #23302b;
-            font-size: 24px;
-            font-family: Raleway;
-            font-weight: 300;
-            width: 200px;
-          }
-        }
-        button {
-          bottom: 50px;
-          right: 50px;
-          position: absolute;
-          padding: 15px 64px;
-          border-radius: 10px;
-          color: #e9d3c6;
-          font-size: 20px;
-          width: 300px;
-          font-family: Roboto;
-          font-weight: 500;
-          background: #161c1a;
-        }
-      }
+    .modeToDay-place {
+      background-color: #23302b;
+      animation-duration: 0.5s;
+      display: block;
+      opacity: 1;
+      animation-fill-mode: forwards;
     }
+    .modeTomorrow-place {
+      opacity: 0;
+      background-color: #2e3935;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+    .modeAll-place {
+      opacity: 0;
+      background-color: #444e4a;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+    }
+
     .place {
+      position: absolute;
+      top: 0;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      left: 0;
+      transition: all 0.5s;
       width: 100%;
       border-radius: 0px 30px 30px 30px;
       height: 100%;
@@ -210,5 +306,28 @@
         }
       }
     }
+  }
+}
+
+@keyframes displaynone {
+  from {
+    display: block;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+@keyframes displayblock {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: block;
+    opacity: 1;
+    pointer-events: all;
   }
 }

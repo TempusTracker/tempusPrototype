@@ -3,7 +3,22 @@
   background-color: rgba(255, 0, 0, 0.25);
   border: 2px solid red; }
 
+@keyframes displaynone {
+  from {
+    display: block;
+    opacity: 1; }
+  to {
+    display: none;
+    opacity: 0; } }
+@keyframes displayblock {
+  from {
+    display: none;
+    opacity: 0; }
+  to {
+    display: block;
+    opacity: 1; } }
 .TimerBlock {
+  overflow: hidden;
   background-color: #23302b;
   padding: 15px;
   position: relative;
@@ -89,99 +104,163 @@
     border-radius: 50%; }
     .TimerBlock .ButtonSettings input {
       display: none; }
+    .TimerBlock .ButtonSettings img {
+      transition: all 0.5s; }
+  .TimerBlock .ButtonSettings:hover img {
+    transform: rotate(40deg); }
   .TimerBlock .Buttons {
     display: flex;
     margin-top: 280px;
-    gap: 22px; }
+    gap: 22px;
+    animation: all 1s;
+    position: relative; }
     .TimerBlock .Buttons .ButtonStart {
-      background: #e9d3c6;
-      color: #23302b;
+      color: #e9d3c6;
       border-radius: 20px;
       padding: 16px 40px;
       font-family: "Raleway";
       font-style: normal;
+      animation: all 1s;
+      width: 155px;
       font-weight: 500;
-      font-size: 24px;
-      line-height: 28px; }
-    .TimerBlock .Buttons .ButtonStop {
-      border-radius: 20px;
-      padding: 16px 40px;
-      font-family: "Raleway";
-      font-style: normal;
-      font-weight: 500;
+      border: 1px solid #e9d3c6;
       font-size: 24px;
       line-height: 28px;
+      color: #23302b;
+      z-index: 1;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-name: color1; }
+    .TimerBlock .Buttons .ButtonStop {
+      animation: all 1s;
+      border-radius: 20px;
+      padding: 16px 40px;
+      font-family: "Raleway";
+      z-index: 1;
+      color: #e9d3c6;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      width: 155px;
+      line-height: 28px;
       border: 1px solid #e9d3c6;
-      border-radius: 20px; }
-  .TimerBlock .NextText {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    background: #2e3935;
-    border-radius: 44px;
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 300;
-    font-size: 17.871px;
-    line-height: 21px;
-    cursor: pointer; }
-
-.settingsMenu .buttonClose {
-  cursor: pointer;
-  border-radius: 50%;
+      border-radius: 20px;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-name: color2; }
+@keyframes color2 {
+  from {
+    color: #23302b; }
+  to {
+    color: #e9d3c6; } }
+@keyframes color1 {
+  from {
+    color: #e9d3c6; }
+  to {
+    color: #23302b; } }
+.Buttonafter {
+  content: "";
+  left: 0;
+  border-radius: 20px;
   position: absolute;
-  left: 20px;
-  top: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 46px;
-  width: 46px;
-  background-color: #2e3935; }
-.settingsMenu .saveButton {
-  cursor: pointer;
+  width: 155px;
+  height: 62px;
+  z-index: 0;
+  background-color: #e9d3c6;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes slideinLeft {
+  from {
+    margin-left: 0; }
+  to {
+    margin-left: calc(100% - 155px); } }
+@keyframes slideinRight {
+  from {
+    margin-left: calc(100% - 155px); }
+  to {
+    margin-left: 0; } }
+.NextText {
+  position: absolute;
   bottom: 20px;
-  right: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  background: #2e3935;
+  border-radius: 44px;
   font-family: "Raleway";
   font-style: normal;
   font-weight: 300;
-  position: absolute;
-  font-size: 17px;
-  line-height: 20px;
-  color: #e9d3c6;
-  padding: 10px 20px;
-  border: 0.687345px solid #e9d3c6;
-  border-radius: 44px; }
-.settingsMenu .inputSettings {
-  display: flex;
-  flex-direction: column;
-  margin-top: 15px;
-  position: relative; }
-  .settingsMenu .inputSettings .label {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 26px;
-    color: #848484; }
-  .settingsMenu .inputSettings input {
-    text-align: center;
-    margin-top: 10px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 24px;
-    line-height: 28px; }
-  .settingsMenu .inputSettings .plus {
+  font-size: 17.871px;
+  line-height: 21px;
+  cursor: pointer; }
+
+.mainBlock {
+  animation-duration: 0.5s;
+  display: displayblock;
+  animation-name: dis;
+  opacity: 1;
+  animation-fill-mode: forwards; }
+
+.settingsMenu {
+  animation-duration: 0.5s;
+  opacity: 0;
+  margin-top: -350px;
+  animation-fill-mode: forwards; }
+  .settingsMenu .buttonClose {
+    cursor: pointer;
+    border-radius: 50%;
     position: absolute;
-    font-size: 35px;
-    right: 20px;
-    bottom: -4px; }
-  .settingsMenu .inputSettings .minus {
-    position: absolute;
-    font-size: 35px;
     left: 20px;
-    bottom: -4px; }
+    top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 46px;
+    width: 46px;
+    background-color: #2e3935; }
+  .settingsMenu .saveButton {
+    cursor: pointer;
+    bottom: 20px;
+    right: 20px;
+    font-family: "Raleway";
+    font-style: normal;
+    font-weight: 300;
+    position: absolute;
+    font-size: 17px;
+    line-height: 20px;
+    color: #e9d3c6;
+    padding: 10px 20px;
+    border: 0.687345px solid #e9d3c6;
+    border-radius: 44px; }
+  .settingsMenu .inputSettings {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    position: relative; }
+    .settingsMenu .inputSettings .label {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 22px;
+      line-height: 26px;
+      color: #848484; }
+    .settingsMenu .inputSettings input {
+      text-align: center;
+      margin-top: 10px;
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 28px; }
+    .settingsMenu .inputSettings .plus {
+      position: absolute;
+      font-size: 35px;
+      right: 20px;
+      bottom: -4px; }
+    .settingsMenu .inputSettings .minus {
+      position: absolute;
+      font-size: 35px;
+      left: 20px;
+      bottom: -4px; }
 
 /*# sourceMappingURL=timerPage.css.map */
