@@ -244,11 +244,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
             <div className="task-group">
@@ -260,11 +274,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
             <div className="task-group">
@@ -276,11 +304,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -298,11 +340,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -320,11 +376,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
             <div className="task-group">
@@ -336,11 +406,25 @@ function TaskPage() {
                   alt=""
                 />
               </div>
-              <div className="task-description">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi
-                nostrum accusantium quae, ab debitis voluptatibus mollitia amet,
-                sit ullam eius rem illo laborum non eaque quas culpa deleniti
-                nesciunt aliquid!
+              <div className="sub-tasks">
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
+                <div className="sub-task">
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    subtask
+                  </label>
+                </div>
               </div>
             </div>
           </div>

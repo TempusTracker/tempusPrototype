@@ -263,10 +263,77 @@
         align-items: center;
         gap: 10px;
         cursor: pointer; }
-      .TaskPage .TaskMain .place .task-group .task-description {
+      .TaskPage .TaskMain .place .task-group .sub-tasks {
+        display: none; }
+      .TaskPage .TaskMain .place .task-group .sub-task {
+        margin-left: 14px;
         text-align: left;
-        display: none;
-        margin-top: 5px; }
+        display: flex;
+        align-items: center;
+        margin-top: 20px; }
+        .TaskPage .TaskMain .place .task-group .sub-task .check {
+          width: 20px;
+          overflow: hidden;
+          outline: none;
+          height: 20px;
+          border-radius: 50%;
+          z-index: -1;
+          position: absolute;
+          opacity: 0; }
+        .TaskPage .TaskMain .place .task-group .sub-task .check + label {
+          display: inline-flex;
+          align-items: center;
+          user-select: none; }
+        .TaskPage .TaskMain .place .task-group .sub-task .check + label::before {
+          content: "";
+          display: inline-block;
+          width: 20px;
+          margin-right: 15px;
+          height: 20px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          border-radius: 20px;
+          border: 1px solid #fff;
+          background: #fff;
+          box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25) inset;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 50% 50%; }
+        .TaskPage .TaskMain .place .task-group .sub-task .check:hover + .label::before {
+          animation: show 0.1s forwards; }
+        .TaskPage .TaskMain .place .task-group .sub-task .check:checked:hover + .label::before {
+          width: 20px;
+          height: 20px; }
+@keyframes show {
+  from {
+    width: 20px;
+    height: 20px; }
+  to {
+    width: 25px;
+    height: 25px; } }
+        .TaskPage .TaskMain .place .task-group .sub-task .check:checked + label::before {
+          z-index: 5;
+          background-size: 19px 13px;
+          background-image: url(/src/assets/images/task/check.svg); }
+        .TaskPage .TaskMain .place .task-group .sub-task .check:checked + .label::after {
+          content: "";
+          display: inline-block;
+          width: calc(100% - 30px);
+          position: absolute;
+          height: 4px;
+          flex-shrink: 0;
+          flex-grow: 0;
+          right: -2px;
+          border-radius: 20px;
+          background: #fff; }
+        .TaskPage .TaskMain .place .task-group .sub-task .label {
+          position: relative;
+          color: #fff;
+          font-size: 24px;
+          font-family: Raleway;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal; }
 
 @keyframes displaynone {
   from {
