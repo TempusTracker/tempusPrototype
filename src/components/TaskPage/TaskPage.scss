@@ -256,6 +256,7 @@
     background: $-bg-second-color;
     height: 800px;
     overflow: hidden;
+    overflow-y: auto;
     border-radius: 0px 30px 30px 30px;
     .modeToDay-place {
       background-color: #23302b;
@@ -290,8 +291,14 @@
       padding: 30px 50px;
       cursor: default;
       .task-group {
+        padding-bottom: 20px;
         cursor: default;
+        transition: all 0.1s;
+        margin-top: 25px;
         .task-title {
+          -moz-user-select: none;
+          -khtml-user-select: none;
+          user-select: none;
           text-align: left;
           color: $-text-main-color;
           margin-top: 20px;
@@ -303,9 +310,15 @@
           gap: 10px;
           width: 100%;
           cursor: pointer;
+          img {
+            transition: all 0.5s;
+          }
         }
         .sub-tasks {
-          display: none;
+          transition: all 0.5s;
+          margin-top: -40%;
+          opacity: 0;
+          pointer-events: none;
         }
         .sub-task {
           margin-left: 14px;
@@ -313,6 +326,7 @@
           display: flex;
           align-items: center;
           margin-top: 20px;
+          cursor: pointer;
           .check {
             width: 20px;
             overflow: hidden;
@@ -322,6 +336,10 @@
             z-index: -1;
             position: absolute;
             opacity: 0;
+            pointer-events: none;
+          }
+          label {
+            pointer-events: none;
           }
           .check + label {
             display: inline-flex;
@@ -345,7 +363,7 @@
             background-size: 50% 50%;
           }
 
-          .check:hover + .label::before {
+          .sub-task:hover .check + label::before {
             animation: show 0.1s forwards;
           }
           .check:checked:hover + .label::before {

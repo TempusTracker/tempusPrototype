@@ -225,6 +225,7 @@
     background: #23302b;
     height: 800px;
     overflow: hidden;
+    overflow-y: auto;
     border-radius: 0px 30px 30px 30px; }
     .TaskPage .TaskMain .modeToDay-place {
       background-color: #23302b;
@@ -255,8 +256,14 @@
       padding: 30px 50px;
       cursor: default; }
       .TaskPage .TaskMain .place .task-group {
-        cursor: default; }
+        padding-bottom: 20px;
+        cursor: default;
+        transition: all 0.1s;
+        margin-top: 25px; }
         .TaskPage .TaskMain .place .task-group .task-title {
+          -moz-user-select: none;
+          -khtml-user-select: none;
+          user-select: none;
           text-align: left;
           color: #fff;
           margin-top: 20px;
@@ -268,14 +275,20 @@
           gap: 10px;
           width: 100%;
           cursor: pointer; }
+          .TaskPage .TaskMain .place .task-group .task-title img {
+            transition: all 0.5s; }
         .TaskPage .TaskMain .place .task-group .sub-tasks {
-          display: none; }
+          transition: all 0.5s;
+          margin-top: -40%;
+          opacity: 0;
+          pointer-events: none; }
         .TaskPage .TaskMain .place .task-group .sub-task {
           margin-left: 14px;
           text-align: left;
           display: flex;
           align-items: center;
-          margin-top: 20px; }
+          margin-top: 20px;
+          cursor: pointer; }
           .TaskPage .TaskMain .place .task-group .sub-task .check {
             width: 20px;
             overflow: hidden;
@@ -284,7 +297,10 @@
             border-radius: 50%;
             z-index: -1;
             position: absolute;
-            opacity: 0; }
+            opacity: 0;
+            pointer-events: none; }
+          .TaskPage .TaskMain .place .task-group .sub-task label {
+            pointer-events: none; }
           .TaskPage .TaskMain .place .task-group .sub-task .check + label {
             display: inline-flex;
             align-items: center;
@@ -304,7 +320,7 @@
             background-repeat: no-repeat;
             background-position: center center;
             background-size: 50% 50%; }
-          .TaskPage .TaskMain .place .task-group .sub-task .check:hover + .label::before {
+          .TaskPage .TaskMain .place .task-group .sub-task .sub-task:hover .check + label::before {
             animation: show 0.1s forwards; }
           .TaskPage .TaskMain .place .task-group .sub-task .check:checked:hover + .label::before {
             width: 20px;
