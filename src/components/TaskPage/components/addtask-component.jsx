@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 function AddTaskComponent(props) {
-  const { openAdd } = props;
+  const { openAdd, error } = props;
 
   let addTask = React.createRef();
   let inputs = React.createRef();
-  let inputsSecond = React.createRef();
+  const today = new Date();
+
+  // Получаем год, месяц и день
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  const formattedDate = `${year}-${month}-${day}`;
+
+  const [inputTitle, setinputTitle] = useState("");
+  const [inputSubtask, setinputSubtask] = useState("");
+  const [inputDate, setinputDate] = useState(formattedDate);
+  const [inputPriority, setinputPriority] = useState(0);
+
   function closeAdd() {
     addTask.current.style.cssText = "animation-name: displaynone;";
     setTimeout(() => {
@@ -13,42 +25,29 @@ function AddTaskComponent(props) {
     }, 1000);
   }
 
-  function clickNext() {
-    inputs.current.style.display = "none";
-    inputsSecond.current.style.cssText = "animation-name: displayblock;";
-    inputsSecond.current.style.display = "flex";
+  function clickCreate(e) {
+    e.preventDefault();
+    if (inputTitle === "" || inputPriority === 0) {
+      error("Ошибка: поля не могут быть пустыми");
+    }
   }
 
   function clickHandlerFire(e) {
     if (e.target.classList.contains("fier1")) {
-      e.target.classList.add("fill-fier");
-      e.target.children[0].style.filter = "invert(50%)";
-      document.querySelector(".fier2").classList.remove("fill-fier");
-      document.querySelector(".fier2").children[0].style.filter = "invert(0%)";
-      document.querySelector(".fier2").children[1].style.filter = "invert(0%)";
-      document.querySelector(".fier3").classList.remove("fill-fier");
-      document.querySelector(".fier3").children[0].style.filter = "invert(0%)";
-      document.querySelector(".fier3").children[1].style.filter = "invert(0%)";
-      document.querySelector(".fier3").children[2].style.filter = "invert(0%)";
+      e.target.classList.add("fill");
+      document.querySelector(".fier2").classList.remove("fill");
+      document.querySelector(".fier3").classList.remove("fill");
+      setinputPriority(1);
     } else if (e.target.classList.contains("fier2")) {
-      e.target.classList.add("fill-fier");
-      e.target.children[0].style.filter = "invert(50%)";
-      e.target.children[1].style.filter = "invert(50%)";
-      document.querySelector(".fier1").classList.add("fill-fier");
-      document.querySelector(".fier3").classList.remove("fill-fier");
-      document.querySelector(".fier3").children[0].style.filter = "invert(0%)";
-      document.querySelector(".fier3").children[1].style.filter = "invert(0%)";
-      document.querySelector(".fier3").children[2].style.filter = "invert(0%)";
+      document.querySelector(".fier1").classList.add("fill");
+      document.querySelector(".fier3").classList.remove("fill");
+      e.target.classList.add("fill");
+      setinputPriority(2);
     } else if (e.target.classList.contains("fier3")) {
-      e.target.children[0].style.filter = "invert(50%)";
-      e.target.children[1].style.filter = "invert(50%)";
-      e.target.children[2].style.filter = "invert(50%)";
-      document.querySelector(".fier1").children[0].style.filter = "invert(50%)";
-      document.querySelector(".fier2").children[0].style.filter = "invert(50%)";
-      document.querySelector(".fier2").children[1].style.filter = "invert(50%)";
-      e.target.classList.add("fill-fier");
-      document.querySelector(".fier2").classList.add("fill-fier");
-      document.querySelector(".fier1").classList.add("fill-fier");
+      document.querySelector(".fier1").classList.add("fill");
+      document.querySelector(".fier2").classList.add("fill");
+      e.target.classList.add("fill");
+      setinputPriority(3);
     }
   }
   return (
@@ -70,31 +69,53 @@ function AddTaskComponent(props) {
             <div className="inputs-top">
               <div className="input">
                 <label htmlFor="">Название задачи</label>
-                <input type="text" placeholder="Разработать логотип..." />
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    setinputTitle(e.target.value);
+                  }}
+                  placeholder="Разработать логотип..."
+                />
               </div>
               <div className="input">
                 <label htmlFor="">Подзадачи</label>
-                <input type="text" placeholder="Текст для подзадачи.." />
-                <div className="plus">-</div>
+                <input
+                  type="text"
+                  onChange={(e) => {
+                    setinputSubtask(e.target.value);
+                  }}
+                  placeholder="Текст для подзадачи.."
+                />
+                <div className="plus">+</div>
               </div>
             </div>
             <div className="inputs-bottom">
-              <div className="input">
-                <label htmlFor="">Дата</label>
-                <input type="date" placeholder="" />
-              </div>
-              <div className="fiers">
-                <label htmlFor="">Приоритет</label>
-                <div className="fiers-body">
-                  <div className="fire"></div>
-                  <div className="fire"></div>
-                  <div className="fire"></div>
+              <div className="left">
+                <div className="input">
+                  <label htmlFor="">Дата</label>
+                  <input
+                    type="date"
+                    placeholder=""
+                    value={inputDate}
+                    onChange={(e) => {
+                      setinputDate(e.target.value);
+                    }}
+                  />
+                </div>
+                <div className="fiers">
+                  <label htmlFor="">Приоритет</label>
+                  <div className="fiers-body" onClick={clickHandlerFire}>
+                    <div className="fire fier1"></div>
+                    <div className="fire fier2"></div>
+                    <div className="fire fier3"></div>
+                  </div>
                 </div>
               </div>
               <div className="sub-tasks">
                 <div className="subtask">
                   <div className="text">
                     подзадача бла бла бла бла бла бла блаблаблбалалалалал
+                    блаблаблбалалалалал
                   </div>
                   <div className="minus">-</div>
                 </div>
@@ -107,9 +128,9 @@ function AddTaskComponent(props) {
               </div>
             </div>
 
-            <div className="button-next" onClick={clickNext}>
+            <button className="button-next" onClick={clickCreate}>
               Отправить в работу
-            </div>
+            </button>
           </div>
         </form>
       </div>

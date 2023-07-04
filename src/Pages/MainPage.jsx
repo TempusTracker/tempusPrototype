@@ -12,7 +12,7 @@ function MainPage(props) {
   return (
     <div className="MainPage">
       <TimerPage error={error} UserFullData={UserFullData}></TimerPage>
-      <TaskPage UserFullData={UserFullData}></TaskPage>
+      <TaskPage error={error} UserFullData={UserFullData}></TaskPage>
     </div>
   );
 }

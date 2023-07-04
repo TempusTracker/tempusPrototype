@@ -9,14 +9,14 @@ function TaskPage(props) {
   let modeTomorrowplace = React.createRef();
   let modeAllplace = React.createRef();
 
-  const { UserFullData } = props;
+  const { UserFullData, error } = props;
 
   const [openAdd, setOpenAdd] = useState();
 
   return (
     <>
       {openAdd ? (
-        <AddTaskComponent openAdd={setOpenAdd}></AddTaskComponent>
+        <AddTaskComponent error={error} openAdd={setOpenAdd}></AddTaskComponent>
       ) : (
         ""
       )}

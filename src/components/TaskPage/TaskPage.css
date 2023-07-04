@@ -59,42 +59,164 @@
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
   display: flex;
-  margin-top: 50px;
-  gap: 60px;
+  margin-top: 35px;
+  gap: 30px;
   opacity: 1;
   flex-direction: column;
 }
-.addTask-place .addTask-bg .inputs .wrapper {
+.addTask-place .addTask-bg .inputs .inputs-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 46px;
+}
+.addTask-place .addTask-bg .inputs .inputs-top .input {
+  width: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
+  align-items: start;
 }
-.addTask-place .addTask-bg .inputs .wrapper label {
+.addTask-place .addTask-bg .inputs .inputs-top .input label {
   color: #fff;
   font-size: 24px;
-  text-align: left;
-  margin-bottom: 10px;
   font-family: Raleway;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
 }
-.addTask-place .addTask-bg .inputs .wrapper .input {
+.addTask-place .addTask-bg .inputs .inputs-top .input label:last-child {
+  text-align: right;
+}
+.addTask-place .addTask-bg .inputs .inputs-top .input input {
+  width: 100%;
+  color: #fff;
+  font-size: 24px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
   padding: 12px 15px;
+  margin-top: 10px;
   border-radius: 15px;
-  width: 50%;
   background: #2e3935;
+}
+.addTask-place .addTask-bg .inputs .inputs-top .input .plus {
+  cursor: pointer;
+  position: absolute;
+  top: 46px;
+  font-size: 25px;
+  right: 15px;
+}
+.addTask-place .addTask-bg .inputs .inputs-top .input input::-moz-placeholder {
+  color: #585858;
+}
+.addTask-place .addTask-bg .inputs .inputs-top .input input::placeholder {
+  color: #585858;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .input label {
+  color: #fff;
+  font-size: 24px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .input label:last-child {
+  text-align: right;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .input input {
+  text-align: center;
   color: #fff;
   font-size: 24px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+  padding: 12px 15px;
+  margin-top: 10px;
+  border-radius: 15px;
+  background: #2e3935;
 }
-.addTask-place .addTask-bg .inputs .wrapper .input::-moz-placeholder {
-  color: #585858;
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .fiers {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.addTask-place .addTask-bg .inputs .wrapper .input::placeholder {
-  color: #585858;
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .fiers label {
+  color: #fff;
+  font-size: 24px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  text-align: center;
+  width: 100%;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .fiers .fiers-body {
+  display: flex;
+  gap: 6px;
+  height: 100%;
+  align-items: center;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .fiers .fiers-body .fire {
+  width: 21px;
+  cursor: pointer;
+  height: 34px;
+  overflow: visible;
+  background-position: center;
+  background-position-y: top;
+  background-image: url(/src/assets/images/task/fire.svg);
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .left .fiers .fiers-body .fill {
+  background-image: url(/src/assets/images/task/fire-full.svg);
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .sub-tasks {
+  width: 100%;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  max-height: 93px;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .sub-tasks .subtask {
+  gap: 10px;
+  display: flex;
+  align-items: center;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .sub-tasks .subtask .text {
+  word-break: break-all;
+  color: var(--white, #fff);
+  font-size: 22px;
+  font-family: Raleway;
+  text-align: left;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .sub-tasks .subtask .minus {
+  cursor: pointer;
+  text-align: center;
+  font-size: 25px;
+}
+.addTask-place .addTask-bg .inputs .inputs-bottom .sub-tasks::-webkit-scrollbar {
+  width: 0px;
 }
 .addTask-place .addTask-bg input::-webkit-calendar-picker-indicator {
   width: 100%;
@@ -102,61 +224,19 @@
   opacity: 0;
   position: absolute;
 }
-.addTask-place .addTask-bg .inputs-second {
-  opacity: 0;
-  display: none;
-  animation-duration: 0.5s;
-  animation-fill-mode: forwards;
-  gap: 30px;
-  flex-direction: column;
-}
-.addTask-place .addTask-bg .inputs-second .fiers {
-  display: flex;
-  gap: 4px;
-}
-.addTask-place .addTask-bg .inputs-second .fiers .fier {
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 0.687px solid #e9d3c6;
-}
-.addTask-place .addTask-bg .inputs-second .fiers .fier img {
-  pointer-events: none;
-}
-.addTask-place .addTask-bg .inputs-second .fiers .fill-fier {
-  background-color: #fff;
-}
-.addTask-place .addTask-bg .inputs-second .wrapper2 {
-  flex-direction: row;
-  gap: 20px;
-}
-.addTask-place .addTask-bg .inputs-second .wrapper2 .secondWrapper {
-  display: flex;
-  width: 162px;
-  flex-direction: column;
-}
-.addTask-place .addTask-bg .inputs-second .wrapper2 .secondWrapper input {
-  text-align: center;
-  width: 100%;
-  position: relative;
-}
 .addTask-place .addTask-bg .button-next {
-  padding: 15px 40px;
-  border-radius: 10px;
-  border: 1px solid #e9d3c6;
-  width: 140px;
-  margin-top: -23px;
-  justify-self: end;
+  padding: 16px 40px;
+  align-self: flex-end;
+  border-radius: 40px;
+  background: var(--dark-mode-accent-black, #e9d3c6);
   cursor: pointer;
+  color: var(--dark-mode-1-tab-and-timer, #23302b);
   font-size: 20px;
   font-family: Roboto;
-  align-self: end;
-  color: #e9d3c6;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 267px;
 }
 .addTask-place .addTask-bg .button-add {
   width: 254px;
@@ -313,12 +393,14 @@
   font-family: Raleway;
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 100%;
   font-size: 24px;
   font-style: normal;
   font-weight: 400;
   cursor: pointer;
+}
+.TaskPage .TaskMain .place .task-group .task-title p {
+  padding-right: 10px;
 }
 .TaskPage .TaskMain .place .task-group .task-title img {
   transition: all 0.5s;

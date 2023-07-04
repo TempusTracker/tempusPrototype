@@ -38,7 +38,7 @@ input::-webkit-inner-spin-button {
     height: 234px;
     width: 100%;
     background: url(/src/assets/images/lines/lines.svg);
-    animation: linesAnimate 1000s infinite linear;
+    animation: linesAnimate 3000s infinite linear;
     background-position: 100000px 0;
   }
 }
@@ -56,7 +56,7 @@ input::-webkit-inner-spin-button {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  background-color: #eaffff;
+  background-color: $-bg-second-color;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   display: flex;
@@ -66,10 +66,11 @@ input::-webkit-inner-spin-button {
   padding-bottom: 10px;
   font-family: "Roboto";
   font-style: normal;
+  z-index: 99999999;
   font-weight: 500;
   font-size: 20px;
   line-height: 33px;
-  color: #005e6b;
+  color: $-text-main-color;
   animation-name: PopupOpen;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;

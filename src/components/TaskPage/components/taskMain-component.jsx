@@ -10,7 +10,6 @@ function TaskMain(props) {
     if (e.target.parentNode.classList.contains("openDesc")) {
       e.target.parentNode.parentNode.children[1].style.cssText =
         "margin-top: -40%; opacity: 0;  pointer-events: none;";
-
       e.target.parentNode.children[1].style.transform = "rotate(0deg)";
       e.target.parentNode.classList.remove("openDesc");
       setTimeout(() => {
