@@ -24,15 +24,16 @@ function LogInForm(props) {
     localStorage.setItem("logged", JSON.stringify(true));
   }
 
-  console.log(login);
-
   const LogIn = (e) => {
     e.preventDefault();
     for (const user of users) {
-      if (user.UserData.Name === login && user.UserData.Password === password) {
-        console.log(user.UserData.Name);
+      if (
+        user.userProperties.login === login &&
+        user.userProperties.Password === password
+      ) {
+        console.log(user.userProperties.Name);
         LocalStorageSave(user);
-        selectTeam(user.UserData.TeamCode);
+        selectTeam(user.userProperties.TeamCode);
         window.location.href = "/MainPage";
         ClearInputs();
       } else {

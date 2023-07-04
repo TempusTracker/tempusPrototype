@@ -7,10 +7,12 @@ import TaskPage from "../components/TaskPage/TaskPage";
 function MainPage(props) {
   const { UserFullData, error } = props;
 
+  console.log(UserFullData);
+
   return (
     <div className="MainPage">
       <TimerPage error={error} UserFullData={UserFullData}></TimerPage>
-      <TaskPage></TaskPage>
+      <TaskPage UserFullData={UserFullData}></TaskPage>
     </div>
   );
 }

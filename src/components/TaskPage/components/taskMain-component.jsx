@@ -1,7 +1,10 @@
 import React from "react";
 
 function TaskMain(props) {
-  const { modeToDayplace, modeTomorrowplace, modeAllplace } = props;
+  const { modeToDayplace, modeTomorrowplace, modeAllplace, UserFullData } =
+    props;
+
+  console.log(UserFullData);
 
   function openDesc(e) {
     if (e.target.parentNode.classList.contains("openDesc")) {
@@ -35,52 +38,36 @@ function TaskMain(props) {
   return (
     <div className="TaskMain">
       <div ref={modeToDayplace} className="modeToDay-place place">
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask bla bla bla
-              </label>
+        {UserFullData.userTasks.map((task) => (
+          <div className="task-group">
+            <div className="task-title">
+              <p onClick={openDesc}>{task.TaskName}</p>
+              <img
+                onClick={openDesc}
+                src={require("../../../assets/images/task/open.svg").default}
+                alt=""
+              />
             </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
+            <div className="sub-tasks">
+              {task.SubTasks.map((subTask) => (
+                <div className="sub-task" onClick={clickSubTask}>
+                  <input className="check" id="check" type="checkbox" />
+                  <label htmlFor="check" className="label">
+                    {subTask}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask bla bla bla
-              </label>
-            </div>
+        ))}
+        {/* 
+          
+            
+
+
+              
+              
+
             <div className="sub-task" onClick={clickSubTask}>
               <input className="check" id="check" type="checkbox" />
               <label htmlFor="check" className="label">
@@ -94,157 +81,7 @@ function TaskMain(props) {
               </label>
             </div>
           </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask bla bla bla
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask bla bla bla
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask bla bla bla
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-          </div>
-        </div>
-        <div className="task-group">
-          <div className="task-title">
-            <p onClick={openDesc}>Разработать сайт тайм менеджмента:</p>
-            <img
-              onClick={openDesc}
-              src={require("../../../assets/images/task/open.svg").default}
-              alt=""
-            />
-          </div>
-          <div className="sub-tasks">
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-            <div className="sub-task" onClick={clickSubTask}>
-              <input className="check" id="check" type="checkbox" />
-              <label htmlFor="check" className="label">
-                subtask
-              </label>
-            </div>
-          </div>
-        </div>
+        </div> */}
       </div>
       <div
         ref={modeTomorrowplace}

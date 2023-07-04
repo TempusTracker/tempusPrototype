@@ -8,6 +8,7 @@ import ProfilPage from "./components/ProfilPage/ProfilPage";
 import TeamPage from "./components/TeamPage/TeamPage";
 import CreateTeam from "./components/TeamPage/components/CreateTeam";
 import { createPopup } from "./assets/animations/popup";
+import usersData from "./data/usersData";
 
 import "./assets/css/null.css";
 import "./assets/css/App.css";
@@ -19,55 +20,7 @@ export let setErrorAnimate = {};
 
 function App() {
   const [error, setError] = useState("");
-  const [users, setUsers] = useState([
-    {
-      UserData: {
-        Name: "Masha",
-        Email: "masha@mail.com",
-        Password: "lols",
-        TeamCode: 22,
-        Role: "",
-        InviteCode: "",
-        TotalTime: "",
-      },
-      userTimeSettings: {
-        workTime: 34,
-        shortBreak: 7,
-        longBreak: 17,
-      },
-    },
-    {
-      UserData: {
-        Name: "kate",
-        Email: "kate@mail.com",
-        Password: "lol",
-        TeamCode: "none",
-        Role: "",
-        InviteCode: "",
-        TotalTime: "",
-      },
-      userTimeSettings: {
-        workTime: 25,
-        shortBreak: 5,
-        longBreak: 15,
-      },
-    },
-    {
-      UserData: {
-        Name: "Nikita",
-        Email: "nikita@mail.com",
-        Password: "lol",
-        TeamCode: 22,
-        Role: "admin",
-        InviteCode: "22",
-      },
-      userTimeSettings: {
-        workTime: 2,
-        shortBreak: 1,
-        longBreak: 3,
-      },
-    },
-  ]);
+  const [users, setUsers] = useState(usersData);
 
   const [Teams, setTeams] = useState([
     {
@@ -94,6 +47,15 @@ function App() {
   let isTeamLocal = JSON.parse(localStorage.getItem("team")) || {};
   let isLoggedLocal = JSON.parse(localStorage.getItem("logged")) || false;
   let isUserLocal = JSON.parse(localStorage.getItem("user")) || {};
+
+  function logUot(e) {
+    e.preventDefault();
+    // localStorage.removeItem("user");
+    localStorage.setItem("logged", JSON.stringify(false));
+    localStorage.setItem("team", JSON.stringify({}));
+    //localStorage.setItem("user", JSON.stringify({}));
+    window.location.href = "/LoginForm";
+  }
 
   return (
     <BrowserRouter>
@@ -191,6 +153,7 @@ function App() {
           </div>
         </div>
       </div>
+      <button onClick={logUot}>выйти</button>
     </BrowserRouter>
   );
 }
