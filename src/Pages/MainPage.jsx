@@ -5,11 +5,11 @@ import TimerPage from "../components/TimerPage/TimerPage";
 import TaskPage from "../components/TaskPage/TaskPage";
 
 function MainPage(props) {
-  const { UserFullData } = props;
+  const { UserFullData, error } = props;
 
   return (
     <div className="MainPage">
-      <TimerPage UserFullData={UserFullData}></TimerPage>
+      <TimerPage error={error} UserFullData={UserFullData}></TimerPage>
       <TaskPage></TaskPage>
     </div>
   );

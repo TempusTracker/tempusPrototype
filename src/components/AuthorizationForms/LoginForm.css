@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 * {
-  color: #fff; }
+  color: #fff;
+}
 
 .LoginForm {
   padding: 30px 40px;
@@ -11,66 +12,76 @@
   letter-spacing: 1px;
   animation-duration: 0.5s;
   animation-name: LoginForm;
-  flex-direction: column; }
-  .LoginForm .title {
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 33px;
-    cursor: default;
-    margin-bottom: 35px; }
-  .LoginForm .label {
-    cursor: default;
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-family: "Roboto";
-    font-style: normal;
-    text-align: left;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px; }
-  .LoginForm .input {
-    background: #2e3935;
-    border-radius: 10px;
-    width: 420px;
-    height: 40px;
-    padding-left: 25px;
-    color: #fff;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    padding-right: 25px; }
-  .LoginForm .input::placeholder {
-    color: rgba(180, 180, 180, 0.8); }
-  .LoginForm .button {
-    margin-top: 100px;
-    background: #e9d3c6;
-    border-radius: 10px;
-    width: 420px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 51px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    color: #23302b; }
-  .LoginForm .link {
-    text-align: right;
-    margin-top: 5px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px; }
+  flex-direction: column;
+}
+.LoginForm .title {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+  cursor: default;
+  margin-bottom: 35px;
+}
+.LoginForm .label {
+  cursor: default;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-family: "Roboto";
+  font-style: normal;
+  text-align: left;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.LoginForm .input {
+  background: #2e3935;
+  border-radius: 10px;
+  width: 420px;
+  height: 40px;
+  padding-left: 25px;
+  color: #fff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  padding-right: 25px;
+}
+.LoginForm .input::-moz-placeholder {
+  color: rgba(180, 180, 180, 0.8);
+}
+.LoginForm .input::placeholder {
+  color: rgba(180, 180, 180, 0.8);
+}
+.LoginForm .button {
+  margin-top: 100px;
+  background: #e9d3c6;
+  border-radius: 10px;
+  width: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 51px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #23302b;
+}
+.LoginForm .link {
+  text-align: right;
+  margin-top: 5px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}
 
 @keyframes LoginForm {
   from {
-    transform: scale(97%); } }
-
-/*# sourceMappingURL=LoginForm.css.map */
+    transform: scale(97%);
+  }
+}/*# sourceMappingURL=LoginForm.css.map */

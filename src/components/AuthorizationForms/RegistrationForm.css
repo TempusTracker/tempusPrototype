@@ -9,99 +9,116 @@
   display: flex;
   margin-top: 150px;
   letter-spacing: 1px;
-  flex-direction: column; }
-  .RegistrationForm .title {
-    color: #fff;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 28px;
-    line-height: 33px;
-    margin-bottom: 15px; }
-  .RegistrationForm .label {
-    margin-top: 15px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 19px;
-    text-align: left;
-    color: #fff; }
-  .RegistrationForm .input {
-    width: 420px;
-    margin-top: 5px;
-    background: #2e3935;
-    border-radius: 10px;
-    padding: 8px;
-    padding-left: 25px;
-    padding-right: 25px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 23px;
-    color: #fff; }
-  .RegistrationForm .input::placeholder {
-    color: rgba(180, 180, 180, 0.8); }
-  .RegistrationForm .haveTeam {
-    display: flex;
-    width: 420px;
-    justify-content: right; }
-    .RegistrationForm .haveTeam .haveTeam-label {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 19px;
-      color: #fff;
-      margin-top: 10px; }
-    .RegistrationForm .haveTeam input {
-      display: none; }
-  .RegistrationForm .button {
-    margin-top: 60px;
-    background: #e9d3c6;
-    border-radius: 0px 20px;
-    padding: 14px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 23px;
-    width: 420px;
-    color: #23302b; }
-  .RegistrationForm .link {
-    text-align: right;
-    margin-top: 5px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    color: #fff; }
-  .RegistrationForm .inputCode {
-    display: none; }
-  .RegistrationForm .labelforteam {
-    display: none; }
-  .RegistrationForm .polici {
-    width: 420px;
-    font-family: "Roboto";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 14px;
-    margin-top: 36px;
-    color: #a7a7a7;
-    text-align: left; }
-    .RegistrationForm .polici a {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 14px;
-      color: #fff; }
+  flex-direction: column;
+}
+.RegistrationForm .title {
+  color: #fff;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 33px;
+  margin-bottom: 15px;
+}
+.RegistrationForm .label {
+  margin-top: 15px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: left;
+  color: #fff;
+}
+.RegistrationForm .input {
+  width: 420px;
+  margin-top: 5px;
+  background: #2e3935;
+  border-radius: 10px;
+  padding: 8px;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  color: #fff;
+}
+.RegistrationForm .input::-moz-placeholder {
+  color: rgba(180, 180, 180, 0.8);
+}
+.RegistrationForm .input::placeholder {
+  color: rgba(180, 180, 180, 0.8);
+}
+.RegistrationForm .haveTeam {
+  display: flex;
+  width: 420px;
+  justify-content: right;
+}
+.RegistrationForm .haveTeam .haveTeam-label {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #fff;
+  margin-top: 10px;
+}
+.RegistrationForm .haveTeam input {
+  display: none;
+}
+.RegistrationForm .button {
+  margin-top: 60px;
+  background: #e9d3c6;
+  border-radius: 0px 20px;
+  padding: 14px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  width: 420px;
+  color: #23302b;
+}
+.RegistrationForm .link {
+  text-align: right;
+  margin-top: 5px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+}
+.RegistrationForm .inputCode {
+  display: none;
+}
+.RegistrationForm .labelforteam {
+  display: none;
+}
+.RegistrationForm .polici {
+  width: 420px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 36px;
+  color: #a7a7a7;
+  text-align: left;
+}
+.RegistrationForm .polici a {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+  color: #fff;
+}
 
 @keyframes RegistrationForm {
   from {
-    transform: scale(97%); } }
-
-/*# sourceMappingURL=RegistrationForm.css.map */
+    transform: scale(97%);
+  }
+}/*# sourceMappingURL=RegistrationForm.css.map */

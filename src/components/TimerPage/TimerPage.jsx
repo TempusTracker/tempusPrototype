@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import style from "./timerPage.css";
 import Settings from "./components/settings-component";
+import FastButtons from "./components/fast-buttons";
 
 function TimerPage(props) {
-  const { UserFullData } = props;
+  const { UserFullData, error } = props;
 
   const Time = {
     workTime: { minutes: 25, seconds: 0 },
@@ -114,14 +115,6 @@ function TimerPage(props) {
     }
   }
 
-  function clickNext() {
-    Pausing();
-    SelectTimeMode.minutes = 0;
-    SelectTimeMode.seconds = 0;
-    checkingTime();
-    circle.current.style.cssText = "animation: none;";
-  }
-
   function Ticking() {
     tickingInterval = setInterval(() => {
       classicTick();
@@ -176,14 +169,6 @@ function TimerPage(props) {
     UpdateTime();
   }
 
-  function ClickClearTime() {
-    Pausing();
-    circle.current.style.cssText = "animation: none;";
-    checkingTime();
-    LocalStorageSave(25, 5, 15);
-    ReadTime();
-  }
-
   ReadTime();
   copy("workTime");
 
@@ -228,12 +213,14 @@ function TimerPage(props) {
             src={require("./settings/setting.svg").default}
           ></img>
         </div>
-        <div className="NextText" onClick={clickNext}>
-          Следующее{" "}
-        </div>
-        <div className="clearButton" onClick={ClickClearTime}>
-          Сброс
-        </div>
+        <FastButtons
+          SelectTimeMode={SelectTimeMode}
+          checkingTime={checkingTime}
+          Pausing={Pausing}
+          ReadTime={ReadTime}
+          LocalStorageSave={LocalStorageSave}
+          circle={circle}
+        ></FastButtons>
       </div>
       <Settings
         SettingsOpen={SettingsOpen}
@@ -246,6 +233,7 @@ function TimerPage(props) {
         LocalStorageSave={LocalStorageSave}
         circle={circle}
         Buttonafter={Buttonafter}
+        error={error}
       ></Settings>
     </div>
   );

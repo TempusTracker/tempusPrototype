@@ -2,17 +2,23 @@
 @keyframes displaynone {
   from {
     display: block;
-    opacity: 1; }
+    opacity: 1;
+  }
   to {
     display: none;
-    opacity: 0; } }
+    opacity: 0;
+  }
+}
 @keyframes displayblock {
   from {
     display: none;
-    opacity: 0; }
+    opacity: 0;
+  }
   to {
     display: block;
-    opacity: 1; } }
+    opacity: 1;
+  }
+}
 .TimerBlock {
   overflow: hidden;
   background-color: #23302b;
@@ -26,153 +32,193 @@
   padding-top: 80px;
   align-items: center;
   box-shadow: -2.74938px 2.74938px 6.87345px rgba(0, 0, 0, 0.25);
-  border-radius: 27.1316px; }
-  .TimerBlock .clearButton {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    border: 0.687345px solid #e9d3c6;
-    border-radius: 8px;
-    font-family: "Raleway";
-    color: #e9d3c6;
-    font-style: normal;
-    font-weight: 300;
-    font-size: 17px;
-    line-height: 20px;
-    cursor: pointer; }
-  .TimerBlock .Clock {
-    padding-top: 2.9em;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 400;
-    display: flex;
-    justify-content: center;
-    font-size: 48.1141px;
-    line-height: 58px;
-    text-align: justify;
-    position: relative;
-    color: #fff; }
-    .TimerBlock .Clock .circle {
-      position: absolute;
-      top: 0px;
-      display: inline-block;
-      width: 7em;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 10px solid #e9d3c6;
-      display: flex;
-      justify-content: center;
-      z-index: 1;
-      align-items: center;
-      animation: progress 60s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
-      animation-play-state: paused;
-      animation-iteration-count: infinite; }
-    .TimerBlock .Clock .circle-back {
-      position: absolute;
-      top: 1px;
-      z-index: 0;
-      display: inline-block;
-      width: 6.95em;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      border: 8px solid #4e5855;
-      display: flex;
-      justify-content: center;
-      align-items: center; }
+  border-radius: 27.1316px;
+}
+.TimerBlock .clearButton {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  border: 0.687345px solid #e9d3c6;
+  border-radius: 8px;
+  font-family: "Raleway";
+  color: #e9d3c6;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 20px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+  opacity: 0.5;
+}
+.TimerBlock .Clock {
+  padding-top: 2.9em;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  font-size: 48.1141px;
+  line-height: 58px;
+  text-align: justify;
+  position: relative;
+  color: #fff;
+}
+.TimerBlock .Clock .circle {
+  position: absolute;
+  top: 0px;
+  display: inline-block;
+  width: 7em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 10px solid #e9d3c6;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+  align-items: center;
+  animation: progress 60s cubic-bezier(0.25, 0.4, 0.75, 0.6) forwards;
+  animation-play-state: paused;
+  animation-iteration-count: infinite;
+}
+.TimerBlock .Clock .circle-back {
+  position: absolute;
+  top: 1px;
+  z-index: 0;
+  display: inline-block;
+  width: 6.95em;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #4e5855;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @keyframes progress {
   0% {
-    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 50% -21%); }
+    -webkit-clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 50% -21%);
+            clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 50% -21%);
+  }
   25% {
-    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 121% 50%); }
+    -webkit-clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 121% 50%);
+            clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 121% 50%, 121% 50%);
+  }
   50% {
-    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 50% 121%, 50% 121%); }
+    -webkit-clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 50% 121%, 50% 121%);
+            clip-path: polygon(50% 50%, 50% -21%, -21% 50%, 50% 121%, 50% 121%, 50% 121%);
+  }
   75% {
-    clip-path: polygon(50% 50%, 50% -21%, -21% 50%, -21% 50%, -21% 50%, -21% 50%); }
+    -webkit-clip-path: polygon(50% 50%, 50% -21%, -21% 50%, -21% 50%, -21% 50%, -21% 50%);
+            clip-path: polygon(50% 50%, 50% -21%, -21% 50%, -21% 50%, -21% 50%, -21% 50%);
+  }
   100% {
-    clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%); } }
-  .TimerBlock .ButtonSettings {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer; }
-    .TimerBlock .ButtonSettings input {
-      display: none; }
-    .TimerBlock .ButtonSettings img {
-      transition: all 0.5s; }
-  .TimerBlock .ButtonSettings:hover img {
-    transform: rotate(40deg); }
-  .TimerBlock .Buttons {
-    display: flex;
-    margin-top: 280px;
-    gap: 22px;
-    animation: all 1s;
-    position: relative; }
-    .TimerBlock .Buttons .ButtonStart {
-      color: #e9d3c6;
-      border-radius: 10px;
-      padding: 15px 40px;
-      font-family: "Raleway";
-      font-style: normal;
-      animation: all 1s;
-      width: 155px;
-      font-weight: 500;
-      border: 1px solid #e9d3c6;
-      font-size: 24px;
-      line-height: 28px;
-      color: #23302b;
-      z-index: 1;
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-      animation-name: color1; }
-    .TimerBlock .Buttons .ButtonStop {
-      animation: all 1s;
-      padding: 15px 40px;
-      font-family: "Raleway";
-      z-index: 1;
-      color: #e9d3c6;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 24px;
-      width: 155px;
-      line-height: 28px;
-      border: 1px solid #e9d3c6;
-      border-radius: 10px;
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-      animation-name: color2; }
+    -webkit-clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%);
+            clip-path: polygon(50% 50%, 50% -21%, 50% -21%, 50% -21%, 50% -21%, 50% -21%);
+  }
+}
+.TimerBlock .ButtonSettings {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.TimerBlock .ButtonSettings input {
+  display: none;
+}
+.TimerBlock .ButtonSettings img {
+  transition: all 0.5s;
+}
+.TimerBlock .ButtonSettings:hover img {
+  transform: rotate(40deg);
+}
+.TimerBlock .Buttons {
+  display: flex;
+  margin-top: 280px;
+  gap: 22px;
+  animation: all 1s;
+  position: relative;
+}
+.TimerBlock .Buttons .ButtonStart {
+  color: #e9d3c6;
+  padding: 15px 40px;
+  font-family: "Raleway";
+  font-style: normal;
+  animation: all 1s;
+  width: 155px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  color: #23302b;
+  z-index: 1;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: color1;
+  border-radius: 40px;
+  border: 2px solid #e9d3c6;
+}
+.TimerBlock .Buttons .ButtonStop {
+  animation: all 1s;
+  padding: 15px 40px;
+  font-family: "Raleway";
+  z-index: 1;
+  color: #e9d3c6;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  width: 155px;
+  line-height: 28px;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-name: color2;
+  border-radius: 40px;
+  border: 2px solid #e9d3c6;
+}
 @keyframes color2 {
   from {
-    color: #23302b; }
+    color: #23302b;
+  }
   to {
-    color: #e9d3c6; } }
+    color: #e9d3c6;
+  }
+}
 @keyframes color1 {
   from {
-    color: #e9d3c6; }
+    color: #e9d3c6;
+  }
   to {
-    color: #23302b; } }
+    color: #23302b;
+  }
+}
+
 .Buttonafter {
   content: "";
   left: 0;
-  border-radius: 10px;
   position: absolute;
   width: 155px;
   height: 62px;
   z-index: 0;
   background-color: #e9d3c6;
   animation-duration: 1s;
-  animation-fill-mode: forwards; }
+  animation-fill-mode: forwards;
+  border-radius: 40px;
+}
 
 @keyframes slideinLeft {
   from {
-    margin-left: 0; }
+    margin-left: 0;
+  }
   to {
-    margin-left: calc(100% - 155px); } }
+    margin-left: calc(100% - 155px);
+  }
+}
 @keyframes slideinRight {
   from {
-    margin-left: calc(100% - 155px); }
+    margin-left: calc(100% - 155px);
+  }
   to {
-    margin-left: 0; } }
+    margin-left: 0;
+  }
+}
 .NextText {
   position: absolute;
   bottom: 20px;
@@ -185,75 +231,133 @@
   font-weight: 300;
   font-size: 17.871px;
   line-height: 21px;
-  cursor: pointer; }
+  cursor: pointer;
+}
 
 .mainBlock {
   animation-duration: 0.5s;
   display: displayblock;
   animation-name: dis;
   opacity: 1;
-  animation-fill-mode: forwards; }
+  animation-fill-mode: forwards;
+}
 
 .settingsMenu {
   animation-duration: 0.5s;
   opacity: 0;
-  margin-top: -350px;
-  animation-fill-mode: forwards; }
-  .settingsMenu .buttonClose {
-    cursor: pointer;
-    border-radius: 50%;
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 46px;
-    width: 46px;
-    background-color: #2e3935; }
-  .settingsMenu .saveButton {
-    cursor: pointer;
-    bottom: 20px;
-    right: 20px;
-    font-family: "Raleway";
-    font-style: normal;
-    font-weight: 300;
-    position: absolute;
-    font-size: 17px;
-    line-height: 20px;
-    color: #fff;
-    padding: 10px 20px;
-    border: 0.687345px solid #fff;
-    border-radius: 44px; }
-  .settingsMenu .inputSettings {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    position: relative; }
-    .settingsMenu .inputSettings .label {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 26px;
-      color: #848484; }
-    .settingsMenu .inputSettings input {
-      text-align: center;
-      margin-top: 10px;
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 28px; }
-    .settingsMenu .inputSettings .plus {
-      position: absolute;
-      font-size: 35px;
-      right: 20px;
-      bottom: -4px; }
-    .settingsMenu .inputSettings .minus {
-      position: absolute;
-      font-size: 35px;
-      left: 20px;
-      bottom: -4px; }
-
-/*# sourceMappingURL=timerPage.css.map */
+  width: 100%;
+  animation-fill-mode: forwards;
+}
+.settingsMenu .buttonClose {
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+  width: 46px;
+  background-color: #2e3935;
+}
+.settingsMenu .saveButton {
+  cursor: pointer;
+  bottom: 20px;
+  right: 20px;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 300;
+  position: absolute;
+  font-size: 17px;
+  line-height: 20px;
+  color: #e9d3c6;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+}
+.settingsMenu .inputs {
+  position: absolute;
+  width: 100%;
+  top: 110px;
+  left: 0;
+}
+.settingsMenu .inputs .inputSettings {
+  display: flex;
+  padding-left: 50px;
+  padding-right: 27px;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+  position: relative;
+  align-items: center;
+}
+.settingsMenu .inputs .inputSettings .label {
+  color: #fff;
+  text-align: justify;
+  font-size: 20px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.settingsMenu .inputs .inputSettings input {
+  color: var(--dark-mode-accent-black, #e9d3c6);
+  text-align: justify;
+  font-size: 18px;
+  text-align: center;
+  font-family: Roboto;
+  margin-right: 28px;
+  font-style: normal;
+  font-weight: 300;
+  width: 100px;
+  padding: 9px 20px;
+  line-height: normal;
+  border-radius: 50px;
+  border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+}
+.settingsMenu .inputs .inputSettings .plus {
+  position: absolute;
+  font-size: 35px;
+  right: 20px;
+  bottom: 3px;
+  color: #e9d3c6;
+}
+.settingsMenu .inputs .inputSettings .minus {
+  color: #e9d3c6;
+  position: absolute;
+  font-size: 35px;
+  right: 170px;
+  bottom: 3px;
+}
+.settingsMenu .inputs .mods {
+  margin-top: 67px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+.settingsMenu .inputs .mods .title {
+  color: #fff;
+  text-align: justify;
+  font-size: 20px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.settingsMenu .inputs .mods .mods-items {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.settingsMenu .inputs .mods .mods-items button {
+  padding: 9px 20px;
+  border-radius: 50px;
+  border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+  color: var(--dark-mode-accent-black, #e9d3c6);
+  text-align: justify;
+  font-size: 18px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}/*# sourceMappingURL=timerPage.css.map */

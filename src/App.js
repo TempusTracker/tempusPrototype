@@ -107,11 +107,19 @@ function App() {
               <Route
                 exact
                 path="/"
-                element={<MainPage users={users} UserFullData={isUserLocal} />}
+                element={
+                  <MainPage
+                    error={setError}
+                    users={users}
+                    UserFullData={isUserLocal}
+                  />
+                }
               />
               <Route
                 path="/MainPage"
-                element={<MainPage UserFullData={isUserLocal} />}
+                element={
+                  <MainPage error={setError} UserFullData={isUserLocal} />
+                }
               />
               <Route
                 path="/MyProfile"
@@ -179,7 +187,7 @@ function App() {
             />
           </div>
           <div className="App-lines">
-            <img className="lines-bg" />
+            <div className="lines-bg" />
           </div>
         </div>
       </div>

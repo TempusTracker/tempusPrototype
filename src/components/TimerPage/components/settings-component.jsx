@@ -11,6 +11,7 @@ function Settings(props) {
     LocalStorageSave,
     circle,
     Buttonafter,
+    error,
   } = props;
 
   function closeSettings() {
@@ -24,22 +25,42 @@ function Settings(props) {
   function changeTimer() {
     Pausing();
     if (
-      settingWorkTime.current < 61 &&
-      settingShortBreak.current < 61 &&
-      settingLongBreak.current < 61 &&
-      settingWorkTime.current > 0 &&
-      settingShortBreak.current > 0 &&
-      settingLongBreak.current > 0 &&
-      settingWorkTime.current !== 0 &&
-      settingShortBreak.current !== 0 &&
-      settingLongBreak.current !== 0
+      settingWorkTime.current < 91 &&
+      settingShortBreak.current < 91 &&
+      settingLongBreak.current < 91
     ) {
-      LocalStorageSave(
-        settingWorkTime.current,
-        settingShortBreak.current,
-        settingLongBreak.current
-      );
-      ReadTime();
+      if (
+        settingWorkTime.current >= 0 &&
+        settingShortBreak.current >= 0 &&
+        settingLongBreak.current >= 0
+      ) {
+        if (
+          settingWorkTime.current !== "" &&
+          settingShortBreak.current !== "" &&
+          settingLongBreak.current !== ""
+        ) {
+          if (
+            settingWorkTime.current !== "0" &&
+            settingShortBreak.current !== "0" &&
+            settingLongBreak.current !== "0"
+          ) {
+            LocalStorageSave(
+              settingWorkTime.current,
+              settingShortBreak.current,
+              settingLongBreak.current
+            );
+            ReadTime();
+          } else {
+            error("Ошибка: значение не может быть равно 0");
+          }
+        } else {
+          error("Ошибка: значение не может быть пустым");
+        }
+      } else {
+        error("Ошибка: значение не может быть меньше 0");
+      }
+    } else {
+      error("Ошибка: мы не рекомендуем работать больше 90 минут");
     }
     MainBlock.current.style.cssText = "animation-name: displayblock;";
     document.getElementById("settingsMenu").style.cssText =
@@ -58,12 +79,20 @@ function Settings(props) {
   }
 
   function SelectModeLongpom() {
-    settingWorkTime.current = 40;
-    settingShortBreak.current = 10;
-    settingLongBreak.current = 20;
-    document.getElementById("inputSettingsPomodoro").value = 40;
+    settingWorkTime.current = 45;
+    settingShortBreak.current = 15;
+    settingLongBreak.current = 30;
+    document.getElementById("inputSettingsPomodoro").value = 45;
     document.getElementById("inputSettingsShortBreak").value = 10;
-    document.getElementById("inputSettingsLongBreak").value = 20;
+    document.getElementById("inputSettingsLongBreak").value = 30;
+  }
+  function SelectModelooongpom() {
+    settingWorkTime.current = 90;
+    settingShortBreak.current = 20;
+    settingLongBreak.current = 45;
+    document.getElementById("inputSettingsPomodoro").value = 90;
+    document.getElementById("inputSettingsShortBreak").value = 20;
+    document.getElementById("inputSettingsLongBreak").value = 45;
   }
 
   function clickPlusSetting(e) {
@@ -102,76 +131,86 @@ function Settings(props) {
       <div className="buttonClose" onClick={closeSettings}>
         <img src={require("../settings/settingback.svg").default} alt="" />
       </div>
-      <div className="inputWork inputSettings">
-        <label className="label" for="inputSettingsPomodoro">
-          Время работы
-        </label>
-        <input
-          id="inputSettingsPomodoro"
-          placeholder="work time"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingWorkTime.current = e.target.value;
-          }}
-        ></input>
-        <button className="plus plusWork" onClick={clickPlusSetting}>
-          +
-        </button>
-        <button className="minus minusWork" onClick={clickMinusSetting}>
-          -
-        </button>
-      </div>
-      <div className="inputShort inputSettings">
-        <label className="label" for="inputSettingsShortBreak">
-          Короткий перерыв
-        </label>
-        <input
-          id="inputSettingsShortBreak"
-          placeholder="ShortBreak"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingShortBreak.current = e.target.value;
-          }}
-        ></input>
-        <button className="plus plusShort" onClick={clickPlusSetting}>
-          +
-        </button>
-        <button className="minus minusShort" onClick={clickMinusSetting}>
-          -
-        </button>
-      </div>
-      <div className="inputLong inputSettings">
-        <label className="label" for="inputSettingsLongBreak">
-          Длинный перерыв
-        </label>
-        <input
-          id="inputSettingsLongBreak"
-          placeholder="LongBreak"
-          type="number"
-          min="0"
-          max="61"
-          onChange={(e) => {
-            settingLongBreak.current = e.target.value;
-          }}
-        ></input>
-        <button className="plus plusLong" onClick={clickPlusSetting}>
-          +
-        </button>
-        <button className="minus minusLong" onClick={clickMinusSetting}>
-          -
-        </button>
+      <div className="inputs">
+        <div className="inputWork inputSettings">
+          <label className="label" for="inputSettingsPomodoro">
+            Время работы
+          </label>
+          <input
+            id="inputSettingsPomodoro"
+            placeholder="25 мин"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingWorkTime.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusWork" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusWork" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+        <div className="inputShort inputSettings">
+          <label className="label" for="inputSettingsShortBreak">
+            Короткий перерыв
+          </label>
+          <input
+            id="inputSettingsShortBreak"
+            placeholder="05 мин"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingShortBreak.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusShort" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusShort" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+        <div className="inputLong inputSettings">
+          <label className="label" for="inputSettingsLongBreak">
+            Длинный перерыв
+          </label>
+          <input
+            id="inputSettingsLongBreak"
+            placeholder="15 мин"
+            type="number"
+            min="0"
+            max="61"
+            onChange={(e) => {
+              settingLongBreak.current = e.target.value;
+            }}
+          ></input>
+          <button className="plus plusLong" onClick={clickPlusSetting}>
+            +
+          </button>
+          <button className="minus minusLong" onClick={clickMinusSetting}>
+            -
+          </button>
+        </div>
+        <div className="mods">
+          <div className="title">Режимы</div>
+          <div className="mods-items">
+            <div>
+              <button onClick={SelectModePomodoro}> 25 5 15</button>
+            </div>
+            <div>
+              <button onClick={SelectModeLongpom}> 45 15 30</button>
+            </div>
+            <div>
+              <button onClick={SelectModelooongpom}>90 20 45</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div>
-        mode: <button onClick={SelectModePomodoro}> pomodoro</button>
-      </div>
-      <div>
-        mode: <button onClick={SelectModeLongpom}> longpom</button>
-      </div>
       <button onClick={changeTimer} className="saveButton">
         Сохранить
       </button>

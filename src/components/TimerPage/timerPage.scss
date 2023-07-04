@@ -49,6 +49,9 @@
     font-size: 17px;
     line-height: 20px;
     cursor: pointer;
+    border-radius: 50px;
+    border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+    opacity: 0.5;
   }
   .Clock {
     padding-top: 2.9em;
@@ -167,14 +170,12 @@
     position: relative;
     .ButtonStart {
       color: $-bg-button-color;
-      border-radius: 10px;
       padding: 15px 40px;
       font-family: "Raleway";
       font-style: normal;
       animation: all 1s;
       width: 155px;
       font-weight: 500;
-      border: 1px solid $-bg-button-color;
       font-size: 24px;
       line-height: 28px;
       color: $-bg-second-color;
@@ -182,6 +183,8 @@
       animation-duration: 1s;
       animation-fill-mode: forwards;
       animation-name: color1;
+      border-radius: 40px;
+      border: 2px solid #e9d3c6;
     }
     .ButtonStop {
       animation: all 1s;
@@ -194,11 +197,11 @@
       font-size: 24px;
       width: 155px;
       line-height: 28px;
-      border: 1px solid $-bg-button-color;
-      border-radius: 10px;
       animation-duration: 1s;
       animation-fill-mode: forwards;
       animation-name: color2;
+      border-radius: 40px;
+      border: 2px solid#e9d3c6;
     }
     @keyframes color2 {
       from {
@@ -221,7 +224,6 @@
 .Buttonafter {
   content: "";
   left: 0;
-  border-radius: 10px;
   position: absolute;
   width: 155px;
   height: 62px;
@@ -229,6 +231,7 @@
   background-color: $-bg-button-color;
   animation-duration: 1s;
   animation-fill-mode: forwards;
+  border-radius: 40px;
 }
 
 @keyframes slideinLeft {
@@ -272,7 +275,7 @@
 .settingsMenu {
   animation-duration: 0.5s;
   opacity: 0;
-  margin-top: -350px;
+  width: 100%;
   animation-fill-mode: forwards;
   .buttonClose {
     cursor: pointer;
@@ -297,44 +300,94 @@
     position: absolute;
     font-size: 17px;
     line-height: 20px;
-    color: $-text-main-color;
+    color: #e9d3c6;
     padding: 10px 20px;
-    border: 0.687345px solid $-text-main-color;
-    border-radius: 44px;
+    border-radius: 50px;
+    border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
   }
-  .inputSettings {
-    display: flex;
-    flex-direction: column;
-    margin-top: 0px;
-    position: relative;
-    .label {
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 22px;
-      line-height: 26px;
-      color: #848484;
+  .inputs {
+    position: absolute;
+    width: 100%;
+    top: 110px;
+    left: 0;
+    .inputSettings {
+      display: flex;
+      padding-left: 50px;
+      padding-right: 27px;
+      justify-content: space-between;
+      margin-top: 20px;
+      width: 100%;
+      position: relative;
+      align-items: center;
+      .label {
+        color: #fff;
+        text-align: justify;
+        font-size: 20px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      input {
+        color: var(--dark-mode-accent-black, #e9d3c6);
+        text-align: justify;
+        font-size: 18px;
+        text-align: center;
+        font-family: Roboto;
+        margin-right: 28px;
+        font-style: normal;
+        font-weight: 300;
+        width: 100px;
+        padding: 9px 20px;
+        line-height: normal;
+        border-radius: 50px;
+        border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+      }
+      .plus {
+        position: absolute;
+        font-size: 35px;
+        right: 20px;
+        bottom: 3px;
+        color: #e9d3c6;
+      }
+      .minus {
+        color: #e9d3c6;
+        position: absolute;
+        font-size: 35px;
+        right: 170px;
+        bottom: 3px;
+      }
     }
-    input {
-      text-align: center;
-      margin-top: 10px;
-      font-family: "Roboto";
-      font-style: normal;
-      font-weight: 400;
-      font-size: 24px;
-      line-height: 28px;
-    }
-    .plus {
-      position: absolute;
-      font-size: 35px;
-      right: 20px;
-      bottom: -4px;
-    }
-    .minus {
-      position: absolute;
-      font-size: 35px;
-      left: 20px;
-      bottom: -4px;
+    .mods {
+      margin-top: 67px;
+      margin-left: 50px;
+      margin-right: 50px;
+      .title {
+        color: #fff;
+        text-align: justify;
+        font-size: 20px;
+        font-family: Raleway;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .mods-items {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        button {
+          padding: 9px 20px;
+          border-radius: 50px;
+          border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
+          color: var(--dark-mode-accent-black, #e9d3c6);
+          text-align: justify;
+          font-size: 18px;
+          font-family: Roboto;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+      }
     }
   }
 }
