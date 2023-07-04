@@ -108,15 +108,6 @@ function AddTaskComponent(props) {
             </div>
             <div className="wrapper2 wrapper">
               <div className="secondWrapper">
-                <label htmlFor="taskName">Время</label>
-                <input
-                  type="time"
-                  id="taskName"
-                  placeholder="00:00"
-                  className="input"
-                />
-              </div>
-              <div className="secondWrapper">
                 <label htmlFor="taskName">Дата</label>
                 <input
                   type="date"
