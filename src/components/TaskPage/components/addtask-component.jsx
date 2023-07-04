@@ -65,113 +65,51 @@ function AddTaskComponent(props) {
             />
           </div>
           <div className="title">Добавить задачу</div>
+
           <div className="inputs" ref={inputs}>
-            <div className="wrapper">
-              <label htmlFor="taskName">Здача</label>
-              <input
-                type="text"
-                id="taskName"
-                placeholder="Необходимо выполнить"
-                className="input"
-              />
-            </div>
-            <div className="wrapper">
-              <label htmlFor="supTask">Доп. Задачи</label>
-              <input
-                type="text"
-                placeholder="Подзадачи"
-                id="supTask"
-                className="input"
-              />
-            </div>
-            <div className="button-next" onClick={clickNext}>
-              Далее
-            </div>
-          </div>
-
-          <div className="inputs-second inputs" ref={inputsSecond}>
-            <div className="wrapper">
-              <label htmlFor="taskName">Кто выполняет</label>
-              <input
-                type="text"
-                id="taskName"
-                placeholder="Например: Designer"
-                className="input"
-                list="values"
-              />
-              <datalist id="values">
-                <option value="Значение 1" />
-                <option value="Значение 2" />
-                <option value="Значение 3" />
-                <option value="Значение 4" />
-              </datalist>
-            </div>
-            <div className="wrapper2 wrapper">
-              <div className="secondWrapper">
-                <label htmlFor="taskName">Дата</label>
-                <input
-                  type="date"
-                  id="taskName"
-                  placeholder="01.07.2023"
-                  className="input"
-                />
+            <div className="inputs-top">
+              <div className="input">
+                <label htmlFor="">Название задачи</label>
+                <input type="text" placeholder="Разработать логотип..." />
+              </div>
+              <div className="input">
+                <label htmlFor="">Подзадачи</label>
+                <input type="text" placeholder="Текст для подзадачи.." />
+                <div className="plus">-</div>
               </div>
             </div>
-            <div className="wrapper">
-              <label htmlFor="">Приоритет</label>
+            <div className="inputs-bottom">
+              <div className="input">
+                <label htmlFor="">Дата</label>
+                <input type="date" placeholder="" />
+              </div>
               <div className="fiers">
-                <div onClick={clickHandlerFire} className="fier fier1">
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
+                <label htmlFor="">Приоритет</label>
+                <div className="fiers-body">
+                  <div className="fire"></div>
+                  <div className="fire"></div>
+                  <div className="fire"></div>
                 </div>
-                <div onClick={clickHandlerFire} className="fier fier2">
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
+              </div>
+              <div className="sub-tasks">
+                <div className="subtask">
+                  <div className="text">
+                    подзадача бла бла бла бла бла бла блаблаблбалалалалал
+                  </div>
+                  <div className="minus">-</div>
                 </div>
-
-                <div onClick={clickHandlerFire} className="fier fier3">
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
-                  <img
-                    src={
-                      require("../../../assets/images/settings/fire.svg")
-                        .default
-                    }
-                    alt=""
-                  />
+                <div className="subtask">
+                  <div className="text">
+                    подзадача бла бла бла бла бла бла блаблаблбалалалалал
+                  </div>
+                  <div className="minus">-</div>
                 </div>
               </div>
             </div>
-            <div className="button-add button-next">Отправить задачу</div>
+
+            <div className="button-next" onClick={clickNext}>
+              Отправить в работу
+            </div>
           </div>
         </form>
       </div>
