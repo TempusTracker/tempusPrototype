@@ -1,4 +1,4 @@
-import { usersUtils } from "../../App.js";
+import usersData from "../../data/usersData.js";
 import { TeamsUtils } from "../../App.js";
 
 function LocalStorageSaveTeam(team) {
@@ -6,8 +6,8 @@ function LocalStorageSaveTeam(team) {
 }
 
 export function isNameExist(name) {
-  for (let i = 0; i < usersUtils.length; i++) {
-    if (usersUtils[i].UserData.Name === name) {
+  for (let i = 0; i < usersData.length; i++) {
+    if (usersData[i].userProperties.Name === name) {
       return true;
     }
   }
@@ -15,8 +15,8 @@ export function isNameExist(name) {
 }
 
 export function isEmailExist(email) {
-  for (let i = 0; i < usersUtils.length; i++) {
-    if (usersUtils[i].UserData.Email === email) {
+  for (let i = 0; i < usersData.length; i++) {
+    if (usersData[i].userProperties.Email === email) {
       return true;
     }
   }

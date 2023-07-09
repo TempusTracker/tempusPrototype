@@ -1,5 +1,5 @@
 @import "../variables";
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@200;300;500&display=swap");
 
 @keyframes displaynone {
   from {
@@ -11,6 +11,7 @@
     opacity: 0;
   }
 }
+
 @keyframes displayblock {
   from {
     display: none;
@@ -42,16 +43,14 @@
     padding: 10px 20px;
     border: 0.687345px solid $-bg-button-color;
     border-radius: 8px;
-    font-family: "Raleway";
-    color: $-bg-button-color;
+    font-family: Roboto;
     font-style: normal;
     font-weight: 300;
-    font-size: 17px;
+    font-size: 18px;
     line-height: 20px;
     cursor: pointer;
     border-radius: 50px;
     border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
-    opacity: 0.5;
   }
   .Clock {
     padding-top: 2.9em;
@@ -389,5 +388,40 @@
         }
       }
     }
+  }
+}
+
+.button-active {
+  animation: forwards 0.3s button-active;
+}
+
+.button-disable {
+  animation: forwards 0.3s button-disable;
+}
+
+@keyframes button-disable {
+  0% {
+    background-color: $-bg-button-color;
+    color: #23302b;
+    opacity: 1;
+  }
+  100% {
+    background-color: none;
+    color: $-bg-button-color;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+@keyframes button-active {
+  0% {
+    background-color: none;
+    color: $-bg-button-color;
+    opacity: 0.5;
+  }
+  100% {
+    background-color: $-bg-button-color;
+    color: #23302b;
+    opacity: 1;
+    cursor: pointer;
   }
 }

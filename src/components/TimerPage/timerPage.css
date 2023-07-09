@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@300;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Raleway:wght@200;300;500&display=swap");
 @keyframes displaynone {
   from {
     display: block;
@@ -41,16 +41,14 @@
   padding: 10px 20px;
   border: 0.687345px solid #e9d3c6;
   border-radius: 8px;
-  font-family: "Raleway";
-  color: #e9d3c6;
+  font-family: Roboto;
   font-style: normal;
   font-weight: 300;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 20px;
   cursor: pointer;
   border-radius: 50px;
   border: 1px solid var(--dark-mode-accent-black, #e9d3c6);
-  opacity: 0.5;
 }
 .TimerBlock .Clock {
   padding-top: 2.9em;
@@ -360,4 +358,39 @@
   font-style: normal;
   font-weight: 300;
   line-height: normal;
+}
+
+.button-active {
+  animation: forwards 0.3s button-active;
+}
+
+.button-disable {
+  animation: forwards 0.3s button-disable;
+}
+
+@keyframes button-disable {
+  0% {
+    background-color: #e9d3c6;
+    color: #23302b;
+    opacity: 1;
+  }
+  100% {
+    background-color: none;
+    color: #e9d3c6;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+@keyframes button-active {
+  0% {
+    background-color: none;
+    color: #e9d3c6;
+    opacity: 0.5;
+  }
+  100% {
+    background-color: #e9d3c6;
+    color: #23302b;
+    opacity: 1;
+    cursor: pointer;
+  }
 }/*# sourceMappingURL=timerPage.css.map */

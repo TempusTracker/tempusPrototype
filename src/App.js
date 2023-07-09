@@ -153,7 +153,9 @@ function App() {
           </div>
         </div>
       </div>
-      <button onClick={logUot}>выйти</button>
+      <button onClick={logUot} style={{ position: "absolute", zIndex: "1000" }}>
+        выйти
+      </button>
     </BrowserRouter>
   );
 }

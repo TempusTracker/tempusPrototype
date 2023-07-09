@@ -6,16 +6,20 @@ function FastButtons(props) {
     checkingTime,
     Pausing,
     ReadTime,
-    LocalStorageSave,
     circle,
+    setDisable,
+    selectMode,
+    Button,
   } = props;
 
   function ClickClearTime() {
-    Pausing();
-    circle.current.style.cssText = "animation: none;";
-    checkingTime();
-    LocalStorageSave(25, 5, 15);
-    ReadTime();
+    if (Button.current.classList.contains("ButtonStop")) {
+      Pausing();
+      circle.current.style.cssText = "animation: none;";
+      setDisable("clearButton");
+      checkingTime();
+      ReadTime();
+    }
   }
   function clickNext() {
     Pausing();
@@ -27,9 +31,9 @@ function FastButtons(props) {
   return (
     <>
       <div className="NextText" onClick={clickNext}>
-        Следующее{" "}
+        Следующее: {selectMode}
       </div>
-      <div className="clearButton" onClick={ClickClearTime}>
+      <div className="clearButton button-disable" onClick={ClickClearTime}>
         Сброс
       </div>
     </>

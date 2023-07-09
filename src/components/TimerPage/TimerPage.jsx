@@ -1,7 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import style from "./timerPage.css";
 import Settings from "./components/settings-component";
 import FastButtons from "./components/fast-buttons";
+
+function setDisable(button) {
+  document.querySelector(`.${button}`).classList.remove("button-active");
+  document.querySelector(`.${button}`).classList.add("button-disable");
+}
+
+function setActive(button) {
+  document.querySelector(`.${button}`).classList.add("button-active");
+  document.querySelector(`.${button}`).classList.remove("button-disable");
+}
 
 function TimerPage(props) {
   const { UserFullData, error } = props;
@@ -26,7 +36,8 @@ function TimerPage(props) {
   let MainBlock = React.createRef();
   let circle = React.createRef();
   let SettingsOpen = false;
-  let TimeForAnimate = 99999;
+
+  const [selectMode, setSelectMode] = useState("Отдых");
 
   const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
   const settingShortBreak = useRef(UserFullData.userTimeSettings.shortBreak);
@@ -49,7 +60,7 @@ function TimerPage(props) {
 
   function StartTimer(e) {
     const action = e.target;
-    console.log(!SettingsOpen);
+    setActive("clearButton");
     if (
       action.dataset.action === "start" &&
       Button.current.classList.contains("ButtonStart")
@@ -95,12 +106,8 @@ function TimerPage(props) {
           copy("shortBreak");
           SelectBreak = true;
           UpdateTime();
-          TimeForAnimate = 60 * SelectTimeMode.minutes;
-          console.log(TimeForAnimate);
         } else if (SelectBreak === true) {
           copy("workTime");
-          TimeForAnimate = 60 * SelectTimeMode.minutes;
-          console.log(TimeForAnimate);
           SelectBreak = false;
           UpdateTime();
         }
@@ -108,8 +115,6 @@ function TimerPage(props) {
         copy("longBreak");
         Time.longBreakInterval = 7;
         SelectBreak = true;
-        TimeForAnimate = 60 * SelectTimeMode.minutes;
-        console.log(TimeForAnimate);
         UpdateTime();
       }
     }
@@ -130,6 +135,7 @@ function TimerPage(props) {
   }
 
   function Pausing() {
+    setDisable("clearButton");
     circle.current.style.cssText = "animation-play-state: paused;";
     Button.current.classList.add("ButtonStart");
     Button.current.classList.remove("ButtonStop");
@@ -218,11 +224,17 @@ function TimerPage(props) {
           checkingTime={checkingTime}
           Pausing={Pausing}
           ReadTime={ReadTime}
+          Button={Button}
           LocalStorageSave={LocalStorageSave}
           circle={circle}
+          selectMode={selectMode}
+          setActive={setActive}
+          setDisable={setDisable}
         ></FastButtons>
       </div>
       <Settings
+        setActive={setActive}
+        setDisable={setDisable}
         SettingsOpen={SettingsOpen}
         settingWorkTime={settingWorkTime}
         settingShortBreak={settingShortBreak}

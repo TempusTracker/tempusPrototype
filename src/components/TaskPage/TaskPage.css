@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 .zOpen {
   z-index: 3;
@@ -228,15 +228,14 @@
   padding: 16px 40px;
   align-self: flex-end;
   border-radius: 40px;
-  background: var(--dark-mode-accent-black, #e9d3c6);
+  border: 2px solid #e9d3c6;
   cursor: pointer;
-  color: var(--dark-mode-1-tab-and-timer, #23302b);
   font-size: 20px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  width: 267px;
+  width: 272px;
 }
 .addTask-place .addTask-bg .button-add {
   width: 254px;

@@ -3,6 +3,16 @@ import React, { useState } from "react";
 function AddTaskComponent(props) {
   const { openAdd, error } = props;
 
+  function setDisable(button) {
+    document.querySelector(`.${button}`).classList.remove("button-active");
+    document.querySelector(`.${button}`).classList.add("button-disable");
+  }
+
+  function setActive(button) {
+    document.querySelector(`.${button}`).classList.add("button-active");
+    document.querySelector(`.${button}`).classList.remove("button-disable");
+  }
+
   let addTask = React.createRef();
   let inputs = React.createRef();
   const today = new Date();
@@ -27,16 +37,17 @@ function AddTaskComponent(props) {
 
   function clickCreate(e) {
     e.preventDefault();
-    if (inputTitle === "" || inputPriority === 0) {
+    if (inputTitle !== "" && inputPriority !== 0) {
+    } else {
       error("Ошибка: поля не могут быть пустыми");
     }
   }
 
   function clickHandlerFire(e) {
     if (e.target.classList.contains("fier1")) {
-      e.target.classList.add("fill");
       document.querySelector(".fier2").classList.remove("fill");
       document.querySelector(".fier3").classList.remove("fill");
+      e.target.classList.add("fill");
       setinputPriority(1);
     } else if (e.target.classList.contains("fier2")) {
       document.querySelector(".fier1").classList.add("fill");
@@ -48,6 +59,16 @@ function AddTaskComponent(props) {
       document.querySelector(".fier2").classList.add("fill");
       e.target.classList.add("fill");
       setinputPriority(3);
+    }
+    checkOnTrue();
+  }
+
+  function checkOnTrue() {
+    console.log(inputPriority);
+    if (inputTitle !== "" && inputPriority !== 0) {
+      setActive("button-next");
+    } else {
+      setDisable("button-next");
     }
   }
   return (
@@ -73,6 +94,7 @@ function AddTaskComponent(props) {
                   type="text"
                   onChange={(e) => {
                     setinputTitle(e.target.value);
+                    checkOnTrue();
                   }}
                   placeholder="Разработать логотип..."
                 />
@@ -83,6 +105,7 @@ function AddTaskComponent(props) {
                   type="text"
                   onChange={(e) => {
                     setinputSubtask(e.target.value);
+                    checkOnTrue();
                   }}
                   placeholder="Текст для подзадачи.."
                 />
@@ -99,6 +122,7 @@ function AddTaskComponent(props) {
                     value={inputDate}
                     onChange={(e) => {
                       setinputDate(e.target.value);
+                      checkOnTrue();
                     }}
                   />
                 </div>
@@ -128,7 +152,10 @@ function AddTaskComponent(props) {
               </div>
             </div>
 
-            <button className="button-next" onClick={clickCreate}>
+            <button
+              className="button-next button-disable"
+              onClick={clickCreate}
+            >
               Отправить в работу
             </button>
           </div>
