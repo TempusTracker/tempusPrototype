@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 function FastButtons(props) {
   const {
@@ -8,7 +8,7 @@ function FastButtons(props) {
     ReadTime,
     circle,
     setDisable,
-    selectMode,
+    Time,
     Button,
   } = props;
 
@@ -28,10 +28,12 @@ function FastButtons(props) {
     checkingTime();
     circle.current.style.cssText = "animation: none;";
   }
+
   return (
     <>
       <div className="NextText" onClick={clickNext}>
-        Следующее: {selectMode}
+        Следующее:
+        <div className="selectModeShow">Отдых {Time.shortBreak.minutes}м</div>
       </div>
       <div className="clearButton button-disable" onClick={ClickClearTime}>
         Сброс

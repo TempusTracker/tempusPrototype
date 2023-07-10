@@ -8,8 +8,7 @@ input::-webkit-inner-spin-button {
 }
 
 .App-body {
-  max-height: 100vh;
-  overflow-y: hidden;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -89,4 +88,4 @@ input::-webkit-inner-spin-button {
   to {
     top: -70px;
   }
-} /*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.css.map */

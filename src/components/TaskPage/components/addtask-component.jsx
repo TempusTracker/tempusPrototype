@@ -94,8 +94,8 @@ function AddTaskComponent(props) {
                   type="text"
                   onChange={(e) => {
                     setinputTitle(e.target.value);
-                    checkOnTrue();
                   }}
+                  onBlur={checkOnTrue}
                   placeholder="Разработать логотип..."
                 />
               </div>
@@ -105,8 +105,8 @@ function AddTaskComponent(props) {
                   type="text"
                   onChange={(e) => {
                     setinputSubtask(e.target.value);
-                    checkOnTrue();
                   }}
+                  onBlur={checkOnTrue}
                   placeholder="Текст для подзадачи.."
                 />
                 <div className="plus">+</div>
@@ -122,8 +122,8 @@ function AddTaskComponent(props) {
                     value={inputDate}
                     onChange={(e) => {
                       setinputDate(e.target.value);
-                      checkOnTrue();
                     }}
+                    onBlur={checkOnTrue}
                   />
                 </div>
                 <div className="fiers">

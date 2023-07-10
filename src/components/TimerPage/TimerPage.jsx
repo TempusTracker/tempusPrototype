@@ -37,8 +37,6 @@ function TimerPage(props) {
   let circle = React.createRef();
   let SettingsOpen = false;
 
-  const [selectMode, setSelectMode] = useState("Отдых");
-
   const settingWorkTime = useRef(UserFullData.userTimeSettings.workTime);
   const settingShortBreak = useRef(UserFullData.userTimeSettings.shortBreak);
   const settingLongBreak = useRef(UserFullData.userTimeSettings.longBreak);
@@ -106,13 +104,25 @@ function TimerPage(props) {
           copy("shortBreak");
           SelectBreak = true;
           UpdateTime();
+          document.querySelector(".selectModeShow").textContent = "Работа";
         } else if (SelectBreak === true) {
+          console.log(Time.longBreakInterval);
           copy("workTime");
           SelectBreak = false;
+          if (Time.longBreakInterval == 0) {
+            document.querySelector(
+              ".selectModeShow"
+            ).textContent = `Отдых ${Time.longBreak.minutes}м`;
+          } else {
+            document.querySelector(
+              ".selectModeShow"
+            ).textContent = `Отдых ${Time.shortBreak.minutes}м`;
+          }
           UpdateTime();
         }
       } else {
         copy("longBreak");
+        document.querySelector(".selectModeShow").textContent = "Работа";
         Time.longBreakInterval = 7;
         SelectBreak = true;
         UpdateTime();
@@ -227,9 +237,9 @@ function TimerPage(props) {
           Button={Button}
           LocalStorageSave={LocalStorageSave}
           circle={circle}
-          selectMode={selectMode}
           setActive={setActive}
           setDisable={setDisable}
+          Time={Time}
         ></FastButtons>
       </div>
       <Settings

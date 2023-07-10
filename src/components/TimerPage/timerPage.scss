@@ -252,11 +252,14 @@
 .NextText {
   position: absolute;
   bottom: 20px;
+  display: flex;
   left: 20px;
   padding: 10px 20px;
   background: $-bg-light-color;
   border-radius: 8px;
-  font-family: "Raleway";
+  font-family: Roboto;
+  gap: 8px;
+  user-select: none;
   font-style: normal;
   font-weight: 300;
   font-size: 17.871px;
