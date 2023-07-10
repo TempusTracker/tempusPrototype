@@ -148,9 +148,20 @@ function App() {
               className="LogoTempus"
             />
           </div>
-          <div className="App-lines">
-            <div className="lines-bg" />
-          </div>
+          {window.location.href.indexOf("http://localhost:3000/LoginForm") ? (
+            ""
+          ) : (
+            <div className="App-lines">
+              <div className="lines-bg" />
+            </div>
+          )}
+          {window.location.href.indexOf("http://localhost:3000/SignInForm") ? (
+            ""
+          ) : (
+            <div className="App-lines">
+              <div className="lines-bg" />
+            </div>
+          )}
         </div>
       </div>
       <button onClick={logUot} style={{ position: "absolute", zIndex: "1000" }}>

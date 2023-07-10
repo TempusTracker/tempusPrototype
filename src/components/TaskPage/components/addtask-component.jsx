@@ -94,6 +94,7 @@ function AddTaskComponent(props) {
                   type="text"
                   onChange={(e) => {
                     setinputTitle(e.target.value);
+                    checkOnTrue();
                   }}
                   onBlur={checkOnTrue}
                   placeholder="Разработать логотип..."
@@ -122,11 +123,12 @@ function AddTaskComponent(props) {
                     value={inputDate}
                     onChange={(e) => {
                       setinputDate(e.target.value);
+                      checkOnTrue();
                     }}
                     onBlur={checkOnTrue}
                   />
                 </div>
-                <div className="fiers">
+                <div className="fiers" onClick={checkOnTrue}>
                   <label htmlFor="">Приоритет</label>
                   <div className="fiers-body" onClick={clickHandlerFire}>
                     <div className="fire fier1"></div>
