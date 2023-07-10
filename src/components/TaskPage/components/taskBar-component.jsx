@@ -7,19 +7,43 @@ function TaskBar(props) {
   let modeTomorrow = React.createRef();
   let modeAll = React.createRef();
 
+  function removeAll() {
+    modeToDay.current.classList.remove("zLast");
+    modeToDay.current.classList.remove("zNext");
+    modeToDay.current.classList.remove("zOpen");
+    modeTomorrow.current.classList.remove("zNext");
+    modeTomorrow.current.classList.remove("zOpen");
+    modeTomorrow.current.classList.remove("zLast");
+    modeAll.current.classList.remove("zOpen");
+    modeAll.current.classList.remove("zLast");
+    modeAll.current.classList.remove("zNext");
+  }
+
+  function Openz(Open, Next, Last) {
+    Last.current.classList.add("zLast");
+    Next.current.classList.add("zNext");
+    Open.current.classList.add("zOpen");
+  }
+
   function clickHandler(e) {
     if (e.target.classList.contains("modeToDay")) {
       modeToDayplace.current.style.cssText = "animation-name: displayblock;";
       modeTomorrowplace.current.style.cssText = "animation-name: displaynone;";
       modeAllplace.current.style.cssText = "animation-name: displaynone;";
+      removeAll();
+      Openz(modeToDay, modeTomorrow, modeAll);
     } else if (e.target.classList.contains("modeTomorrow")) {
       modeToDayplace.current.style.cssText = "animation-name: displaynone;";
       modeTomorrowplace.current.style.cssText = "animation-name: displayblock;";
       modeAllplace.current.style.cssText = "animation-name: displaynone;";
+      removeAll();
+      Openz(modeTomorrow, modeAll, modeToDay);
     } else if (e.target.classList.contains("modeAll")) {
       modeToDayplace.current.style.cssText = "animation-name: displaynone;";
       modeTomorrowplace.current.style.cssText = "animation-name: displaynone;";
       modeAllplace.current.style.cssText = "animation-name: displayblock;";
+      removeAll();
+      Openz(modeAll, modeTomorrow, modeToDay);
     } else if (e.target.classList.contains("buttonAdd")) {
       openAdd(true);
     }
