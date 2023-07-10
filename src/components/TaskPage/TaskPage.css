@@ -265,6 +265,9 @@
   position: absolute;
 }
 .TaskPage .TaskBar .mods {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   height: 50px;
   overflow: hidden;
@@ -383,6 +386,7 @@
   margin-top: 25px;
 }
 .TaskPage .TaskMain .place .task-group .task-title {
+  z-index: 100;
   -moz-user-select: none;
   -webkit-user-select: none;
           user-select: none;
@@ -406,7 +410,7 @@
 }
 .TaskPage .TaskMain .place .task-group .sub-tasks {
   transition: all 0.5s;
-  margin-top: -40%;
+  margin-top: -30%;
   opacity: 0;
   pointer-events: none;
 }

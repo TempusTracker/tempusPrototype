@@ -9,7 +9,7 @@ function TaskMain(props) {
   function openDesc(e) {
     if (e.target.parentNode.classList.contains("openDesc")) {
       e.target.parentNode.parentNode.children[1].style.cssText =
-        "margin-top: -40%; opacity: 0;  pointer-events: none;";
+        "margin-top: -30%; opacity: 0;  pointer-events: none;";
       e.target.parentNode.children[1].style.transform = "rotate(0deg)";
       e.target.parentNode.classList.remove("openDesc");
       setTimeout(() => {
@@ -60,13 +60,6 @@ function TaskMain(props) {
           </div>
         ))}
         {/* 
-          
-            
-
-
-              
-              
-
             <div className="sub-task" onClick={clickSubTask}>
               <input className="check" id="check" type="checkbox" />
               <label htmlFor="check" className="label">
@@ -80,7 +73,8 @@ function TaskMain(props) {
               </label>
             </div>
           </div>
-        </div> */}
+        </div> 
+				*/}
       </div>
       <div
         ref={modeTomorrowplace}

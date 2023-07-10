@@ -378,6 +378,9 @@
         justify-content: space-between;
         margin-top: 20px;
         button {
+          display: flex;
+          gap: 3.37px;
+          align-items: center;
           padding: 9px 20px;
           border-radius: 50px;
           border: 1px solid var(--dark-mode-accent-black, #e9d3c6);

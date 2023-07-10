@@ -238,13 +238,50 @@ function Settings(props) {
           <div className="title">Режимы</div>
           <div className="mods-items">
             <div>
-              <button onClick={SelectModePomodoro}> 25 5 15</button>
+              <button onClick={SelectModePomodoro}>
+                25{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />
+                5{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />{" "}
+                15
+              </button>
             </div>
             <div>
-              <button onClick={SelectModeLongpom}> 45 15 30</button>
+              <button onClick={SelectModeLongpom}>
+                {" "}
+                45{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />{" "}
+                15{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />{" "}
+                30
+              </button>
             </div>
             <div>
-              <button onClick={SelectModelooongpom}>90 20 45</button>
+              <button onClick={SelectModelooongpom}>
+                90{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />{" "}
+                20{" "}
+                <img
+                  src={require("../settings/Rectangle.svg").default}
+                  alt=""
+                />{" "}
+                45
+              </button>
             </div>
           </div>
         </div>

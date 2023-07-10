@@ -261,6 +261,7 @@
     z-index: 0;
     position: absolute;
     .mods {
+      user-select: none;
       display: flex;
       height: 50px;
       overflow: hidden;
@@ -378,6 +379,7 @@
         transition: all 0.1s;
         margin-top: 25px;
         .task-title {
+          z-index: 100;
           -moz-user-select: none;
           -khtml-user-select: none;
           user-select: none;
@@ -401,7 +403,7 @@
         }
         .sub-tasks {
           transition: all 0.5s;
-          margin-top: -40%;
+          margin-top: -30%;
           opacity: 0;
           pointer-events: none;
         }
