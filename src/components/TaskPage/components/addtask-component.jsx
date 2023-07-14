@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function AddTaskComponent(props) {
-  const { openAdd, error } = props;
+  const { openAdd, error, UserFullData } = props;
 
   function setDisable(button) {
     document.querySelector(`.${button}`).classList.remove("button-active");
@@ -12,6 +12,8 @@ function AddTaskComponent(props) {
     document.querySelector(`.${button}`).classList.add("button-active");
     document.querySelector(`.${button}`).classList.remove("button-disable");
   }
+
+  const [SubTasks, setSubTasks] = useState([]);
 
   let addTask = React.createRef();
   let inputs = React.createRef();
@@ -35,9 +37,29 @@ function AddTaskComponent(props) {
     }, 1000);
   }
 
+  function GenerateDate() {
+    const inputDateTime = inputDate;
+    const inputTimeTime = "00:00:00";
+    const [year, month, day] = inputDateTime.split("-");
+    const [hour, minute, second] = inputTimeTime.split(":");
+    const dateObj = new Date(year, month - 1, day, hour, minute, second);
+    const formattedDate = dateObj.toISOString();
+    return formattedDate;
+  }
+
   function clickCreate(e) {
     e.preventDefault();
     if (inputTitle !== "" && inputPriority !== 0) {
+      let NewObject = {
+        TaskName: inputTitle,
+        DateOfCompletion: GenerateDate(),
+        SubTasks: SubTasks,
+        TaskPriority: inputPriority,
+        Сomments: {},
+      };
+      UserFullData.userTasks.push(NewObject);
+      console.log(UserFullData.userTasks);
+      closeAdd();
     } else {
       error("Ошибка: поля не могут быть пустыми");
     }
@@ -64,13 +86,22 @@ function AddTaskComponent(props) {
   }
 
   function checkOnTrue() {
-    console.log(inputPriority);
     if (inputTitle !== "" && inputPriority !== 0) {
       setActive("button-next");
     } else {
       setDisable("button-next");
     }
   }
+
+  function AddSubTask() {
+    if (inputSubtask !== "") {
+      setSubTasks([...SubTasks, inputSubtask]);
+      document.getElementById("inputSubTask").value = "";
+    } else {
+      error("Ошибка: поле не может быть пустым");
+    }
+  }
+
   return (
     <div ref={addTask} className="addTask-place place">
       <div className="addTask-bg">
@@ -104,13 +135,16 @@ function AddTaskComponent(props) {
                 <label htmlFor="">Подзадачи</label>
                 <input
                   type="text"
+                  id="inputSubTask"
                   onChange={(e) => {
                     setinputSubtask(e.target.value);
                   }}
                   onBlur={checkOnTrue}
                   placeholder="Текст для подзадачи.."
                 />
-                <div className="plus">+</div>
+                <div className="plus" onClick={AddSubTask}>
+                  +
+                </div>
               </div>
             </div>
             <div className="inputs-bottom">
@@ -138,22 +172,14 @@ function AddTaskComponent(props) {
                 </div>
               </div>
               <div className="sub-tasks">
-                <div className="subtask">
-                  <div className="text">
-                    подзадача бла бла бла бла бла бла блаблаблбалалалалал
-                    блаблаблбалалалалал
+                {SubTasks.map((element, index) => (
+                  <div className="subtask" key={index}>
+                    <div className="text">{element}</div>
+                    <div className="minus">-</div>
                   </div>
-                  <div className="minus">-</div>
-                </div>
-                <div className="subtask">
-                  <div className="text">
-                    подзадача бла бла бла бла бла бла блаблаблбалалалалал
-                  </div>
-                  <div className="minus">-</div>
-                </div>
+                ))}
               </div>
             </div>
-
             <button
               className="button-next button-disable"
               onClick={clickCreate}

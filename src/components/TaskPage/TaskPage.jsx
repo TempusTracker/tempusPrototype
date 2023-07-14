@@ -16,7 +16,11 @@ function TaskPage(props) {
   return (
     <>
       {openAdd ? (
-        <AddTaskComponent error={error} openAdd={setOpenAdd}></AddTaskComponent>
+        <AddTaskComponent
+          error={error}
+          UserFullData={UserFullData}
+          openAdd={setOpenAdd}
+        ></AddTaskComponent>
       ) : (
         ""
       )}
