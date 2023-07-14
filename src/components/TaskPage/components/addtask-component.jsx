@@ -59,6 +59,7 @@ function AddTaskComponent(props) {
       };
       UserFullData.userTasks.push(NewObject);
       console.log(UserFullData.userTasks);
+      localStorage.setItem("user", JSON.stringify(UserFullData));
       closeAdd();
     } else {
       error("Ошибка: поля не могут быть пустыми");
